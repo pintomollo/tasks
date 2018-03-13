@@ -1,6 +1,6 @@
 #!/bin/bash
 
-task $(task uuids) delete
+task $(task ids) delete
 
 task add project:Origins.tracking Label the entire tissue
 task add project:Origins.tracking Image the whole migration
