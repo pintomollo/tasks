@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Clean the current list of tasks
-task $(task ids) delete
+echo 'all' > task $(task ids) delete
 
-# Counting how many tasks have been submitted
+# For counting how many tasks have been submitted
 COUNTER=0
 
 ########################################
@@ -39,13 +39,13 @@ task add project:'Techniques'.'Soaking' Find protocols for soaking colonial asci
 #2
 task add project:'Techniques'.'Soaking' List the required equipment depends:$((SOK+1))
 #3
-task add project:'Techniques'.'Soaking' Design a flexible incubation chamber
+task add project:'Techniques'.'Soaking' Design a flexible incubation chamber depends:$((SOK+2))
 #4
-task add project:'Techniques'.'Soaking' Build a prototype chamber
+task add project:'Techniques'.'Soaking' Build a prototype chamber depends:$((SOK+3)) +purchase
 #5
-task add project:'Techniques'.'Soaking' Test the prototype chamber
+task add project:'Techniques'.'Soaking' Test the prototype chamber depends:$((SOK+4))
 #6
-task add project:'Techniques'.'Soaking' Get several incubation chambers
+task add project:'Techniques'.'Soaking' Get several incubation chambers depends:$((SOK+4)),$((SOK+5)) +technique
 COUNTER=$((COUNTER+6))
 
 #----------------------------------------
@@ -53,6 +53,7 @@ COUNTER=$((COUNTER+6))
 #----------------------------------------
 ANH=$COUNTER
 task add project:'Techniques'.'Anesthesia' Find protocols for anesthesizing colonial ascidians +protocols
+COUNTER=$((COUNTER+6))
 
 #task add project:'Techniques'.'Fixing colonies' Find protocols for fixing colonial ascidians +protocols
 #task add project:'Techniques'.'Live whole-tissue labeling' Find protocols for labeling colonial ascidians +protocols
