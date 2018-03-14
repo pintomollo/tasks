@@ -1,10 +1,26 @@
 #!/bin/bash
 
+# Script for setting up the various tasks
+# for setting up the Blanchoud lab
+
 # Clean the current list of tasks
-echo 'all' > task $(task ids) delete
+echo 'all' | task $(task ids) delete
 
 # For counting how many tasks have been submitted
 COUNTER=0
+
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# Labels used in the tasks:
+#  +create
+#  +equipment
+#  +imaging
+#  +inventory
+#  +protocol
+#  +purchase
+#  +skill
+#  +technique
+#  +training
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ########################################
 # 0. General techniques
@@ -17,15 +33,15 @@ INJ=$COUNTER
 #1
 task add project:'Techniques'.'Injection' Find protocols for injecting colonial ascidians +protocol
 #2
-task add project:'Techniques'.'Injection' List the required equipment depends:$((INJ+1))
+task add project:'Techniques'.'Injection' List the required equipment depends:$((INJ+1)) +inventory
 #3
-task add project:'Techniques'.'Injection' List the required reagents depends:$((INJ+1))
+task add project:'Techniques'.'Injection' List the required reagents, including a marker for mock injections depends:$((INJ+1)) +inventory
 #4
 task add project:'Techniques'.'Injection' Get the required equipment depends:$((INJ+2)) +purchase
 #5
 task add project:'Techniques'.'Injection' Get the required reagents depends:$((INJ+3)) +purchase
 #6
-task add project:'Techniques'.'Injection' Train using mock injections depends:$((INJ+4)),$((INJ+5))
+task add project:'Techniques'.'Injection' Train using mock injections depends:$((INJ+4)),$((INJ+5)) +training
 #7
 task add project:'Techniques'.'Injection' Master injections depends:$((INJ+6)) +skill
 COUNTER=$((COUNTER+7))
@@ -37,25 +53,40 @@ SOK=$COUNTER
 #1
 task add project:'Techniques'.'Soaking' Find protocols for soaking colonial ascidians +protocol
 #2
-task add project:'Techniques'.'Soaking' List the required equipment depends:$((SOK+1))
+task add project:'Techniques'.'Soaking' List the required equipment depends:$((SOK+1)) +inventory
 #3
-task add project:'Techniques'.'Soaking' Design a flexible incubation chamber depends:$((SOK+2))
+task add project:'Techniques'.'Soaking' Design a flexible incubation chamber depends:$((SOK+2)) +create
 #4
 task add project:'Techniques'.'Soaking' Build a prototype chamber depends:$((SOK+3)) +purchase
 #5
-task add project:'Techniques'.'Soaking' Test the prototype chamber depends:$((SOK+4))
+task add project:'Techniques'.'Soaking' Test the prototype chamber depends:$((SOK+4)) +training
 #6
-task add project:'Techniques'.'Soaking' Get several incubation chambers depends:$((SOK+4)),$((SOK+5)) +technique
+task add project:'Techniques'.'Soaking' Get several incubation chambers depends:$((SOK+4)),$((SOK+5)) +equipment
 COUNTER=$((COUNTER+6))
 
 #----------------------------------------
 #- 0.3 Anesthesia of B. leachii colonies
 #----------------------------------------
 ANH=$COUNTER
+#1
 task add project:'Techniques'.'Anesthesia' Find protocols for anesthesizing colonial ascidians +protocols
-COUNTER=$((COUNTER+6))
+#2
+task add project:'Techniques'.'Anesthesia' List the required reagents depends:$((ANH+1)) +inventory
+#3
+task add project:'Techniques'.'Anesthesia' Get the required reagents depends:$((ANH+2)) +inventory
+#4
+task add project:'Techniques'.'Anesthesia' Test anesthesia concentrations and incubation times in a chamber depends:$((ANH+3)),$((SOK+6)) +training
+#5
+task add project:'Techniques'.'Anesthesia' Master anesthesia depends:$((ANH+4)) +skill
+COUNTER=$((COUNTER+5))
 
-#task add project:'Techniques'.'Fixing colonies' Find protocols for fixing colonial ascidians +protocols
+#----------------------------------------
+#- 0.3 Fixation of B. leachii colonies
+#----------------------------------------
+FIX=$COUNTER
+#1
+task add project:'Techniques'.'Fixing colonies' Find protocols for fixing colonial ascidians +protocols
+
 #task add project:'Techniques'.'Live whole-tissue labeling' Find protocols for labeling colonial ascidians +protocols
 #task add project:'Techniques'.'Inducing WBR' Find protocols for inducing WBR in colonial ascidians +protocols
 #task add project:'Techniques'.'RNA interference' Find protocols for using RNAi in colonial ascidians +protocols
