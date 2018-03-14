@@ -78,9 +78,15 @@ task add project:'Techniques'.'Anesthesia' Get the required reagents depends:$((
 task add project:'Techniques'.'Anesthesia' Test anesthesia concentrations and incubation times in a chamber depends:$((ANH+3)),$((SOK+6)) +training
 #5
 task add project:'Techniques'.'Anesthesia' Master anesthesia depends:$((ANH+4)) +skill
-COUNTER=$((COUNTER+6))
+COUNTER=$((COUNTER+5))
 
-#task add project:'Techniques'.'Fixing colonies' Find protocols for fixing colonial ascidians +protocols
+#----------------------------------------
+#- 0.3 Fixation of B. leachii colonies
+#----------------------------------------
+FIX=$COUNTER
+#1
+task add project:'Techniques'.'Fixing colonies' Find protocols for fixing colonial ascidians +protocols
+
 #task add project:'Techniques'.'Live whole-tissue labeling' Find protocols for labeling colonial ascidians +protocols
 #task add project:'Techniques'.'Inducing WBR' Find protocols for inducing WBR in colonial ascidians +protocols
 #task add project:'Techniques'.'RNA interference' Find protocols for using RNAi in colonial ascidians +protocols
