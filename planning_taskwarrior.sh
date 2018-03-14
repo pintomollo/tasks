@@ -92,5 +92,14 @@ task add project:'Cellular origins of WBR'.'Track all cells' Determine the exist
 # 2. Lluis PhD thesis
 ########################################
 
-task add project:PhD.thesis Find a suitable topic
-task add project:PhD.thesis Get enough credits
+task add project:'PhD'.'Thesis' Find a suitable topic
+task add project:'PhD'.'Credits' 'Get enough credits (at least 2 per year)'
+#task add project:'PhD'.'Science' Share all of our scientifc papers depends:$((SRV+1)) +software
+task add project: 'PhD'.'Science' 'Techniques'.'Zebrafish' cryoinjury
+task add project: 'PhD'.'Sicence' 'Techniques'.'Zebrafish' tissue fixation and slicing +imaging +technique
+task add project: 'PhD'.'Science' 'Techniques'.'Botrylloides Schlosseri' ablation +technique
+task add project: 'PhD'.'Science' 'Techniques'.'DOMO course' learn more techniques-list here once learnt
+task add project: 'PhD'.'Equipment' 'Training'.'Confocal' 
+task add project: 'PhD'.'Equipment' 'Training'.'Epifluorescence' in living colonies
+task add project: 'PhD'.'Topic' Environmental Cell origin Atlas
+
