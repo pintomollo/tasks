@@ -86,6 +86,16 @@ COUNTER=$((COUNTER+5))
 FIX=$COUNTER
 #1
 task add project:'Techniques'.'Fixing colonies' Find protocols for fixing colonial ascidians +protocols
+#2
+task add project:'Techniques'.'Fixing colonies' List the required reagents depends:$((FIX+1)) +inventory
+#3
+task add project:'Techniques'.'Fixing colonies' Get the required reagents depends:$((FIX+2)) +inventory
+#4
+task add project:'Techniques'.'Fixing colonies' Test fixation duration, timing, reagents:$((FIX+3)) +training
+#5
+task add project:'Techniques'.'Fixing colonies' Master fixation depends:$((FIX+4)) +skill
+COUNTER=$((COUNTER+5))
+
 
 #task add project:'Techniques'.'Live whole-tissue labeling' Find protocols for labeling colonial ascidians +protocols
 #task add project:'Techniques'.'Inducing WBR' Find protocols for inducing WBR in colonial ascidians +protocols
