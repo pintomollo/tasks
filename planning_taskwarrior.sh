@@ -135,6 +135,7 @@ task add project:'Cellular origins of WBR'.'Track all cells' Determine the exist
 
 task add project:'PhD'.'Thesis' Find a suitable topic
 task add project:'PhD'.'Credits' 'Get enough credits (at least 2 per year)'
+task add project: 'PhD'.'Credits' Soft skills credits minimum of 2 for the whole PhD
 #task add project:'PhD'.'Science' Share all of our scientifc papers depends:$((SRV+1)) +software
 task add project: 'PhD'.'Science' 'Techniques'.'Zebrafish' cryoinjury
 task add project: 'PhD'.'Sicence' 'Techniques'.'Zebrafish' tissue fixation and slicing +imaging +technique
@@ -143,4 +144,3 @@ task add project: 'PhD'.'Science' 'Techniques'.'DOMO course' learn more techniqu
 task add project: 'PhD'.'Equipment' 'Training'.'Confocal' 
 task add project: 'PhD'.'Equipment' 'Training'.'Epifluorescence' in living colonies
 task add project: 'PhD'.'Topic' Environmental Cell origin Atlas
-task add project: 'PhD'.'Credits' Soft skills credits minimum of 2 for the whole PhD
