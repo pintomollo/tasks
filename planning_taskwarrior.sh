@@ -133,4 +133,4 @@ task add project: 'PhD'.'Science' 'Techniques'.'DOMO course' learn more techniqu
 task add project: 'PhD'.'Equipment' 'Training'.'Confocal' 
 task add project: 'PhD'.'Equipment' 'Training'.'Epifluorescence' in living colonies
 task add project: 'PhD'.'Topic' Environmental Cell origin Atlas
-
+task add project: 'PhD'.'Credits' Soft skills credits minimum of 2 for the whole PhD
