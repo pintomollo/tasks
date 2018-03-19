@@ -190,15 +190,21 @@ task add project:'Cellular origins of WBR'.'Track all cells' Determine the exist
 
 task add project:'PhD'.'Thesis' Find a suitable topic
 task add project:'PhD'.'Credits' 'Get enough credits (at least 2 per year)'
+task add project: 'PhD'.'Credits' Soft skills credits minimum of 2 for the whole PhD
 #task add project:'PhD'.'Science' Share all of our scientifc papers depends:$((SRV+1)) +software
-task add project: 'PhD'.'Science' 'Techniques'.'Zebrafish' cryoinjury
-task add project: 'PhD'.'Sicence' 'Techniques'.'Zebrafish' tissue fixation and slicing +imaging +technique
+
+task add project:'PhD'.'Science' 'Techniques'.'Zebrafish' cryoinjury
+task add project:'PhD'.'Sicence' 'Techniques'.'Zebrafish' tissue fixation and slicing +imaging +technique
+task add project:'PhD'.'Science' 'Techniques'.'Botrylloides Schlosseri' ablation +technique
+task add project:'PhD'.'Science' 'Techniques'.'DOMO course' learn more techniques-list here once learnt
+
+task add project:'PhD'.'Equipment' 'Training'.'Confocal' 
+task add project:'PhD'.'Equipment' 'Training'.'Epifluorescence' in living colonies
+
+task add project:'PhD'.'Topic' Environmental conditions for our animals
+task add project:'PhD'.'Topic' Cell origin
+task add project:'PhD'.'Topic' Atlas
+task add project:'PhD'.'Goals' intermediate goals to be described here in due course
+
 #4
 task add project:'Techniques'.'Sectioning' Train on the cryotome with Verena on zebrafish +training
-
-task add project: 'PhD'.'Science' 'Techniques'.'Botrylloides Schlosseri' ablation +technique
-task add project: 'PhD'.'Science' 'Techniques'.'DOMO course' learn more techniques-list here once learnt
-task add project: 'PhD'.'Equipment' 'Training'.'Confocal' 
-task add project: 'PhD'.'Equipment' 'Training'.'Epifluorescence' in living colonies
-task add project: 'PhD'.'Topic' Environmental Cell origin Atlas
-
