@@ -91,14 +91,55 @@ task add project:'Techniques'.'Fixing colonies' List the required reagents depen
 #3
 task add project:'Techniques'.'Fixing colonies' Get the required reagents depends:$((FIX+2)) +inventory
 #4
-task add project:'Techniques'.'Fixing colonies' Test fixation duration, timing, reagents:$((FIX+3)) +training
+task add project:'Techniques'.'Fixing colonies' Test fixation anesthesia, duration, reagents:$((FIX+3)),$((ANH+5)) +training
 #5
 task add project:'Techniques'.'Fixing colonies' Master fixation depends:$((FIX+4)) +skill
 COUNTER=$((COUNTER+5))
 
+#----------------------------------------
+#- 0.4 Cryosection fixed colonies
+#----------------------------------------
+SEC=$COUNTER
+#1
+task add project:'Techniques'.'Sectioning' Find protocols for embedding and cryosectioning tunicates, including alternatives to OCT +protocols
+#2
+task add project:'Techniques'.'Sectioning' List the required reagents depends:$((SEC+1)) +inventory
+#3
+task add project:'Techniques'.'Sectioning' Get the required reagents depends:$((SEC+2)) +inventory
+#4
+task add project:'Techniques'.'Sectioning' Test sectioning mounting, thickness, treatments depends:$((SEC+3)),$((FIX+5)) +training
+#5
+task add project:'Techniques'.'Sectioning' Master sectioning depends:$((SEC+4)) +skill
+COUNTER=$((COUNTER+5))
 
-#task add project:'Techniques'.'Live whole-tissue labeling' Find protocols for labeling colonial ascidians +protocols
-#task add project:'Techniques'.'Inducing WBR' Find protocols for inducing WBR in colonial ascidians +protocols
+#----------------------------------------
+#- 0.5 Labeling sections of B. leachii
+#----------------------------------------
+LBL=$COUNTER
+#1
+task add project:'Techniques'.'Labeling sections' Find protocols for histological staining of colonial ascidians +protocols
+#2
+task add project:'Techniques'.'Labeling sections' Find protocols for immmunohistochemistry in colonial ascidians +protocols
+#3
+task add project:'Techniques'.'Labeling sections' Find protocols for in situ hybridization of colonial ascidians +protocols
+#4
+task add project:'Techniques'.'Labeling sections' List the required reagents depends:$((LBL+1)),$((LBL+2)),$((LBL+3)) +inventory
+#5
+task add project:'Techniques'.'Labeling sections' Get the required reagents depends:$((LBL+4)) +inventory
+#6
+task add project:'Techniques'.'Labeling sections' Test labelling of cryosections depends:$((LBL+5)),$((SEC+5)) +training
+#7
+task add project:'Techniques'.'Labeling sections' Master labelling depends:$((LBL+4)) +skill
+COUNTER=$((COUNTER+7))
+
+#----------------------------------------
+#- 0.6 Inducing WBR in B. leachii
+#----------------------------------------
+IND=$COUNTER
+#1
+task add project:'Techniques'.'Inducing WBR' Find protocols for inducing WBR in colonial ascidians +protocols
+
+
 #task add project:'Techniques'.'RNA interference' Find protocols for using RNAi in colonial ascidians +protocols
 
 ########################################
@@ -115,6 +156,20 @@ task add project:'Cellular origins of WBR'.'Label the entire tissue'.'Find a sui
 task add project:'Cellular origins of WBR'.'Label the entire tissue'.'Find a suitable dye' Verify the affinity of the identified dyes depends:
 #3
 task add project:'Cellular origins of WBR'.'Label the entire tissue'.'Find a suitable dye' Verify the recordable span of the identified dyes
+
+#1
+task add project:'Techniques'.'Label live colonies' Find protocols for labelling colonial ascidians +protocols
+#2
+task add project:'Techniques'.'Label live colonies' List the required reagents depends:$((LBL+1)) +inventory
+#3
+task add project:'Techniques'.'Label live colonies' Get the required reagents depends:$((LBL+2)) +inventory
+#4
+task add project:'Techniques'.'Label live colonies' Test labelling anesthesia, delivery, duration, reagents:$((LBL+3)),$((ANH+5)),$((INJ+7)),$((SOK+6)) +training
+#5
+task add project:'Techniques'.'Label live colonies' Master labelling depends:$((LBL+4)) +skill
+COUNTER=$((COUNTER+5))
+
+
 
 #1
 task add project:'Cellular origins of WBR'.'Label the entire tissue' Administer the selected dye +technique
@@ -138,6 +193,9 @@ task add project:'PhD'.'Credits' 'Get enough credits (at least 2 per year)'
 #task add project:'PhD'.'Science' Share all of our scientifc papers depends:$((SRV+1)) +software
 task add project: 'PhD'.'Science' 'Techniques'.'Zebrafish' cryoinjury
 task add project: 'PhD'.'Sicence' 'Techniques'.'Zebrafish' tissue fixation and slicing +imaging +technique
+#4
+task add project:'Techniques'.'Sectioning' Train on the cryotome with Verena on zebrafish +training
+
 task add project: 'PhD'.'Science' 'Techniques'.'Botrylloides Schlosseri' ablation +technique
 task add project: 'PhD'.'Science' 'Techniques'.'DOMO course' learn more techniques-list here once learnt
 task add project: 'PhD'.'Equipment' 'Training'.'Confocal' 
