@@ -110,6 +110,25 @@ task add project:'Techniques'.'Handling'.'Inducing WBR' Master induction depends
 task add project:'Techniques'.'Handling'.'Inducing WBR' Write our own optimized protocol depends:$((IND+5)) +create +protocol
 COUNTER=$((COUNTER+6))
 
+#----------------------------------------
+#- 0.1.5 Laser ablation in B. leachii
+#----------------------------------------
+ABL=$COUNTER
+#1
+task add project:'Techniques'.'Handling'.'Laser ablation' Find protocols for laser ablation colonial ascidians +protocol
+#2
+task add project:'Techniques'.'Handling'.'Laser ablation' List the required equipment depends:$((ABL+1)) +inventory
+#3
+task add project:'Techniques'.'Handling'.'Laser ablation' Get the required equipment depends:$((ABL+2)) +purchase
+#4
+task add project:'Techniques'.'Handling'.'Laser ablation' Test laser ablation in colonial ascidians depends:$((ABL+3)) +training
+#5
+task add project:'Techniques'.'Handling'.'Laser ablation' Master laser ablation depends:$((ABL+4)) +skill
+#6
+task add project:'Techniques'.'Handling'.'Laser ablation' Write our own optimized protocol depends:$((ABL+5)) +create +protocol
+COUNTER=$((COUNTER+6))
+
+
 
 #========================================
 #= 0.2 Histology techniques
@@ -126,7 +145,7 @@ task add project:'Techniques'.'Histology'.'Fixing colonies' List the required re
 #3
 task add project:'Techniques'.'Histology'.'Fixing colonies' Get the required reagents depends:$((FIX+2)) +purchase
 #4
-task add project:'Techniques'.'Histology'.'Fixing colonies' Test fixation anesthesia, duration, reagents:$((FIX+3)),$((ANH+5)) +training
+task add project:'Techniques'.'Histology'.'Fixing colonies' Test fixation anesthesia, duration, reagents depends:$((FIX+3)),$((ANH+5)) +training
 #5
 task add project:'Techniques'.'Histology'.'Fixing colonies' Master fixation depends:$((FIX+4)) +skill
 #6
@@ -172,6 +191,7 @@ task add project:'Techniques'.'Histology'.'Labeling sections' Master labelling d
 #8
 task add project:'Techniques'.'Histology'.'Labeling sections' Write our own optimized protocols depends:$((LBL+7)) +create +protocol
 COUNTER=$((COUNTER+8))
+
 
 #========================================
 #= 0.3 Imaging
@@ -252,35 +272,90 @@ COUNTER=$((COUNTER+7))
 #----------------------------------------
 #- 0.3.4 Culture chamber for live imaging
 #----------------------------------------
-LVI=$COUNTER
+CCH=$COUNTER
 #1
 task add project:'Techniques'.'Imaging'.'Culture chamber' Find protocols for live imaging in colonial ascidians +protocol
 #2
-task add project:'Techniques'.'Imaging'.'Culture chamber' List the required reagents depends:$((LVI+1)) +inventory
+task add project:'Techniques'.'Imaging'.'Culture chamber' List the required reagents depends:$((CCH+1)) +inventory
 #3
-task add project:'Techniques'.'Imaging'.'Culture chamber' List the required equipment depends:$((LVI+1)) +inventory
+task add project:'Techniques'.'Imaging'.'Culture chamber' List the required equipment depends:$((CCH+1)) +inventory
 #4
-task add project:'Techniques'.'Imaging'.'Culture chamber' Design a flexible culture chamber depends:$((LVI+3)) +create
+task add project:'Techniques'.'Imaging'.'Culture chamber' Design a flexible culture chamber depends:$((CCH+3)) +create
 #5
-task add project:'Techniques'.'Imaging'.'Culture chamber' Get the required reagents depends:$((LVI+2)) +purchase
+task add project:'Techniques'.'Imaging'.'Culture chamber' Get the required reagents depends:$((CCH+2)) +purchase
 #6
-task add project:'Techniques'.'Imaging'.'Culture chamber' Get the required equipment depends:$((LVI+3)),$((LVI+4)) +purchase
+task add project:'Techniques'.'Imaging'.'Culture chamber' Get the required equipment depends:$((CCH+3)),$((CCH+4)) +purchase
 #7
-task add project:'Techniques'.'Imaging'.'Culture chamber' Test the chamber on the microscopes depends:$((LVI+5)),$((LVI+6)),$((MCR+9)),$((MCR+11)),$((MCR+13)) +training
+task add project:'Techniques'.'Imaging'.'Culture chamber' Test the chamber on the microscopes depends:$((CCH+5)),$((CCH+6)),$((MCR+9)),$((MCR+11)),$((MCR+13)) +training
 #8
-task add project:'Techniques'.'Imaging'.'Culture chamber' Compare the growth and flow rates with those in the aquarium depends:$((LVI+7)),$((GRW+6)),$((FLW+6)) +imaging
+task add project:'Techniques'.'Imaging'.'Culture chamber' Compare the growth and flow rates with those in the aquarium depends:$((CCH+7)),$((GRW+6)),$((FLW+6)) +imaging
 #9
-task add project:'Techniques'.'Imaging'.'Culture chamber' Master culture chambers depends:$((LVI+8)) +skill
+task add project:'Techniques'.'Imaging'.'Culture chamber' Master culture chambers depends:$((CCH+8)) +skill
 #10
-task add project:'Techniques'.'Imaging'.'Culture chamber' Write our own optimized protocol depends:$((LVI+9)) +create +protocol
+task add project:'Techniques'.'Imaging'.'Culture chamber' Write our own optimized protocol depends:$((CCH+9)) +create +protocol
 COUNTER=$((COUNTER+10))
+
 
 #========================================
 #= 0.4 Molecular biology
 #========================================
 
 #----------------------------------------
-#- 0.4. RNA interference in B. leachii
+#- 0.4.1 DNA extraction of B. leachii
+#----------------------------------------
+DNA=$COUNTER
+#1
+task add project:'Techniques'.'Molecular biology'.'DNA extraction' Find protocols for DNA extraction in colonial ascidians +protocol
+#2
+task add project:'Techniques'.'Molecular biology'.'DNA extraction' List the required reagents depends:$((DNA+1)) +inventory
+#3
+task add project:'Techniques'.'Molecular biology'.'DNA extraction' Get the required reagents depends:$((DNA+2)) +purchase
+#4
+task add project:'Techniques'.'Molecular biology'.'DNA extraction' Test DNA extraction in colonial ascidians depends:$((DNA+3)) +training
+#5
+task add project:'Techniques'.'Molecular biology'.'DNA extraction' Master DNA extraction depends:$((DNA+4)) +skill
+#6
+task add project:'Techniques'.'Molecular biology'.'DNA extraction' Write our own optimized protocol depends:$((DNA+5)) +create +protocol
+COUNTER=$((COUNTER+6))
+
+#----------------------------------------
+#- 0.4.2 Genotyping by sequencing
+#----------------------------------------
+SEQ=$COUNTER
+#1
+task add project:'Techniques'.'Molecular biology'.'Genotype by sequencing' Find protocols for genotyping using sequencing in colonial ascidians +protocol
+#2
+task add project:'Techniques'.'Molecular biology'.'Genotype by sequencing' List the required reagents depends:$((SEQ+1)) +inventory
+#3
+task add project:'Techniques'.'Molecular biology'.'Genotype by sequencing' Get the required reagents depends:$((SEQ+2)) +purchase
+#4
+task add project:'Techniques'.'Molecular biology'.'Genotype by sequencing' Send DNA for sequencing to the suitable company depends:$((SEQ+3)),$((DNA+5)) +purchase
+#5
+task add project:'Techniques'.'Molecular biology'.'Genotype by sequencing' Blast the sequences to genotype the animals depends:$((SEQ+4)) +skill
+#6
+task add project:'Techniques'.'Molecular biology'.'Genotype by sequencing' Write our own optimized protocol depends:$((SEQ+5)) +create +protocol
+COUNTER=$((COUNTER+6))
+
+#----------------------------------------
+#- 0.4.3 Genotyping by PCR
+#----------------------------------------
+PCR=$COUNTER
+#1
+task add project:'Techniques'.'Molecular biology'.'Genotype by PCR' Find protocols for genotyping using PCR in colonial ascidians +protocol
+#2
+task add project:'Techniques'.'Molecular biology'.'Genotype by PCR' List the required reagents depends:$((PCR+1)) +inventory
+#3
+task add project:'Techniques'.'Molecular biology'.'Genotype by PCR' Get the required reagents depends:$((PCR+2)) +purchase
+#4
+task add project:'Techniques'.'Molecular biology'.'Genotype by PCR' PCR DNA of various species using several primers depends:$((PCR+3)),$((DNA+5)) +training
+#5
+task add project:'Techniques'.'Molecular biology'.'Genotype by PCR' Compare the results with genotyping by sequencing depends:$((PCR+4)),$((SEQ+5)) +skill
+#6
+task add project:'Techniques'.'Molecular biology'.'Genotype by PCR' Write our own optimized protocol depends:$((PCR+5)) +create +protocol
+COUNTER=$((COUNTER+6))
+
+#----------------------------------------
+#- 0.4.4 RNA interference in B. leachii
 #----------------------------------------
 RNA=$COUNTER
 #1
@@ -304,7 +379,6 @@ task add project:'Techniques'.'RNA interference' Write our own optimized protoco
 COUNTER=$((COUNTER+9))
 
 
-
 ########################################
 # 1. Characterizing WBR in B. leachii
 ########################################
@@ -316,45 +390,91 @@ COUNTER=$((COUNTER+9))
 #----------------------------------------
 #- 1.1.1 Label the entire tissue
 #----------------------------------------
-CLO=$COUNTER
+LET=$COUNTER
 #1
 task add project:'Cellular origins of WBR'.'Label the entire tissue' List the available fluorescent dyes for live labeling +protocol
 #2
-task add project:'Cellular origins of WBR'.'Label the entire tissue' Assess the autofluorescence of the tissue depends:$((LVI+9)) +imaging
+task add project:'Cellular origins of WBR'.'Label the entire tissue' Assess the autofluorescence of the tissue depends:$((CCH+9)) +imaging
 #3
-task add project:'Cellular origins of WBR'.'Label the entire tissue' Get the best candidate dyes depends:$((CLO+1)),$((CLO+2)) +purchase
+task add project:'Cellular origins of WBR'.'Label the entire tissue' Get the best candidate dyes depends:$((LET+1)),$((LET+2)) +purchase
 #4
-task add project:'Cellular origins of WBR'.'Label the entire tissue' Test dye delivery conditions depends:$((ANH+5)),$((INJ+7)),$((SOK+6)),$((CLO+3)),$((LVI+9)) +training
+task add project:'Cellular origins of WBR'.'Label the entire tissue' Test dye delivery conditions depends:$((ANH+5)),$((INJ+7)),$((SOK+6)),$((LET+3)),$((CCH+9)) +training
 #5
-task add project:'Cellular origins of WBR'.'Label the entire tissue' Asses the tissue affinity and fluorescence of the selected dyes depends:$((CLO+4)),$((LVI+9)) +imaging
+task add project:'Cellular origins of WBR'.'Label the entire tissue' Asses the tissue affinity and fluorescence of the selected dyes depends:$((LET+4)),$((CCH+9)) +imaging
 #6
-task add project:'Cellular origins of WBR'.'Label the entire tissue' Compare the groth and flow rates with unstained colonies depends:$((CLO+5)),$((GRW+6)),$((FLW+6)) +imaging
+task add project:'Cellular origins of WBR'.'Label the entire tissue' Compare the groth and flow rates with unstained colonies depends:$((LET+5)),$((GRW+6)),$((FLW+6)) +imaging
 #7
-task add project:'Cellular origins of WBR'.'Label the entire tissue' Master whole-tissue labeling depends:$((CLO+6)) +skill
+task add project:'Cellular origins of WBR'.'Label the entire tissue' Master whole-tissue labeling depends:$((LET+6)) +skill
 #8
-task add project:'Cellular origins of WBR'.'Label the entire tissue' Write our own optimized protocol depends:$((CLO+7)) +create +protocol
+task add project:'Cellular origins of WBR'.'Label the entire tissue' Write our own optimized protocol depends:$((LET+7)) +create +protocol
 COUNTER=$((COUNTER+8))
 
 #----------------------------------------
 #- 1.1.2 Live imaging for WBR
 #----------------------------------------
-CLO=$COUNTER
+LIV=$COUNTER
+#1
+task add project:'Cellular origins of WBR'.'Long-term imaging' Assess the recordable span of the selected dyes depends:$((LET+7)),$((CCH+9)) +imaging
+#2
+task add project:'Cellular origins of WBR'.'Long-term imaging' Determine the necessary resolution for the analysis depends:$((FLW+6)),$((LBL+7)) +imaging
+#3
+task add project:'Cellular origins of WBR'.'Long-term imaging' Optimize the acquisition parameters for good signal-to-noise ratio depends:$((LIV+2)),$((MCR+10)),$((MCR+13)) +training
+#4
+task add project:'Cellular origins of WBR'.'Long-term imaging' Compare with unilluminated colonies to avoid photodamage depends:$((LIV+3)),$((CCH+8)) +imaging
+#5
+task add project:'Cellular origins of WBR'.'Long-term imaging' Master long-term imaging depends:$((LIV+4)) +skill
 #6
-task add project:'Cellular origins of WBR'.'Label the entire tissue' Verify the recordable span of the selected dyes depends:$((CLO+4)),$((LVI+9)) +imaging
+task add project:'Cellular origins of WBR'.'Long-term imaging' Write our own optimized protocol depends:$((LIV+5)) +create +protocol
+COUNTER=$((COUNTER+6))
 
 #----------------------------------------
 #- 1.1.3 Temporal span of WBR initiation
 #----------------------------------------
-CLO=$COUNTER
-#4
-task add project:'Cellular origins of WBR'.'Image the whole migration' Determine the temporal span of niche establishment
+SPN=$COUNTER
+#1
+task add project:'Cellular origins of WBR'.'Chronology of niche establishment' Devise a reproducible induction of WBR depends:$((IND+5)) +training
+#2
+task add project:'Cellular origins of WBR'.'Chronology of niche establishment' Fix regenerating colonies at regular time interval for the first 2 days depends:$((SPN+1)),$((FIX+5)) 
+#3
+task add project:'Cellular origins of WBR'.'Chronology of niche establishment' Determine histologically the chronology of niche establishment depends:$((SPN+2)),$((LBL+7)),$((MCR+10))
+COUNTER=$((COUNTER+3))
 
 #----------------------------------------
 #- 1.1.4 Finding the origins of WBR
 #----------------------------------------
+COW=$COUNTER
+#1
+task add project:'Cellular origins of WBR'.'Backtrack all cells of a niche' Image the entire span of niche establishment depends:$((SPN+3)),$((MCR+11)),$((LIV+5))
+#2
+task add project:'Cellular origins of WBR'.'Backtrack all cells of a niche' Determine the existing software for manual tracking
+#3
+task add project:'Cellular origins of WBR'.'Backtrack all cells of a niche' Determine the existing software for automated tracking
+#4
+task add project:'Cellular origins of WBR'.'Backtrack all cells of a niche' Backtrack all cells of the niche depends:$((COW+1)),$((COW+2)),$((COW+3))
 #5
-task add project:'Cellular origins of WBR'.'Track all cells' Determine the existing software for manual tracking
+task add project:'Cellular origins of WBR'.'Backtrack all cells of a niche' Find the cellular origins of WBR depends:$((COW+4))
 COUNTER=$((COUNTER+5))
+
+#----------------------------------------
+#- 1.1.5 Characterize the origins of WBR
+#----------------------------------------
+CHR=$COUNTER
+#1
+task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Identify the origins of WBR in uninjured colonies depends:$((COW+5))
+#2
+task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Characterize these cells depends:$((CHR+1)),$((LBL+7))
+#3
+task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Isolate these cells depends:$((CHR+1)),$((INJ+7))
+#4
+task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Label these cells depends:$((CHR+1)),$((INJ+7))
+#5
+task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Ablate these cells depends:$((CHR+1)),$((ABL+5))
+#6
+task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' RNAi these cells depends:$((CHR+1)),$((RNA+8))
+#7
+task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Write a manuscript about these cells depends:$((CHR+2))-$((CHR+6)),$((SPN+3))
+COUNTER=$((COUNTER+7))
+
 
 ########################################
 # 2. Lluis PhD thesis
