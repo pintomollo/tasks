@@ -476,6 +476,26 @@ task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Wri
 COUNTER=$((COUNTER+7))
 
 
+#========================================
+#= 1.2 Atlas of WBR
+#========================================
+
+#----------------------------------------
+#- 1.2.1 Imaging all of WBR
+#----------------------------------------
+AIM=$COUNTER
+#1
+task add project:'Atlas of WBR'.'Imaging all of WBR' Determine the length and overlap of the recording sessions depends:$((MCR+13)),$((LIV+5)),$((COW+1))
+#2
+task add project:'Atlas of WBR'.'Imaging all of WBR' Image piece-wise the entire span of WBR depends:$((AIM+1))
+#3
+task add project:'Atlas of WBR'.'Imaging all of WBR' Fix the colonies at the end of each recording session depends:$((AIM+2))
+COUNTER=$((COUNTER+3))
+
+#Destroy the pigments of the colony
+#Description of blastogenic cycle in B. leachii
+#Check resolution using regenerated zooid as well, end-point
+
 ########################################
 # 2. Lluis PhD thesis
 ########################################
