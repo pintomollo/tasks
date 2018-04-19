@@ -128,6 +128,25 @@ task add project:'Techniques'.'Handling'.'Laser ablation' Master laser ablation 
 task add project:'Techniques'.'Handling'.'Laser ablation' Write our own optimized protocol depends:$((ABL+5)) +create +protocol
 COUNTER=$((COUNTER+6))
 
+#----------------------------------------
+#- 0.1.6 Removing pigments in B. leachii
+#----------------------------------------
+PIG=$COUNTER
+#1
+task add project:'Techniques'.'Handling'.'Remove pigments' Identify the chemical origin of the pigments in colonial ascidians +inventory
+#2
+task add project:'Techniques'.'Handling'.'Remove pigments' Find protocols for blocking the synthesis of pigments depends:$((PIG+1)) +protocol
+#3
+task add project:'Techniques'.'Handling'.'Remove pigments' List the required reagents depends:$((PIG+2)) +inventory
+#4
+task add project:'Techniques'.'Handling'.'Remove pigments' Get the required reagents depends:$((PIG+3)) +purchase
+#5
+task add project:'Techniques'.'Handling'.'Remove pigments' Test pigment removal in colonial ascidians depends:$((PIG+4)) +training
+#6
+task add project:'Techniques'.'Handling'.'Remove pigments' Master pigment removal depends:$((PIG+5)) +skill
+#7
+task add project:'Techniques'.'Handling'.'Remove pigments' Write our own optimized protocol depends:$((PIG+6)) +create +protocol
+COUNTER=$((COUNTER+6))
 
 
 #========================================
@@ -265,7 +284,7 @@ task add project:'Techniques'.'Imaging'.'Monitoring flow' Test monitoring on var
 task add project:'Techniques'.'Imaging'.'Monitoring flow' Adapt the flow software to the acquired images depends:$((FLW+4)) +code
 #6
 task add project:'Techniques'.'Imaging'.'Monitoring flow' Master monitoring flow depends:$((FLW+5)) +skill
-#7
+#
 task add project:'Techniques'.'Imaging'.'Monitoring flow' Write our own optimized protocol depends:$((FLW+6)) +create +protocol
 COUNTER=$((COUNTER+7))
 
@@ -378,6 +397,34 @@ task add project:'Techniques'.'RNA interference' Master RNAi depends:$((RNA+7)) 
 task add project:'Techniques'.'RNA interference' Write our own optimized protocol depends:$((RNA+8)) +create +protocol
 COUNTER=$((COUNTER+9))
 
+#========================================
+#= 0.5 Image Analysis
+#========================================
+
+#----------------------------------------
+#- 0.5.1 Haemolymph measurement
+#----------------------------------------
+FLS=$COUNTER
+
+#----------------------------------------
+#- 0.5.2 Colony size
+#----------------------------------------
+CSZ=$COUNTER
+
+#----------------------------------------
+#- 0.5.2 Cell lineaging
+#----------------------------------------
+CLI=$COUNTER
+
+#----------------------------------------
+#- 0.5.2 3D morphology
+#----------------------------------------
+M3D=$COUTNER
+
+#----------------------------------------
+#- 0.5.2 Mapping to a virtual embryo
+#----------------------------------------
+MAP=$COUTNER
 
 ########################################
 # 1. Characterizing WBR in B. leachii
@@ -394,7 +441,7 @@ LET=$COUNTER
 #1
 task add project:'Cellular origins of WBR'.'Label the entire tissue' List the available fluorescent dyes for live labeling +protocol
 #2
-task add project:'Cellular origins of WBR'.'Label the entire tissue' Assess the autofluorescence of the tissue depends:$((CCH+9)) +imaging
+task add project:'Cellular origins of WBR'.'Label the entire tissue' Assess the autofluorescence of the tissue depends:$((CCH+9)),$((PIG+6)) +imaging
 #3
 task add project:'Cellular origins of WBR'.'Label the entire tissue' Get the best candidate dyes depends:$((LET+1)),$((LET+2)) +purchase
 #4
@@ -402,7 +449,7 @@ task add project:'Cellular origins of WBR'.'Label the entire tissue' Test dye de
 #5
 task add project:'Cellular origins of WBR'.'Label the entire tissue' Asses the tissue affinity and fluorescence of the selected dyes depends:$((LET+4)),$((CCH+9)) +imaging
 #6
-task add project:'Cellular origins of WBR'.'Label the entire tissue' Compare the groth and flow rates with unstained colonies depends:$((LET+5)),$((GRW+6)),$((FLW+6)) +imaging
+task add project:'Cellular origins of WBR'.'Label the entire tissue' Compare the growth and flow rates with unstained colonies depends:$((LET+5)),$((GRW+6)),$((FLW+6)) +imaging
 #7
 task add project:'Cellular origins of WBR'.'Label the entire tissue' Master whole-tissue labeling depends:$((LET+6)) +skill
 #8
@@ -418,14 +465,16 @@ task add project:'Cellular origins of WBR'.'Long-term imaging' Assess the record
 #2
 task add project:'Cellular origins of WBR'.'Long-term imaging' Determine the necessary resolution for the analysis depends:$((FLW+6)),$((LBL+7)) +imaging
 #3
-task add project:'Cellular origins of WBR'.'Long-term imaging' Optimize the acquisition parameters for good signal-to-noise ratio depends:$((LIV+2)),$((MCR+10)),$((MCR+13)) +training
+task add project:'Cellular origins of WBR'.'Long-term imaging' Determine the volume to be recorded for the aquisition depends:$((LIV+2)),$((MIN+7)) +imaging #depends: min WBR and 
 #4
-task add project:'Cellular origins of WBR'.'Long-term imaging' Compare with unilluminated colonies to avoid photodamage depends:$((LIV+3)),$((CCH+8)) +imaging
+task add project:'Cellular origins of WBR'.'Long-term imaging' Optimize the acquisition parameters for good signal-to-noise ratio depends:$((LIV+1)),$((LIV+3)),$((MCR+10)),$((MCR+13)) +training
 #5
-task add project:'Cellular origins of WBR'.'Long-term imaging' Master long-term imaging depends:$((LIV+4)) +skill
+task add project:'Cellular origins of WBR'.'Long-term imaging' Compare with unilluminated colonies to avoid photodamage depends:$((LIV+4)),$((CCH+8)) +imaging
 #6
-task add project:'Cellular origins of WBR'.'Long-term imaging' Write our own optimized protocol depends:$((LIV+5)) +create +protocol
-COUNTER=$((COUNTER+6))
+task add project:'Cellular origins of WBR'.'Long-term imaging' Master long-term imaging depends:$((LIV+5)) +skill
+#7
+task add project:'Cellular origins of WBR'.'Long-term imaging' Write our own optimized protocol depends:$((LIV+6)) +create +protocol
+COUNTER=$((COUNTER+7))
 
 #----------------------------------------
 #- 1.1.3 Temporal span of WBR initiation
@@ -444,7 +493,7 @@ COUNTER=$((COUNTER+3))
 #----------------------------------------
 COW=$COUNTER
 #1
-task add project:'Cellular origins of WBR'.'Backtrack all cells of a niche' Image the entire span of niche establishment depends:$((SPN+3)),$((MCR+11)),$((LIV+5))
+task add project:'Cellular origins of WBR'.'Backtrack all cells of a niche' Image the entire span of niche establishment depends:$((SPN+3)),$((MCR+11)),$((LIV+6))
 #2
 task add project:'Cellular origins of WBR'.'Backtrack all cells of a niche' Determine the existing software for manual tracking
 #3
@@ -485,16 +534,40 @@ COUNTER=$((COUNTER+7))
 #----------------------------------------
 AIM=$COUNTER
 #1
-task add project:'Atlas of WBR'.'Imaging all of WBR' Determine the length and overlap of the recording sessions depends:$((MCR+13)),$((LIV+5)),$((COW+1))
+task add project:'Atlas of WBR'.'Imaging all of WBR' Determine the length and overlap of the recording sessions depends:$((MCR+13)),$((LIV+6)),$((COW+1))
 #2
 task add project:'Atlas of WBR'.'Imaging all of WBR' Image piece-wise the entire span of WBR depends:$((AIM+1))
 #3
 task add project:'Atlas of WBR'.'Imaging all of WBR' Fix the colonies at the end of each recording session depends:$((AIM+2))
-COUNTER=$((COUNTER+3))
+#4
+task add project:'Atlas of WBR'.'Imaging all of WBR' Label sections of the fixed colonies depends:$((AIM+3)),$((LBL+7))
+#5
+task add project:'Atlas of WBR'.'Imaging all of WBR' Image the fixed colonies depends:$((AIM+4)),$((MCR+10)),$((MCR+12))
+COUNTER=$((COUNTER+5))
 
-#Destroy the pigments of the colony
+#----------------------------------------
+#- 1.2.1 Virtual reconstruction of WBR
+#----------------------------------------
+VRW=$COUNTER
+#1
+task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Segment and track cells throughout WBR depends:$((AIM+2)),$((LIV+6)),$((COW+4))
+#2
+task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Adapt the 3D reconstruction software to regeneration niches depends:$((AIM+5)) +code
+#3
+task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Reconstruct the morphology of the regeneration niche depends:$((VRW+2))
+#4
+task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Map the morphology onto the virtual embryo depends:$((VRW+2))
+
+#----------------------------------------
+#- 1.2.1 Determine and assign cell types
+#----------------------------------------
+
+#========================================
+#= 1.3 Environment of WBR
+#========================================
+
+#MIN: environment minimal, including size of regenerate
 #Description of blastogenic cycle in B. leachii
-#Check resolution using regenerated zooid as well, end-point
 
 ########################################
 # 2. Lluis PhD thesis
