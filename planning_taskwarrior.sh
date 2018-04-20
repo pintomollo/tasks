@@ -284,7 +284,7 @@ task add project:'Techniques'.'Imaging'.'Monitoring flow' Test monitoring on var
 task add project:'Techniques'.'Imaging'.'Monitoring flow' Adapt the flow software to the acquired images depends:$((FLW+4)) +code
 #6
 task add project:'Techniques'.'Imaging'.'Monitoring flow' Master monitoring flow depends:$((FLW+5)) +skill
-#
+#7
 task add project:'Techniques'.'Imaging'.'Monitoring flow' Write our own optimized protocol depends:$((FLW+6)) +create +protocol
 COUNTER=$((COUNTER+7))
 
@@ -405,26 +405,105 @@ COUNTER=$((COUNTER+9))
 #- 0.5.1 Haemolymph measurement
 #----------------------------------------
 FLS=$COUNTER
+#1
+task add project:'Techniques'.'Image Analysis'.'Haemolymph measurement' Install the code from the Wilson lab
+#2
+task add project:'Techniques'.'Image Analysis'.'Haemolymph measurement' Adapt the code to Octave
+#3
+task add project:'Techniques'.'Image Analysis'.'Haemolymph measurement' Reanalyze the recodings from the Wilson lab
+#4
+task add project:'Techniques'.'Image Analysis'.'Haemolymph measurement' Simulate synthetic data corresponding to our recording setup
+#5
+task add project:'Techniques'.'Image Analysis'.'Haemolymph measurement' Adapt the code to new recordings
+#6
+task add project:'Techniques'.'Image Analysis'.'Haemolymph measurement' Publish the annotated code
+#7
+task add project:'Techniques'.'Image Analysis'.'Haemolymph measurement' Write a User Manual
+COUNTER=$((COUNTER+7))
 
 #----------------------------------------
 #- 0.5.2 Colony size
 #----------------------------------------
 CSZ=$COUNTER
+#1
+task add project:'Techniques'.'Image Analysis'.'Colony size' Install the code from the Wilson lab 
+#2
+task add project:'Techniques'.'Image Analysis'.'Colony size' Adapt the code to Octave
+#3
+task add project:'Techniques'.'Image Analysis'.'Colony size' Reanalyze images from the Wilson lab
+#4
+task add project:'Techniques'.'Image Analysis'.'Colony size' Adapt the code to our new recording setup
+#5
+task add project:'Techniques'.'Image Analysis'.'Colony size' Fully automatize the code
+#6
+task add project:'Techniques'.'Image Analysis'.'Colony size' Publish the annotated code
+#7
+task add project:'Techniques'.'Image Analysis'.'Colony size' Write a User Manual
+COUNTER=$((COUNTER+7))
 
 #----------------------------------------
 #- 0.5.2 Cell lineaging
 #----------------------------------------
 CLI=$COUNTER
+#1
+task add project:'Techniques'.'Image Analysis'.'Cell lineaging' Install the BioEmergences software
+#2
+task add project:'Techniques'.'Image Analysis'.'Cell lineaging' Obtain sample data from the authors
+#3
+task add project:'Techniques'.'Image Analysis'.'Cell lineaging' Test the software on the sample data
+#4
+task add project:'Techniques'.'Image Analysis'.'Cell lineaging' Simulate synthetic data corresponding to our setup
+#5
+task add project:'Techniques'.'Image Analysis'.'Cell lineaging' Test the software on the synthetic data
+#6
+task add project:'Techniques'.'Image Analysis'.'Cell lineaging' Adapt the code to our data
+#7
+task add project:'Techniques'.'Image Analysis'.'Cell lineaging' Write our User Manual
+COUNTER=$((COUNTER+7))
 
 #----------------------------------------
 #- 0.5.2 3D morphology
 #----------------------------------------
 M3D=$COUTNER
+#1
+task add project:'Techniques'.'Image Analysis'.'3D morphology' Install the code from the Wilson lab
+#2
+task add project:'Techniques'.'Image Analysis'.'3D morphology' Adapt the code to Octave
+#3
+task add project:'Techniques'.'Image Analysis'.'3D morphology' Acquire new data specific to WBR niches
+#4
+task add project:'Techniques'.'Image Analysis'.'3D morphology' Simulate synthetic data corresponding to these data
+#5
+task add project:'Techniques'.'Image Analysis'.'3D morphology' Adapt the code to our new data
+#6
+task add project:'Techniques'.'Image Analysis'.'3D morphology' Publish the annotated code
+#7
+task add project:'Techniques'.'Image Analysis'.'3D morphology' Write a User Manual
+COUNTER=$((COUNTER+7))
 
 #----------------------------------------
 #- 0.5.2 Mapping to a virtual embryo
 #----------------------------------------
 MAP=$COUTNER
+#1
+task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Find protocols for the virtual embryo from ANISEED +protocol
+#2
+task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Define reference axes for the regeneration niche throughout WBR
+#3
+task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Obtain the code and sample data from ANISEED
+#4
+task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Test the code on sample data
+#4
+task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Define a mapping function for our 3D morphology data
+#5
+task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Warp our morphology data onto the virtual embryo
+#6
+task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Incorporate the lineaging data onto the virtual embryo
+#7
+task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Publish the annotated code
+#8
+task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Write a User Manual
+COUNTER=$((COUNTER+8))
 
 ########################################
 # 1. Characterizing WBR in B. leachii
