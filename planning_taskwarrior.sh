@@ -211,6 +211,26 @@ task add project:'Techniques'.'Histology'.'Labeling sections' Master labelling d
 task add project:'Techniques'.'Histology'.'Labeling sections' Write our own optimized protocols depends:$((LBL+7)) +create +protocol
 COUNTER=$((COUNTER+8))
 
+#----------------------------------------
+#- 0.2.4 Determine cell types
+#----------------------------------------
+DCT=$COUNTER
+#1
+task add project:'Techniques'.'Histology'.'Determine cell types' Find protocols for determining cells types in colonial ascidians
+#2
+task add project:'Techniques'.'Histology'.'Determine cell types' Find protocols describing organogenesis in colonial ascidians
+#3
+task add project:'Techniques'.'Histology'.'Determine cell types' Select the most informative stainings for WBR
+#4
+task add project:'Techniques'.'Histology'.'Determine cell types' Stain histological sections of uninjured colonies
+#5
+task add project:'Techniques'.'Histology'.'Determine cell types' Use machine learning to discriminate between cell types
+#6
+task add project:'Techniques'.'Histology'.'Determine cell types' Master cell type identification
+#7
+task add project:'Techniques'.'Histology'.'Determine cell types' Write our own optimized protocols depends:$((LBL+7)) +create +protocol
+COUNTER=$((COUNTER+7))
+
 
 #========================================
 #= 0.3 Imaging
@@ -505,6 +525,29 @@ task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Publish the anno
 task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Write a User Manual
 COUNTER=$((COUNTER+8))
 
+#----------------------------------------
+#- 0.5.3 Classifying cell types
+#----------------------------------------
+MAP=$COUTNER
+#1
+task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Find software for the automated quantification of signal in histological sections
+#2
+task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Select candidate machine learning algorithms
+#3
+task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Quantify histological sections of uninjured colonies
+#4
+task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Correlate the signal from the various stains
+#5
+task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Quantify the morphology of the various cells
+#6
+task add project:'Techniques'.'Image Analysis'.'Classifying cell types' 'Manually determine a training set of known cell types'
+#7
+task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Train a classifier to discriminate between cell types
+#8
+task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Quantify the accuracy of the classifier
+COUNTER=$((COUNTER+8))
+
+
 ########################################
 # 1. Characterizing WBR in B. leachii
 ########################################
@@ -625,7 +668,7 @@ task add project:'Atlas of WBR'.'Imaging all of WBR' Image the fixed colonies de
 COUNTER=$((COUNTER+5))
 
 #----------------------------------------
-#- 1.2.1 Virtual reconstruction of WBR
+#- 1.2.2 Virtual reconstruction of WBR
 #----------------------------------------
 VRW=$COUNTER
 #1
@@ -636,10 +679,29 @@ task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Adapt the 3D rec
 task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Reconstruct the morphology of the regeneration niche depends:$((VRW+2))
 #4
 task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Map the morphology onto the virtual embryo depends:$((VRW+2))
+#5
+task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Synchronize the various recordings depends:$((VRW+2))
+#6
+task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Merge the recordings depends:$((VRW+2))
+COUNTER=$((COUNTER+6))
 
 #----------------------------------------
-#- 1.2.1 Determine and assign cell types
+#- 1.2.3 Cell specification during WBR
 #----------------------------------------
+VCT=$COUNTER
+#1
+task add project:'Atlas of WBR'.'Cell types during WBR' Select the most informative stainings throughout WBR
+#2
+task add project:'Atlas of WBR'.'Cell types during WBR' Label sections of fixed regeneration niches
+#3
+task add project:'Atlas of WBR'.'Cell types during WBR' Map the stainings onto the virtual embryo using the reconstructed morphology
+#4
+task add project:'Atlas of WBR'.'Cell types during WBR' Quantify the morphology of the reconstructed cells
+#5
+task add project:'Atlas of WBR'.'Cell types during WBR' Classify the cells into cell types
+#6
+task add project:'Atlas of WBR'.'Cell types during WBR' Map and merge cell type onto the cell lineage
+COUNTER=$((COUNTER+6))
 
 #========================================
 #= 1.3 Environment of WBR
