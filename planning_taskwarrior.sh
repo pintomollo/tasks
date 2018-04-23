@@ -12,6 +12,7 @@ COUNTER=0
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Labels used in the tasks:
 #  +code
+#  +contact
 #  +create
 #  +equipment
 #  +imaging
@@ -146,7 +147,7 @@ task add project:'Techniques'.'Handling'.'Remove pigments' Test pigment removal 
 task add project:'Techniques'.'Handling'.'Remove pigments' Master pigment removal depends:$((PIG+5)) +skill
 #7
 task add project:'Techniques'.'Handling'.'Remove pigments' Write our own optimized protocol depends:$((PIG+6)) +create +protocol
-COUNTER=$((COUNTER+6))
+COUNTER=$((COUNTER+7))
 
 
 #========================================
@@ -278,15 +279,13 @@ task add project:'Techniques'.'Imaging'.'Monitoring growth' Find protocols for m
 task add project:'Techniques'.'Imaging'.'Monitoring growth' List the required equipment depends:$((GRW+1)) +inventory
 #3
 task add project:'Techniques'.'Imaging'.'Monitoring growth' Get the required equipment depends:$((GRW+2)) +purchase
-#4
+#4 in addition depends:CSZ+6
 task add project:'Techniques'.'Imaging'.'Monitoring growth' Test monitoring on various imaging conditions depends:$((GRW+3)) +training
 #5
-task add project:'Techniques'.'Imaging'.'Monitoring growth' Adapt the counting software to the acquired images depends:$((GRW+4)) +code
+task add project:'Techniques'.'Imaging'.'Monitoring growth' Master monitoring depends:$((GRW+4)) +skill
 #6
-task add project:'Techniques'.'Imaging'.'Monitoring growth' Master monitoring depends:$((GRW+5)) +skill
-#7
-task add project:'Techniques'.'Imaging'.'Monitoring growth' Write our own optimized protocol depends:$((GRW+6)) +create +protocol
-COUNTER=$((COUNTER+7))
+task add project:'Techniques'.'Imaging'.'Monitoring growth' Write our own optimized protocol depends:$((GRW+5)) +create +protocol
+COUNTER=$((COUNTER+6))
 
 #----------------------------------------
 #- 0.3.3 Monitoring haemolymph flow
@@ -298,15 +297,13 @@ task add project:'Techniques'.'Imaging'.'Monitoring flow' Find protocols for mon
 task add project:'Techniques'.'Imaging'.'Monitoring flow' List the required equipment depends:$((FLW+1)) +inventory
 #3
 task add project:'Techniques'.'Imaging'.'Monitoring flow' Get the required equipment depends:$((FLW+2)) +purchase
-#4
+#4 in addition depends:FLS+6
 task add project:'Techniques'.'Imaging'.'Monitoring flow' Test monitoring on various microscopes depends:$((FLW+3)) +training
 #5
-task add project:'Techniques'.'Imaging'.'Monitoring flow' Adapt the flow software to the acquired images depends:$((FLW+4)) +code
-#6
 task add project:'Techniques'.'Imaging'.'Monitoring flow' Master monitoring flow depends:$((FLW+5)) +skill
-#7
+#6
 task add project:'Techniques'.'Imaging'.'Monitoring flow' Write our own optimized protocol depends:$((FLW+6)) +create +protocol
-COUNTER=$((COUNTER+7))
+COUNTER=$((COUNTER+6))
 
 #----------------------------------------
 #- 0.3.4 Culture chamber for live imaging
@@ -426,19 +423,20 @@ COUNTER=$((COUNTER+9))
 #----------------------------------------
 FLS=$COUNTER
 #1
-task add project:'Techniques'.'Image Analysis'.'Haemolymph measurement' Install the code from the Wilson lab
+task add project:'Techniques'.'Image Analysis'.'Haemolymph measurement' Install the code from the Wilson lab +contact
 #2
-task add project:'Techniques'.'Image Analysis'.'Haemolymph measurement' Adapt the code to Octave
+task add project:'Techniques'.'Image Analysis'.'Haemolymph measurement' Adapt the code to Octave depends:$((FLS+1)) +code
 #3
-task add project:'Techniques'.'Image Analysis'.'Haemolymph measurement' Reanalyze the recodings from the Wilson lab
+task add project:'Techniques'.'Image Analysis'.'Haemolymph measurement' Reanalyze the recodings from the Wilson lab depends:$((FLS+2))
 #4
-task add project:'Techniques'.'Image Analysis'.'Haemolymph measurement' Simulate synthetic data corresponding to our recording setup
+task add project:'Techniques'.'Image Analysis'.'Haemolymph measurement' Simulate synthetic data corresponding to our recording setup depends:$((FLS+3)),$((MCR+9))
 #5
-task add project:'Techniques'.'Image Analysis'.'Haemolymph measurement' Adapt the code to new recordings
+task add project:'Techniques'.'Image Analysis'.'Haemolymph measurement' Adapt the code our new recordings depends:$((FLS+4)) +code
 #6
-task add project:'Techniques'.'Image Analysis'.'Haemolymph measurement' Publish the annotated code
+task add project:'Techniques'.'Image Analysis'.'Haemolymph measurement' Publish the annotated code depends:$((FLS+5))
+task $((FLW+4)) modify depends:$((FLS+6))
 #7
-task add project:'Techniques'.'Image Analysis'.'Haemolymph measurement' Write a User Manual
+task add project:'Techniques'.'Image Analysis'.'Haemolymph measurement' Write a User Manual depends:$((FLS+6)) +create +protocol
 COUNTER=$((COUNTER+7))
 
 #----------------------------------------
@@ -446,106 +444,111 @@ COUNTER=$((COUNTER+7))
 #----------------------------------------
 CSZ=$COUNTER
 #1
-task add project:'Techniques'.'Image Analysis'.'Colony size' Install the code from the Wilson lab 
+task add project:'Techniques'.'Image Analysis'.'Colony size' Install the code from the Wilson lab +contact
 #2
-task add project:'Techniques'.'Image Analysis'.'Colony size' Adapt the code to Octave
+task add project:'Techniques'.'Image Analysis'.'Colony size' Adapt the code to Octave depends:$((CSZ+1)) +code
 #3
-task add project:'Techniques'.'Image Analysis'.'Colony size' Reanalyze images from the Wilson lab
+task add project:'Techniques'.'Image Analysis'.'Colony size' Reanalyze images from the Wilson lab depends:$((CSZ+2))
 #4
-task add project:'Techniques'.'Image Analysis'.'Colony size' Adapt the code to our new recording setup
+task add project:'Techniques'.'Image Analysis'.'Colony size' Adapt the code to our new recording setup depends:$((CSZ+3)),$((MCR+8))
 #5
-task add project:'Techniques'.'Image Analysis'.'Colony size' Fully automatize the code
+task add project:'Techniques'.'Image Analysis'.'Colony size' Fully automatize the code depends$((CSZ+4)) +code
 #6
-task add project:'Techniques'.'Image Analysis'.'Colony size' Publish the annotated code
+task add project:'Techniques'.'Image Analysis'.'Colony size' Publish the annotated code depends:$((CSZ+5))
+task $((GRW+4)) modify depends:$((CSZ+6)) 
 #7
-task add project:'Techniques'.'Image Analysis'.'Colony size' Write a User Manual
+task add project:'Techniques'.'Image Analysis'.'Colony size' Write a User Manual depends:$((CSZ+6)) +create +protocol
 COUNTER=$((COUNTER+7))
 
 #----------------------------------------
-#- 0.5.2 Cell lineaging
+#- 0.5.3 Cell lineaging
 #----------------------------------------
 CLI=$COUNTER
 #1
-task add project:'Techniques'.'Image Analysis'.'Cell lineaging' Install the BioEmergences software
+task add project:'Techniques'.'Image Analysis'.'Cell lineaging' Install the BioEmergences software +contact
 #2
-task add project:'Techniques'.'Image Analysis'.'Cell lineaging' Obtain sample data from the authors
+task add project:'Techniques'.'Image Analysis'.'Cell lineaging' Obtain sample data from the authors +contact
 #3
-task add project:'Techniques'.'Image Analysis'.'Cell lineaging' Test the software on the sample data
-#4
-task add project:'Techniques'.'Image Analysis'.'Cell lineaging' Simulate synthetic data corresponding to our setup
+task add project:'Techniques'.'Image Analysis'.'Cell lineaging' Test the software on the sample data depends:$((CLI+1)),$((CLI+2))
+#4 in addition depends:LET+7
+task add project:'Techniques'.'Image Analysis'.'Cell lineaging' Simulate synthetic data corresponding to our setup +code
 #5
-task add project:'Techniques'.'Image Analysis'.'Cell lineaging' Test the software on the synthetic data
+task add project:'Techniques'.'Image Analysis'.'Cell lineaging' Test the software on the synthetic data depends:$((CLI+3)),$((CLI+4))
 #6
-task add project:'Techniques'.'Image Analysis'.'Cell lineaging' Adapt the code to our data
+task add project:'Techniques'.'Image Analysis'.'Cell lineaging' Adapt the code to our data depends:$((CLI+5)) +code
 #7
-task add project:'Techniques'.'Image Analysis'.'Cell lineaging' Write our User Manual
+task add project:'Techniques'.'Image Analysis'.'Cell lineaging' Write our User Manual depends:$((CLI+6))
 COUNTER=$((COUNTER+7))
 
 #----------------------------------------
-#- 0.5.2 3D morphology
+#- 0.5.4 3D morphology
 #----------------------------------------
 M3D=$COUTNER
 #1
-task add project:'Techniques'.'Image Analysis'.'3D morphology' Install the code from the Wilson lab
+task add project:'Techniques'.'Image Analysis'.'3D morphology' Install the code from the Wilson lab +contact
 #2
-task add project:'Techniques'.'Image Analysis'.'3D morphology' Adapt the code to Octave
+task add project:'Techniques'.'Image Analysis'.'3D morphology' Adapt the code to Octave depends:$((M3D+1)) +code 
 #3
-task add project:'Techniques'.'Image Analysis'.'3D morphology' Acquire new data specific to WBR niches
+task add project:'Techniques'.'Image Analysis'.'3D morphology' Acquire new data specific to WBR niches depends:$((MCR+10))
 #4
-task add project:'Techniques'.'Image Analysis'.'3D morphology' Simulate synthetic data corresponding to these data
+task add project:'Techniques'.'Image Analysis'.'3D morphology' Simulate synthetic data corresponding to these data depends:$((M3D+3)) +code
 #5
-task add project:'Techniques'.'Image Analysis'.'3D morphology' Adapt the code to our new data
+task add project:'Techniques'.'Image Analysis'.'3D morphology' Adapt the code to our new data depends:$((M3D+2)),$((M3D+4)) +code
 #6
-task add project:'Techniques'.'Image Analysis'.'3D morphology' Publish the annotated code
+task add project:'Techniques'.'Image Analysis'.'3D morphology' Publish the annotated code depends:$((M3D+5)) 
 #7
-task add project:'Techniques'.'Image Analysis'.'3D morphology' Write a User Manual
+task add project:'Techniques'.'Image Analysis'.'3D morphology' Write a User Manual depends:$((M3D+6)) +create +protocol
 COUNTER=$((COUNTER+7))
 
 #----------------------------------------
-#- 0.5.2 Mapping to a virtual embryo
+#- 0.5.5 Mapping to a virtual embryo
 #----------------------------------------
 MAP=$COUTNER
 #1
 task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Find protocols for the virtual embryo from ANISEED +protocol
 #2
-task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Define reference axes for the regeneration niche throughout WBR
+task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Obtain the code and sample data from ANISEED +contact
 #3
-task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Obtain the code and sample data from ANISEED
+task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Test the code on sample data depends:$((MAP+1)),$((MAP+2))
 #4
-task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Test the code on sample data
-#4
-task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Define a mapping function for our 3D morphology data
+task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Define reference axes for the regeneration niche throughout WBR +create
 #5
-task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Warp our morphology data onto the virtual embryo
+task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Define a mapping function for our 3D morphology data depends:$((MAP+4)) +create
 #6
-task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Incorporate the lineaging data onto the virtual embryo
+task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Warp our morphology data onto the virtual embryo depends:$((MAP+3)),$((MAP+5))
 #7
-task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Publish the annotated code
+task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Incorporate the lineaging data onto the virtual embryo depends:$((MAP+6)),$((CLI+3)) +code
 #8
-task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Write a User Manual
-COUNTER=$((COUNTER+8))
+task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Publish the annotated code depends:$((MAP+7))
+#9
+task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Write a User Manual depends:$((MAP+8))
+COUNTER=$((COUNTER+9))
 
 #----------------------------------------
-#- 0.5.3 Classifying cell types
+#- 0.5.6 Classifying cell types
 #----------------------------------------
-MAP=$COUTNER
+CCT=$COUTNER
 #1
-task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Find software for the automated quantification of signal in histological sections
+task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Find software for the automated quantification of signal in histological sections +protocol
 #2
-task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Select candidate machine learning algorithms
+task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Select candidate machine learning algorithms +protocol
 #3
-task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Quantify histological sections of uninjured colonies
+task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Image histological sections of uninjured colonies depends:$((CCT+1)),$((MCR+10)),$((MCR+12))
 #4
-task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Correlate the signal from the various stains
+task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Quantify the signal from the various stains depends:$((CCT+3))
 #5
-task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Quantify the morphology of the various cells
+task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Quantify the morphology of the various cells depends:$((CCT+3))
 #6
-task add project:'Techniques'.'Image Analysis'.'Classifying cell types' 'Manually determine a training set of known cell types'
+task add project:'Techniques'.'Image Analysis'.'Classifying cell types' 'Manually determine a training set of known cell types' depends:$((CCT+3))
 #7
-task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Train a classifier to discriminate between cell types
+task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Train a classifier to discriminate between cell types depends:$((CCT+2)),$((CCT+4)),$((CCT+5)),$((CCT+6))
 #8
-task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Quantify the accuracy of the classifier
-COUNTER=$((COUNTER+8))
+task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Quantify the accuracy of the classifier depends:$((CCT+7))
+#9
+task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Publish the annotated classifier depends:$((CCT+8))
+#10
+task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Write a User Manual depends:$((CCT+9))
+COUNTER=$((COUNTER+10))
 
 
 ########################################
@@ -574,6 +577,7 @@ task add project:'Cellular origins of WBR'.'Label the entire tissue' Asses the t
 task add project:'Cellular origins of WBR'.'Label the entire tissue' Compare the growth and flow rates with unstained colonies depends:$((LET+5)),$((GRW+6)),$((FLW+6)) +imaging
 #7
 task add project:'Cellular origins of WBR'.'Label the entire tissue' Master whole-tissue labeling depends:$((LET+6)) +skill
+task $((CLI+4)) modify depends:$((LET+7))
 #8
 task add project:'Cellular origins of WBR'.'Label the entire tissue' Write our own optimized protocol depends:$((LET+7)) +create +protocol
 COUNTER=$((COUNTER+8))
@@ -586,8 +590,8 @@ LIV=$COUNTER
 task add project:'Cellular origins of WBR'.'Long-term imaging' Assess the recordable span of the selected dyes depends:$((LET+7)),$((CCH+9)) +imaging
 #2
 task add project:'Cellular origins of WBR'.'Long-term imaging' Determine the necessary resolution for the analysis depends:$((FLW+6)),$((LBL+7)) +imaging
-#3
-task add project:'Cellular origins of WBR'.'Long-term imaging' Determine the volume to be recorded for the aquisition depends:$((LIV+2)),$((MIN+7)) +imaging #depends: min WBR and 
+#3 in addition depends: min WBR, final volume
+task add project:'Cellular origins of WBR'.'Long-term imaging' Determine the volume to be recorded for the aquisition depends:$((LIV+2)),$((MIN+7)) +imaging
 #4
 task add project:'Cellular origins of WBR'.'Long-term imaging' Optimize the acquisition parameters for good signal-to-noise ratio depends:$((LIV+1)),$((LIV+3)),$((MCR+10)),$((MCR+13)) +training
 #5
@@ -674,34 +678,28 @@ VRW=$COUNTER
 #1
 task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Segment and track cells throughout WBR depends:$((AIM+2)),$((LIV+6)),$((COW+4))
 #2
-task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Adapt the 3D reconstruction software to regeneration niches depends:$((AIM+5)) +code
+task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Reconstruct the morphology of the regeneration niche depends:$((VRW+2)), $((M3D+6))
 #3
-task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Reconstruct the morphology of the regeneration niche depends:$((VRW+2))
+task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Map the morphology onto the virtual embryo depends:$((VRW+2)),$((MAP+8))
 #4
-task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Map the morphology onto the virtual embryo depends:$((VRW+2))
-#5
 task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Synchronize the various recordings depends:$((VRW+2))
-#6
+#5
 task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Merge the recordings depends:$((VRW+2))
-COUNTER=$((COUNTER+6))
+COUNTER=$((COUNTER+5))
 
 #----------------------------------------
 #- 1.2.3 Cell specification during WBR
 #----------------------------------------
 VCT=$COUNTER
 #1
-task add project:'Atlas of WBR'.'Cell types during WBR' Select the most informative stainings throughout WBR
+task add project:'Atlas of WBR'.'Cell types during WBR' Select the most informative stainings throughout WBR depends:$((LBL+7))
 #2
-task add project:'Atlas of WBR'.'Cell types during WBR' Label sections of fixed regeneration niches
+task add project:'Atlas of WBR'.'Cell types during WBR' Label sections of fixed regeneration niches depends:$((VCT+1)),$((AIM+3))
 #3
-task add project:'Atlas of WBR'.'Cell types during WBR' Map the stainings onto the virtual embryo using the reconstructed morphology
+task add project:'Atlas of WBR'.'Cell types during WBR' Classify the cells into cell types depends:$((VCT+2)),$((CCT+9))
 #4
-task add project:'Atlas of WBR'.'Cell types during WBR' Quantify the morphology of the reconstructed cells
-#5
-task add project:'Atlas of WBR'.'Cell types during WBR' Classify the cells into cell types
-#6
-task add project:'Atlas of WBR'.'Cell types during WBR' Map and merge cell type onto the cell lineage
-COUNTER=$((COUNTER+6))
+task add project:'Atlas of WBR'.'Cell types during WBR' Map and merge cell type onto the cell lineage depends:$((VCT+3)),$((VRW+3))
+COUNTER=$((COUNTER+4))
 
 #========================================
 #= 1.3 Environment of WBR
