@@ -106,7 +106,7 @@ task add project:'Techniques'.'Handling'.'Inducing WBR' Get the required equipme
 #4
 task add project:'Techniques'.'Handling'.'Inducing WBR' Test induction of WBR in colonial ascidians depends:$((IND+3)) +training
 #5
-task add project:'Techniques'.'Handling'.'Inducing WBR' Master induction depends:$((IND+4)) +skill
+task add project:'Techniques'.'Handling'.'Inducing WBR' Master reproducible inductions depends:$((IND+4)) +skill
 #6
 task add project:'Techniques'.'Handling'.'Inducing WBR' Write our own optimized protocol depends:$((IND+5)) +create +protocol
 COUNTER=$((COUNTER+6))
@@ -147,6 +147,46 @@ task add project:'Techniques'.'Handling'.'Remove pigments' Test pigment removal 
 task add project:'Techniques'.'Handling'.'Remove pigments' Master pigment removal depends:$((PIG+5)) +skill
 #7
 task add project:'Techniques'.'Handling'.'Remove pigments' Write our own optimized protocol depends:$((PIG+6)) +create +protocol
+COUNTER=$((COUNTER+7))
+
+#----------------------------------------
+#- 0.1.7 Haemolymph transfusion
+#----------------------------------------
+TRF=$COUNTER
+#1
+task add project:'Techniques'.'Handling'.'Haemolymph transfusion' Find protocols for the collection and labeling of haemolymph in colonial ascidians +protocol
+#2
+task add project:'Techniques'.'Handling'.'Haemolymph transfusion' List the required reagents depends:$((TRF+1)) +inventory
+#3
+task add project:'Techniques'.'Handling'.'Haemolymph transfusion' List the required equipment depends:$((TRF+1)) +inventory
+#4
+task add project:'Techniques'.'Handling'.'Haemolymph transfusion' Get the required material depends:$((TRF+2)),$((TRF+3)) +purchase
+#5
+task add project:'Techniques'.'Handling'.'Haemolymph transfusion' Test haemocytes collection, labeling and injection depends:$((TRF+4)),$((INJ+7)) +training
+#6
+task add project:'Techniques'.'Handling'.'Haemolymph transfusion' Master haemolymph transfusion depends:$((TRF+5)) +skill
+#7
+task add project:'Techniques'.'Handling'.'Haemolymph transfusion' Write our own optimized protocol for haemolymph transfusion depends:$((TRF+6)) +create +protocol
+COUNTER=$((COUNTER+7))
+
+#----------------------------------------
+#- 0.1.8 Electric stimulation
+#----------------------------------------
+ELC=$COUNTER
+#1
+task add project:'Techniques'.'Handling'.'Electric stimulation' Find protocols for the electric stimulation of colonial ascidians +protocol
+#2
+task add project:'Techniques'.'Handling'.'Electric stimulation' List the required reagents depends:$((ELC+1)) +inventory
+#3
+task add project:'Techniques'.'Handling'.'Electric stimulation' List the required equipment depends:$((ELC+1)) +inventory
+#4
+task add project:'Techniques'.'Handling'.'Electric stimulation' Get the required material depends:$((ELC+2)),$((ELC+3)) +purchase
+#5
+task add project:'Techniques'.'Handling'.'Electric stimulation' Test electric stimulations depends:$((ELC+4)) +training
+#6
+task add project:'Techniques'.'Handling'.'Electric stimulation' Master electric stimulations depends:$((ELC+5)) +skill
+#7
+task add project:'Techniques'.'Handling'.'Electric stimulation' Write our own optimized protocol for electric stimulations depends:$((ELC+6)) +create +protocol
 COUNTER=$((COUNTER+7))
 
 
@@ -413,6 +453,47 @@ task add project:'Techniques'.'RNA interference' Master RNAi depends:$((RNA+7)) 
 #9
 task add project:'Techniques'.'RNA interference' Write our own optimized protocol depends:$((RNA+8)) +create +protocol
 COUNTER=$((COUNTER+9))
+
+#----------------------------------------
+#- 0.4.5 single cell RNA seq
+#----------------------------------------
+SCR=$COUNTER
+#1
+task add project:'Techniques'.'Handling'.'scRNA-seq' Get information on the existing approaches for scRNA seq +contact 
+#2
+task add project:'Techniques'.'Handling'.'scRNA-seq' Identify the technology most appropriated for WBR depends:$((SCR+1)) +inventory
+#3
+task add project:'Techniques'.'Handling'.'scRNA-seq' Find protocols for scRNA in colonial ascidians depends:$((SCR+2)) +protocol
+#4
+task add project:'Techniques'.'Handling'.'scRNA-seq' Prepare haemocytes according to the specifics of the analysis platfrom depends:$((SCR+3)),$((TRF+6))
+#5
+task add project:'Techniques'.'Handling'.'scRNA-seq' Send for library preparation and sequencing depends:$((SCR+4)) +contact
+#6
+task add project:'Techniques'.'Handling'.'scRNA-seq' Analyze the sequencing results depends:$((SCR+5)) +code
+#7
+task add project:'Techniques'.'Handling'.'scRNA-seq' Write our own optimized protocol for colonial ascidians depends:$((SCR+6)) +create +protocol
+COUNTER=$((COUNTER+7))
+
+#----------------------------------------
+#- 0.4.6 Cell sorting
+#----------------------------------------
+CST=$COUNTER
+#1
+task add project:'Techniques'.'Handling'.'Cell sorting' Find protocols for cell sorting in colonial ascidians +protocol
+#2
+task add project:'Techniques'.'Handling'.'Cell sorting' List the required reagents depends:$((CST+1)) +inventory
+#3
+task add project:'Techniques'.'Handling'.'Cell sorting' Get the required reagents depends:$((CST+2)) +purchase
+#4
+task add project:'Techniques'.'Handling'.'Cell sorting' Test cell sorting on haemolymph depends:$((CST+3)),$((TRF+6)) +training
+#5 in addition depends:EHA+4
+task add project:'Techniques'.'Handling'.'Cell sorting' Assess the sorting specificity by counting depends:$((CST+5)) +training
+#6
+task add project:'Techniques'.'Handling'.'Cell sorting' Master cell sorting depends:$((CST+5)) +skill
+#7
+task add project:'Techniques'.'Handling'.'Cell sorting' Write our own optimized protocol for haemocytes sorting depends:$((CST+6)) +create +protocol
+COUNTER=$((COUNTER+7))
+
 
 #========================================
 #= 0.5 Image Analysis
@@ -685,7 +766,9 @@ task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Map the morpholo
 task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Synchronize the various recordings depends:$((VRW+3))
 #5
 task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Merge the recordings depends:$((VRW+4))
-COUNTER=$((COUNTER+5))
+#6
+task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Publish our reference altas of WBR morphology depends:$((VRW+5))
+COUNTER=$((COUNTER+6))
 
 #----------------------------------------
 #- 1.2.3 Cell specification during WBR
@@ -700,16 +783,155 @@ task add project:'Atlas of WBR'.'Cell types during WBR' Classify the cells into 
 #4
 task add project:'Atlas of WBR'.'Cell types during WBR' Map and merge cell type onto the cell lineage depends:$((VCT+3)),$((VRW+3))
 #5
-task add project:'Atlas of WBR'.'Cell types during WBR' Write a manuscript about this atlas depends:$((VCT+4))
-COUNTER=$((COUNTER+5))
+task add project:'Atlas of WBR'.'Cell types during WBR' Publish our complete reference altas of WBR depends:$((VCT+4))
+#6
+task add project:'Atlas of WBR'.'Cell types during WBR' Write a manuscript about this atlas depends:$((VCT+5))
+COUNTER=$((COUNTER+6))
 echo $((COUNTER))
 
 #========================================
 #= 1.3 Environment of WBR
 #========================================
 
-#MIN: environment minimal, including size of regenerate
-#Description of blastogenic cycle in B. leachii
+#----------------------------------------
+#- 1.3.1 Haemocytes
+#----------------------------------------
+EHA=$COUNTER
+#1
+task add project:'Environment of WBR'.'Haemocytes' Find protocols for the identification of haemocytes in colonial ascidians  +protocol
+#2
+task add project:'Environment of WBR'.'Haemocytes' Determine the most informative stainings for haemocytes depends:$((EHA+1))
+#3
+task add project:'Environment of WBR'.'Haemocytes' Stain blood smears and whole colonies depends:$((EHA+2)),$((TRF+6))
+#4
+task add project:'Environment of WBR'.'Haemocytes' Devise an identification scheme for all the vascular cells depends:$((EHA+3))
+task $((CST+6)) modify depends:$((EHA))
+#5
+task add project:'Environment of WBR'.'Haemocytes' Quantify haemocyte composition throughout WBR by counting depends:$((EHA+4)),$((IND+5))
+#6
+task add project:'Environment of WBR'.'Haemocytes' Characterize haemocytes throughout WBR using scRNA-seq depends:$((EHA+1)),$((SCR+6)),$((IND+5))
+#7
+task add project:'Environment of WBR'.'Haemocytes' Alter haemocyte composition using transfusion depends:$((EHA+5))
+#8
+task add project:'Environment of WBR'.'Haemocytes' Alter haemocyte composition using cell sorting depends:$((EHA+5)),$((CST+6))
+#9
+task add project:'Environment of WBR'.'Haemocytes' Trace cell types using labeling of isolated haemocytes depends:$((EHA+5)),$((MCR+13))
+#10
+task add project:'Environment of WBR'.'Haemocytes' Identify which cell types are necessary for WBR depends:$((EHA+6)),$((EHA+7)),$((EHA+8)),$((EHA+9))
+COUNTER=$((COUNTER+10))
+
+#----------------------------------------
+#- 1.3.2 Haemolymph flow
+#----------------------------------------
+EHF=$COUNTER
+#1
+task add project:'Environment of WBR'.'Haemolymph flow' Gather publications about haemolymph flow in colonial ascidians +inventory
+#2
+task add project:'Environment of WBR'.'Haemolymph flow' Monitor haemolymph flow in isolated vessels +imaging
+#3
+task add project:'Environment of WBR'.'Haemolymph flow' Study how flow is sustained during WBR depends:$((EHF+1)),$((EHF+2)) +imaging
+#4
+task add project:'Environment of WBR'.'Haemolymph flow' Alter flow by ablating ampullae depends:$((EHF+3))
+#5
+task add project:'Environment of WBR'.'Haemolymph flow' Alter flow using anaesthesia depends:$((EHF+3)),$((ANH+5))
+#6
+task add project:'Environment of WBR'.'Haemolymph flow' Alter flow by injections depends:$((EHF+3)),$((INJ+7))
+#7
+task add project:'Environment of WBR'.'Haemolymph flow' Alter flow by electric stimulations depends:$((EHF+3)),$((ELC+6))
+#8
+task add project:'Environment of WBR'.'Haemolymph flow' Alter flow by chemical stimulation depends:$((EHF+3)),$((INJ+7))
+#9
+task add project:'Environment of WBR'.'Haemolymph flow' Identify the necessary flow during WBR depends:$((EHF+4)),$((EHF+5)),$((EHF+6)),$((EHF+7)),$((EHF+8))
+COUNTER=$((COUNTER+9))
+
+#----------------------------------------
+#- 1.3.3 Vascular system
+#----------------------------------------
+EVS=$COUNTER
+#1
+task add project:'Environment of WBR'.'Vascular system' Gather publications about the vascular system in colonial ascidians +inventory
+#2
+task add project:'Environment of WBR'.'Vascular system' Map the evolution of the vascular system in isolated vessels depends:$((IND+5)) +imaging
+#3
+task add project:'Environment of WBR'.'Vascular system' Identify the minimal vascular system required for WBR depends:$((EVS+1)),$((EVS+2)) +imaging
+#4
+task add project:'Environment of WBR'.'Vascular system' Alter the vascular network by targeted isolation depends:$((EVS+3))
+#5
+task add project:'Environment of WBR'.'Vascular system' Alter the vascular network by modulating angiogenesis depends:$((EVS+3)),$((INJ+5)),$((RNA+8))
+#6
+task add project:'Environment of WBR'.'Vascular system' Alter the vascular network by micro-surgeries depends:$((EVS+3))
+#7
+task add project:'Environment of WBR'.'Vascular system' Identify the impact of the vascular network during WBR depends:$((EVS+4)),$((EVS+5)),$((EVS+6))
+COUNTER=$((COUNTER+7))
+
+#----------------------------------------
+#- 1.3.4 Tunic
+#----------------------------------------
+ETU=$COUNTER
+#1
+task add project:'Environment of WBR'.'Tunic'  +protocol
+COUNTER=$((COUNTER+8))
+
+#----------------------------------------
+#- 1.3.5 Metabolites
+#----------------------------------------
+EMT=$COUNTER
+#1
+task add project:'Environment of WBR'.'Metabolites'  +protocol
+COUNTER=$((COUNTER+8))
+
+
+#========================================
+#= 1.4 Culture of B. leachii
+#========================================
+
+#----------------------------------------
+#- 1.4.1 Establishing a stock of colonies
+#----------------------------------------
+LET=$COUNTER
+#1
+task add project:'Culture of B. leachii'.''  +protocol
+COUNTER=$((COUNTER+8))
+
+#----------------------------------------
+#- 1.4.2 Feeding colonial ascidians
+#----------------------------------------
+LET=$COUNTER
+#1
+task add project:'Culture of B. leachii'.''  +protocol
+COUNTER=$((COUNTER+8))
+
+#----------------------------------------
+#- 1.4.3 Induced assexual development
+#----------------------------------------
+LET=$COUNTER
+#1
+task add project:'Culture of B. leachii'.''  +protocol
+COUNTER=$((COUNTER+8))
+
+#----------------------------------------
+#- 1.4.4 Induced sexual reproduction
+#----------------------------------------
+LET=$COUNTER
+#1
+task add project:'Culture of B. leachii'.''  +protocol
+COUNTER=$((COUNTER+8))
+
+#----------------------------------------
+#- 1.3.5 Long-term storage
+#----------------------------------------
+LET=$COUNTER
+#1
+task add project:'Culture of B. leachii'.''  +protocol
+COUNTER=$((COUNTER+8))
+
+#----------------------------------------
+#- 1.3.6 Short-term storage
+#----------------------------------------
+LET=$COUNTER
+#1
+task add project:'Culture of B. leachii'.''  +protocol
+COUNTER=$((COUNTER+8))
 
 ########################################
 # 2. Lluis PhD thesis
@@ -780,3 +1002,57 @@ task add project:'PhD'.'Science' Atlas
 #4
 task add project:'PhD'.'Goals' intermediate goals to be described here in due course
 COUNTER=$((COUNTER+4))
+
+########################################
+# 3. Laboratory equipment
+########################################
+
+#========================================
+#= 3.1 Coffee break
+#========================================
+
+INJ=$COUNTER
+#1
+task add project:'Laboratory equipment'.''
+COUNTER=$((COUNTER+8))
+
+#========================================
+#= 3.2 Bench space
+#========================================
+
+INJ=$COUNTER
+#1
+task add project:'Laboratory equipment'.''
+COUNTER=$((COUNTER+8))
+
+#========================================
+#= 3.3 Storage
+#========================================
+
+INJ=$COUNTER
+#1
+task add project:'Laboratory equipment'.''
+COUNTER=$((COUNTER+8))
+
+#========================================
+#= 3.4 Computers
+#========================================
+
+INJ=$COUNTER
+#1
+task add project:'Laboratory equipment'.''
+COUNTER=$((COUNTER+8))
+
+
+########################################
+# 4. Prospective experiments
+########################################
+
+
+#11
+task add project:'Environment of WBR'.'Haemocytes' Characterize functionally the essential cell types using RNAi and growth factor injections depends:$((EHA+10)),$((INJ+7)),$((RNA+8)),$((VCT+5))
+#10
+task add project:'Environment of WBR'.'Haemolymph flow' Characterize the row of haemolymph flow during WBR depends:$((EHF+9)),$((VRW+6))
+#MIN: environment minimal, including size of regenerate
+#Description of blastogenic cycle in B. leachii
+
