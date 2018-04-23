@@ -699,7 +699,9 @@ task add project:'Atlas of WBR'.'Cell types during WBR' Label sections of fixed 
 task add project:'Atlas of WBR'.'Cell types during WBR' Classify the cells into cell types depends:$((VCT+2)),$((CCT+9))
 #4
 task add project:'Atlas of WBR'.'Cell types during WBR' Map and merge cell type onto the cell lineage depends:$((VCT+3)),$((VRW+3))
-COUNTER=$((COUNTER+4))
+#5
+task add project:'Atlas of WBR'.'Cell types during WBR' Write a manuscript about this atlas depends:$((VCT+4))
+COUNTER=$((COUNTER+5))
 
 #========================================
 #= 1.3 Environment of WBR
