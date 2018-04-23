@@ -300,9 +300,9 @@ task add project:'Techniques'.'Imaging'.'Monitoring flow' Get the required equip
 #4 in addition depends:FLS+6
 task add project:'Techniques'.'Imaging'.'Monitoring flow' Test monitoring on various microscopes depends:$((FLW+3)) +training
 #5
-task add project:'Techniques'.'Imaging'.'Monitoring flow' Master monitoring flow depends:$((FLW+5)) +skill
+task add project:'Techniques'.'Imaging'.'Monitoring flow' Master monitoring flow depends:$((FLW+4)) +skill
 #6
-task add project:'Techniques'.'Imaging'.'Monitoring flow' Write our own optimized protocol depends:$((FLW+6)) +create +protocol
+task add project:'Techniques'.'Imaging'.'Monitoring flow' Write our own optimized protocol depends:$((FLW+5)) +create +protocol
 COUNTER=$((COUNTER+6))
 
 #----------------------------------------
@@ -678,13 +678,13 @@ VRW=$COUNTER
 #1
 task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Segment and track cells throughout WBR depends:$((AIM+2)),$((LIV+6)),$((COW+4))
 #2
-task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Reconstruct the morphology of the regeneration niche depends:$((VRW+2)), $((M3D+6))
+task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Reconstruct the morphology of the regeneration niche depends:$((VRW+1)),$((M3D+6))
 #3
 task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Map the morphology onto the virtual embryo depends:$((VRW+2)),$((MAP+8))
 #4
-task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Synchronize the various recordings depends:$((VRW+2))
+task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Synchronize the various recordings depends:$((VRW+3))
 #5
-task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Merge the recordings depends:$((VRW+2))
+task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Merge the recordings depends:$((VRW+4))
 COUNTER=$((COUNTER+5))
 
 #----------------------------------------
@@ -702,6 +702,7 @@ task add project:'Atlas of WBR'.'Cell types during WBR' Map and merge cell type 
 #5
 task add project:'Atlas of WBR'.'Cell types during WBR' Write a manuscript about this atlas depends:$((VCT+4))
 COUNTER=$((COUNTER+5))
+echo $((COUNTER))
 
 #========================================
 #= 1.3 Environment of WBR
