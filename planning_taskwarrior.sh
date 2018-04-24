@@ -189,6 +189,46 @@ task add project:'Techniques'.'Handling'.'Electric stimulation' Master electric 
 task add project:'Techniques'.'Handling'.'Electric stimulation' Write our own optimized protocol for electric stimulations depends:$((ELC+6)) +create +protocol
 COUNTER=$((COUNTER+7))
 
+#----------------------------------------
+#- 0.1.9 Micro-surgery
+#----------------------------------------
+MSG=$COUNTER
+#1
+task add project:'Techniques'.'Handling'.'Micro-surgery' Find protocols for micro-surgery on colonial ascidians +protocol
+#2
+task add project:'Techniques'.'Handling'.'Micro-surgery' List the required equipment depends:$((MSG+1)) +inventory
+#3
+task add project:'Techniques'.'Handling'.'Micro-surgery' Get the required material depends:$((MSG+2)) +purchase
+#4
+task add project:'Techniques'.'Handling'.'Micro-surgery' Devise tests for micro-surgery depends:$((MSG+3)) +inventory
+#5
+task add project:'Techniques'.'Handling'.'Micro-surgery' Test micro-surgery on colonial ascidians depends:$((MSG+4)) +training
+#6
+task add project:'Techniques'.'Handling'.'Micro-surgery' Master micro-surgery on colonial ascidians depends:$((MSG+5)) +skill
+#7
+task add project:'Techniques'.'Handling'.'Micro-surgery' Write our own protocol depends:$((MSG+6)) +create +protocol
+COUNTER=$((COUNTER+7))
+
+#----------------------------------------
+#- 0.1.10 Tissue dissociation
+#----------------------------------------
+TDS=$COUNTER
+#1
+task add project:'Techniques'.'Handling'.'Tissue dissociation' Find protocols for tissue dissociation of whole colonial ascidians +protocol
+#2
+task add project:'Techniques'.'Handling'.'Tissue dissociation' List the required reagents depends:$((TDS+1)) +inventory
+#3
+task add project:'Techniques'.'Handling'.'Tissue dissociation' List the required equipment depends:$((TDS+1)) +inventory
+#4
+task add project:'Techniques'.'Handling'.'Tissue dissociation' Get the required material depends:$((TDS+2)),$((TDS+3)) +purchase
+#5 in addition depends:EHA+4
+task add project:'Techniques'.'Handling'.'Tissue dissociation' Test tissue dissociation on ascidian tissues depends:$((TDS+4)) +training
+#6
+task add project:'Techniques'.'Handling'.'Tissue dissociation' Master tissue dissociation on colonial ascidians depends:$((TDS+5)) +skill
+#7
+task add project:'Techniques'.'Handling'.'Tissue dissociation' Write our own protocol depends:$((TDS+6)) +create +protocol
+COUNTER=$((COUNTER+7))
+
 
 #========================================
 #= 0.2 Histology techniques
@@ -371,6 +411,26 @@ task add project:'Techniques'.'Imaging'.'Culture chamber' Master culture chamber
 task add project:'Techniques'.'Imaging'.'Culture chamber' Write our own optimized protocol depends:$((CCH+9)) +create +protocol
 COUNTER=$((COUNTER+10))
 
+#----------------------------------------
+#- 0.3.5 Tunicin labeling
+#----------------------------------------
+TUL=$COUNTER
+#1
+task add project:'Techniques'.'Imaging'.'Tunicin labeling' Gather publications about tunicin in colonial ascidians +inventory
+#2
+task add project:'Techniques'.'Imaging'.'Tunicin labeling' Identify candidate dyes that can bind to tunicin depends:$((TUL+1)) +inventory
+#3
+task add project:'Techniques'.'Imaging'.'Tunicin labeling' List the required reagents depends:$((TUL+2)) +inventory
+#4
+task add project:'Techniques'.'Imaging'.'Tunicin labeling' Get the required reagents depends:$((TUL+3)) +purchase
+#5
+task add project:'Techniques'.'Imaging'.'Tunicin labeling' Test tunicin labeling in colonial ascidians depends:$((TUL+4)),$((MCR+8)),$((MCR+10)),$((MCR+12)) +training
+#6
+task add project:'Techniques'.'Imaging'.'Tunicin labeling' Master tunicin labeling depends:$((TUL+5)) +skill
+#7
+task add project:'Techniques'.'Imaging'.'Tunicin labeling' Write our own optimized protocol depends:$((TUL+6)) +create +protocol
+COUNTER=$((COUNTER+7))
+
 
 #========================================
 #= 0.4 Molecular biology
@@ -435,23 +495,23 @@ COUNTER=$((COUNTER+6))
 #----------------------------------------
 RNA=$COUNTER
 #1
-task add project:'Techniques'.'RNA interference' Find protocols for RNAi in colonial ascidians +protocol
+task add project:'Techniques'.'Molecular biology'.'RNA interference' Find protocols for RNAi in colonial ascidians +protocol
 #2
-task add project:'Techniques'.'RNA interference' List the required reagents depends:$((RNA+1)) +inventory
+task add project:'Techniques'.'Molecular biology'.'RNA interference' List the required reagents depends:$((RNA+1)) +inventory
 #3
-task add project:'Techniques'.'RNA interference' List the required equipment depends:$((RNA+1)) +inventory
+task add project:'Techniques'.'Molecular biology'.'RNA interference' List the required equipment depends:$((RNA+1)) +inventory
 #4
-task add project:'Techniques'.'RNA interference' Design a probe for positive control tests depends:$((RNA+1)) +inventory +molecular
+task add project:'Techniques'.'Molecular biology'.'RNA interference' Design a probe for positive control tests depends:$((RNA+1)) +inventory +molecular
 #5
-task add project:'Techniques'.'RNA interference' Get the required reagents depends:$((RNA+2)),$((RNA+4)) +purchase
+task add project:'Techniques'.'Molecular biology'.'RNA interference' Get the required reagents depends:$((RNA+2)),$((RNA+4)) +purchase
 #6
-task add project:'Techniques'.'RNA interference' Get the required equipment depends:$((RNA+3)) +purchase
+task add project:'Techniques'.'Molecular biology'.'RNA interference' Get the required equipment depends:$((RNA+3)) +purchase
 #7
-task add project:'Techniques'.'RNA interference' Test RNAi in colonial ascidians depends:$((RNA+5)),$((RNA+6)) +training
+task add project:'Techniques'.'Molecular biology'.'RNA interference' Test RNAi in colonial ascidians depends:$((RNA+5)),$((RNA+6)),$((ANH+5)),$((INJ+7)),$((SOK+6)),$((CCH+9)) +training
 #8
-task add project:'Techniques'.'RNA interference' Master RNAi depends:$((RNA+7)) +skill
+task add project:'Techniques'.'Molecular biology'.'RNA interference' Master RNAi depends:$((RNA+7)) +skill
 #9
-task add project:'Techniques'.'RNA interference' Write our own optimized protocol depends:$((RNA+8)) +create +protocol
+task add project:'Techniques'.'Molecular biology'.'RNA interference' Write our own optimized protocol depends:$((RNA+8)) +create +protocol
 COUNTER=$((COUNTER+9))
 
 #----------------------------------------
@@ -459,19 +519,19 @@ COUNTER=$((COUNTER+9))
 #----------------------------------------
 SCR=$COUNTER
 #1
-task add project:'Techniques'.'Handling'.'scRNA-seq' Get information on the existing approaches for scRNA seq +contact 
+task add project:'Techniques'.'Molecular biology'.'scRNA sequencing' Get information on the existing approaches for scRNA seq +contact 
 #2
-task add project:'Techniques'.'Handling'.'scRNA-seq' Identify the technology most appropriated for WBR depends:$((SCR+1)) +inventory
+task add project:'Techniques'.'Molecular biology'.'scRNA sequencing' Identify the technology most appropriated for WBR depends:$((SCR+1)) +inventory
 #3
-task add project:'Techniques'.'Handling'.'scRNA-seq' Find protocols for scRNA in colonial ascidians depends:$((SCR+2)) +protocol
+task add project:'Techniques'.'Molecular biology'.'scRNA sequencing' Find protocols for scRNA in colonial ascidians depends:$((SCR+2)) +protocol
 #4
-task add project:'Techniques'.'Handling'.'scRNA-seq' Prepare haemocytes according to the specifics of the analysis platfrom depends:$((SCR+3)),$((TRF+6))
+task add project:'Techniques'.'Molecular biology'.'scRNA sequencing' Prepare haemocytes according to the specifics of the analysis platfrom depends:$((SCR+3)),$((TRF+6))
 #5
-task add project:'Techniques'.'Handling'.'scRNA-seq' Send for library preparation and sequencing depends:$((SCR+4)) +contact
+task add project:'Techniques'.'Molecular biology'.'scRNA sequencing' Send for library preparation and sequencing depends:$((SCR+4)) +contact
 #6
-task add project:'Techniques'.'Handling'.'scRNA-seq' Analyze the sequencing results depends:$((SCR+5)) +code
+task add project:'Techniques'.'Molecular biology'.'scRNA sequencing' Analyze the sequencing results depends:$((SCR+5)) +code
 #7
-task add project:'Techniques'.'Handling'.'scRNA-seq' Write our own optimized protocol for colonial ascidians depends:$((SCR+6)) +create +protocol
+task add project:'Techniques'.'Molecular biology'.'scRNA sequencing' Write our own optimized protocol for colonial ascidians depends:$((SCR+6)) +create +protocol
 COUNTER=$((COUNTER+7))
 
 #----------------------------------------
@@ -479,19 +539,19 @@ COUNTER=$((COUNTER+7))
 #----------------------------------------
 CST=$COUNTER
 #1
-task add project:'Techniques'.'Handling'.'Cell sorting' Find protocols for cell sorting in colonial ascidians +protocol
+task add project:'Techniques'.'Molecular biology'.'Cell sorting' Find protocols for cell sorting in colonial ascidians +protocol
 #2
-task add project:'Techniques'.'Handling'.'Cell sorting' List the required reagents depends:$((CST+1)) +inventory
+task add project:'Techniques'.'Molecular biology'.'Cell sorting' List the required reagents depends:$((CST+1)) +inventory
 #3
-task add project:'Techniques'.'Handling'.'Cell sorting' Get the required reagents depends:$((CST+2)) +purchase
+task add project:'Techniques'.'Molecular biology'.'Cell sorting' Get the required reagents depends:$((CST+2)) +purchase
 #4
-task add project:'Techniques'.'Handling'.'Cell sorting' Test cell sorting on haemolymph depends:$((CST+3)),$((TRF+6)) +training
+task add project:'Techniques'.'Molecular biology'.'Cell sorting' Test cell sorting on haemolymph depends:$((CST+3)),$((TRF+6)) +training
 #5 in addition depends:EHA+4
-task add project:'Techniques'.'Handling'.'Cell sorting' Assess the sorting specificity by counting depends:$((CST+5)) +training
+task add project:'Techniques'.'Molecular biology'.'Cell sorting' Assess the sorting specificity by counting depends:$((CST+4)) +training
 #6
-task add project:'Techniques'.'Handling'.'Cell sorting' Master cell sorting depends:$((CST+5)) +skill
+task add project:'Techniques'.'Molecular biology'.'Cell sorting' Master cell sorting depends:$((CST+5)) +skill
 #7
-task add project:'Techniques'.'Handling'.'Cell sorting' Write our own optimized protocol for haemocytes sorting depends:$((CST+6)) +create +protocol
+task add project:'Techniques'.'Molecular biology'.'Cell sorting' Write our own optimized protocol for haemocytes sorting depends:$((CST+6)) +create +protocol
 COUNTER=$((COUNTER+7))
 
 
@@ -687,8 +747,8 @@ COUNTER=$((COUNTER+7))
 #- 1.1.3 Temporal span of WBR initiation
 #----------------------------------------
 SPN=$COUNTER
-#1
-task add project:'Cellular origins of WBR'.'Chronology of niche establishment' Devise a reproducible induction of WBR depends:$((IND+5)) +training
+#1 in addition depends:EVS+3
+task add project:'Cellular origins of WBR'.'Chronology of niche establishment' Devise a reproducible induction of WBR +training
 #2
 task add project:'Cellular origins of WBR'.'Chronology of niche establishment' Fix regenerating colonies at regular time interval for the first 2 days depends:$((SPN+1)),$((FIX+5)) 
 #3
@@ -805,11 +865,12 @@ task add project:'Environment of WBR'.'Haemocytes' Determine the most informativ
 task add project:'Environment of WBR'.'Haemocytes' Stain blood smears and whole colonies depends:$((EHA+2)),$((TRF+6))
 #4
 task add project:'Environment of WBR'.'Haemocytes' Devise an identification scheme for all the vascular cells depends:$((EHA+3))
-task $((CST+6)) modify depends:$((EHA))
+task $((CST+6)) modify depends:$((EHA+4))
+task $((TDS+5)) modify depends:$((EHA+4))
 #5
 task add project:'Environment of WBR'.'Haemocytes' Quantify haemocyte composition throughout WBR by counting depends:$((EHA+4)),$((IND+5))
 #6
-task add project:'Environment of WBR'.'Haemocytes' Characterize haemocytes throughout WBR using scRNA-seq depends:$((EHA+1)),$((SCR+6)),$((IND+5))
+task add project:'Environment of WBR'.'Haemocytes' Characterize haemocytes throughout WBR using scRNA-seq depends:$((EHA+1)),$((SCR+6)),$((IND+5)),$((TDS+5))
 #7
 task add project:'Environment of WBR'.'Haemocytes' Alter haemocyte composition using transfusion depends:$((EHA+5))
 #8
@@ -831,7 +892,7 @@ task add project:'Environment of WBR'.'Haemolymph flow' Monitor haemolymph flow 
 #3
 task add project:'Environment of WBR'.'Haemolymph flow' Study how flow is sustained during WBR depends:$((EHF+1)),$((EHF+2)) +imaging
 #4
-task add project:'Environment of WBR'.'Haemolymph flow' Alter flow by ablating ampullae depends:$((EHF+3))
+task add project:'Environment of WBR'.'Haemolymph flow' Alter flow by ablating ampullae depends:$((EHF+3)),$((MSG+6))
 #5
 task add project:'Environment of WBR'.'Haemolymph flow' Alter flow using anaesthesia depends:$((EHF+3)),$((ANH+5))
 #6
@@ -854,12 +915,13 @@ task add project:'Environment of WBR'.'Vascular system' Gather publications abou
 task add project:'Environment of WBR'.'Vascular system' Map the evolution of the vascular system in isolated vessels depends:$((IND+5)) +imaging
 #3
 task add project:'Environment of WBR'.'Vascular system' Identify the minimal vascular system required for WBR depends:$((EVS+1)),$((EVS+2)) +imaging
+task $((SPN+1)) modify depends:$((EVS+3))
 #4
 task add project:'Environment of WBR'.'Vascular system' Alter the vascular network by targeted isolation depends:$((EVS+3))
 #5
 task add project:'Environment of WBR'.'Vascular system' Alter the vascular network by modulating angiogenesis depends:$((EVS+3)),$((INJ+5)),$((RNA+8))
 #6
-task add project:'Environment of WBR'.'Vascular system' Alter the vascular network by micro-surgeries depends:$((EVS+3))
+task add project:'Environment of WBR'.'Vascular system' Alter the vascular network by micro-surgeries depends:$((EVS+3)),$((MSG+6))
 #7
 task add project:'Environment of WBR'.'Vascular system' Identify the impact of the vascular network during WBR depends:$((EVS+4)),$((EVS+5)),$((EVS+6))
 COUNTER=$((COUNTER+7))
@@ -869,8 +931,20 @@ COUNTER=$((COUNTER+7))
 #----------------------------------------
 ETU=$COUNTER
 #1
-task add project:'Environment of WBR'.'Tunic'  +protocol
-COUNTER=$((COUNTER+8))
+task add project:'Environment of WBR'.'Tunic' Gather publications about tunicin production in tunicates +inventory
+#2
+task add project:'Environment of WBR'.'Tunic' Identify the pathways involved in tunicin production depends:$((ETU+1))
+#3
+task add project:'Environment of WBR'.'Tunic' Monitor the evolution of the tunic during WBR depends:$((ETU+1)),$((TUL+6))
+#4
+task add project:'Environment of WBR'.'Tunic' Alter the tunic by micro-surgeries depends:$((ETU+3)),$((MSG+6))
+#5
+task add project:'Environment of WBR'.'Tunic' Alter the tunic by RNAi depends:$((ETU+2)),$((ETU+3)),$((RNA+8))
+#6
+task add project:'Environment of WBR'.'Tunic' Alter the tunic by injecting chemicals depends:$((ETU+2)),$((ETU+3)),$((INJ+7))
+#7
+task add project:'Environment of WBR'.'Tunic' Identify the impact of the tunic on WBR depends:$((ETU+4)),$((ETU+5)),$((ETU+6))
+COUNTER=$((COUNTER+7))
 
 #----------------------------------------
 #- 1.3.5 Metabolites
