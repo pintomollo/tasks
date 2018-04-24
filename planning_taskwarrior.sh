@@ -19,6 +19,7 @@ COUNTER=0
 #  +experiment
 #  +imaging
 #  +inventory
+#  +manuscript
 #  +measurement
 #  +molecular
 #  +protocol
@@ -616,7 +617,7 @@ task add project:'Techniques'.'Image Analysis'.'Colony size' Reanalyze images fr
 #4
 task add project:'Techniques'.'Image Analysis'.'Colony size' Adapt the code to our new recording setup depends:$((CSZ+3)),$((MCR+8))
 #5
-task add project:'Techniques'.'Image Analysis'.'Colony size' Fully automatize the code depends$((CSZ+4)) +code
+task add project:'Techniques'.'Image Analysis'.'Colony size' Fully automatize the code depends:$((CSZ+4)) +code
 #6
 task add project:'Techniques'.'Image Analysis'.'Colony size' Publish the annotated code depends:$((CSZ+5))
 task $((GRW+4)) modify depends:$((CSZ+6)) 
@@ -647,7 +648,7 @@ COUNTER=$((COUNTER+7))
 #----------------------------------------
 #- 0.5.4 3D morphology
 #----------------------------------------
-M3D=$COUTNER
+M3D=$COUNTER
 #1
 task add project:'Techniques'.'Image Analysis'.'3D morphology' Install the code from the Wilson lab +contact
 #2
@@ -667,51 +668,51 @@ COUNTER=$((COUNTER+7))
 #----------------------------------------
 #- 0.5.5 Mapping to a virtual embryo
 #----------------------------------------
-MAP=$COUTNER
+MVE=$COUNTER
 #1
 task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Find protocols for the virtual embryo from ANISEED +protocol
 #2
 task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Obtain the code and sample data from ANISEED +contact
 #3
-task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Test the code on sample data depends:$((MAP+1)),$((MAP+2))
+task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Test the code on sample data depends:$((MVE+1)),$((MVE+2))
 #4
 task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Define reference axes for the regeneration niche throughout WBR +create
 #5
-task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Define a mapping function for our 3D morphology data depends:$((MAP+4)) +create
+task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Define a mapping function for our 3D morphology data depends:$((MVE+4)) +create
 #6
-task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Warp our morphology data onto the virtual embryo depends:$((MAP+3)),$((MAP+5))
+task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Warp our morphology data onto the virtual embryo depends:$((MVE+3)),$((MVE+5))
 #7
-task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Incorporate the lineaging data onto the virtual embryo depends:$((MAP+6)),$((CLI+3)) +code
+task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Incorporate the lineaging data onto the virtual embryo depends:$((MVE+6)),$((CLI+3)) +code
 #8
-task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Publish the annotated code depends:$((MAP+7))
+task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Publish the annotated code depends:$((MVE+7))
 #9
-task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Write a User Manual depends:$((MAP+8))
+task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Write a User Manual depends:$((MVE+8))
 COUNTER=$((COUNTER+9))
 
 #----------------------------------------
 #- 0.5.6 Classifying cell types
 #----------------------------------------
-CCT=$COUTNER
+CCT=$COUNTER
 #1
-task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Find software for the automated quantification of signal in histological sections +protocol
+task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Find software for the automated quantification of signal in histological sections +inventory
 #2
-task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Select candidate machine learning algorithms +protocol
+task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Select candidate machine learning algorithms +inventory
 #3
-task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Image histological sections of uninjured colonies depends:$((CCT+1)),$((MCR+10)),$((MCR+12))
+task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Image histological sections of uninjured colonies depends:$((CCT+1)),$((MCR+10)),$((MCR+12)) +imaging
 #4
-task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Quantify the signal from the various stains depends:$((CCT+3))
+task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Quantify the signal from the various stains depends:$((CCT+3)) +measurement
 #5
-task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Quantify the morphology of the various cells depends:$((CCT+3))
+task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Quantify the morphology of the various cells depends:$((CCT+3)) +measurement
 #6
-task add project:'Techniques'.'Image Analysis'.'Classifying cell types' 'Manually determine a training set of known cell types' depends:$((CCT+3))
+task add project:'Techniques'.'Image Analysis'.'Classifying cell types' 'Manually determine a training set of known cell types' depends:$((CCT+3)) +analysis
 #7
-task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Train a classifier to discriminate between cell types depends:$((CCT+2)),$((CCT+4)),$((CCT+5)),$((CCT+6))
+task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Train a classifier to discriminate between cell types depends:$((CCT+2)),$((CCT+4)),$((CCT+5)),$((CCT+6)) +experiment +code
 #8
-task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Quantify the accuracy of the classifier depends:$((CCT+7))
+task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Quantify the accuracy of the classifier depends:$((CCT+7)) +analysis
 #9
-task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Publish the annotated classifier depends:$((CCT+8))
+task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Publish the annotated classifier depends:$((CCT+8)) +manuscript +code
 #10
-task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Write a User Manual depends:$((CCT+9))
+task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Write a User Manual depends:$((CCT+9)) +create +protocol
 COUNTER=$((COUNTER+10))
 
 
@@ -773,9 +774,9 @@ SPN=$COUNTER
 #1 in addition depends:EVS+3
 task add project:'Cellular origins of WBR'.'Chronology of niche establishment' Devise a reproducible induction of WBR +training
 #2
-task add project:'Cellular origins of WBR'.'Chronology of niche establishment' Fix regenerating colonies at regular time interval for the first 2 days depends:$((SPN+1)),$((FIX+5)) 
+task add project:'Cellular origins of WBR'.'Chronology of niche establishment' Fix regenerating colonies at regular time interval for the first 2 days depends:$((SPN+1)),$((FIX+5)) +experiment
 #3
-task add project:'Cellular origins of WBR'.'Chronology of niche establishment' Determine histologically the chronology of niche establishment depends:$((SPN+2)),$((LBL+7)),$((MCR+10))
+task add project:'Cellular origins of WBR'.'Chronology of niche establishment' Determine histologically the chronology of niche establishment depends:$((SPN+2)),$((LBL+7)),$((MCR+10)) +analysis
 COUNTER=$((COUNTER+3))
 
 #----------------------------------------
@@ -783,15 +784,15 @@ COUNTER=$((COUNTER+3))
 #----------------------------------------
 COW=$COUNTER
 #1
-task add project:'Cellular origins of WBR'.'Backtrack all cells of a niche' Image the entire span of niche establishment depends:$((SPN+3)),$((MCR+11)),$((LIV+6))
+task add project:'Cellular origins of WBR'.'Backtrack all cells of a niche' Image the entire span of niche establishment depends:$((SPN+3)),$((MCR+11)),$((LIV+6)) +imaging
 #2
-task add project:'Cellular origins of WBR'.'Backtrack all cells of a niche' Determine the existing software for manual tracking
+task add project:'Cellular origins of WBR'.'Backtrack all cells of a niche' Determine the existing software for manual tracking +inventory
 #3
-task add project:'Cellular origins of WBR'.'Backtrack all cells of a niche' Determine the existing software for automated tracking
+task add project:'Cellular origins of WBR'.'Backtrack all cells of a niche' Determine the existing software for automated tracking +inventory
 #4
-task add project:'Cellular origins of WBR'.'Backtrack all cells of a niche' Backtrack all cells of the niche depends:$((COW+1)),$((COW+2)),$((COW+3))
+task add project:'Cellular origins of WBR'.'Backtrack all cells of a niche' Backtrack all cells of the niche depends:$((COW+1)),$((COW+2)),$((COW+3)) +experiment
 #5
-task add project:'Cellular origins of WBR'.'Backtrack all cells of a niche' Find the cellular origins of WBR depends:$((COW+4))
+task add project:'Cellular origins of WBR'.'Backtrack all cells of a niche' Find the cellular origins of WBR depends:$((COW+4)) +analysis
 COUNTER=$((COUNTER+5))
 
 #----------------------------------------
@@ -799,19 +800,19 @@ COUNTER=$((COUNTER+5))
 #----------------------------------------
 CHR=$COUNTER
 #1
-task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Identify the origins of WBR in uninjured colonies depends:$((COW+5))
+task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Identify the cells at the origins of WBR in uninjured colonies depends:$((COW+5)) +analysis
 #2
-task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Characterize these cells depends:$((CHR+1)),$((LBL+7))
+task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Characterize these cells depends:$((CHR+1)),$((LBL+7)) +experiment
 #3
-task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Isolate these cells depends:$((CHR+1)),$((INJ+7))
+task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Isolate these cells depends:$((CHR+1)),$((INJ+7)) +experiment
 #4
-task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Label these cells depends:$((CHR+1)),$((INJ+7))
+task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Label these cells depends:$((CHR+1)),$((INJ+7)) +experiment
 #5
-task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Ablate these cells depends:$((CHR+1)),$((ABL+5))
+task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Ablate these cells depends:$((CHR+1)),$((ABL+5)) +experiment
 #6
-task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' RNAi these cells depends:$((CHR+1)),$((RNA+8))
+task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' RNAi these cells depends:$((CHR+1)),$((RNA+8)) +experiment
 #7
-task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Write a manuscript about these cells depends:$((CHR+2))-$((CHR+6)),$((SPN+3))
+task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Write a manuscript about these cells depends:$((CHR+2))-$((CHR+6)),$((SPN+3)) +create +manuscript
 COUNTER=$((COUNTER+7))
 
 
@@ -844,7 +845,7 @@ task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Segment and trac
 #2
 task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Reconstruct the morphology of the regeneration niche depends:$((VRW+1)),$((M3D+6))
 #3
-task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Map the morphology onto the virtual embryo depends:$((VRW+2)),$((MAP+8))
+task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Map the morphology onto the virtual embryo depends:$((VRW+2)),$((MVE+8))
 #4
 task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Synchronize the various recordings depends:$((VRW+3))
 #5
@@ -980,11 +981,11 @@ task add project:'Environment of WBR'.'Metabolites' Identify circulating metabol
 #3
 task add project:'Environment of WBR'.'Metabolites' Monitor the evolution of metabolites during WBR depends:$((EMT+2)),$((PRT+6)) +measurement
 #4
-task add project:'Environment of WBR'.'Metabolites' Alter metabolites by RNAi depends:$((ETU+3)),$((RNA+8)) +experiment
+task add project:'Environment of WBR'.'Metabolites' Alter metabolites by RNAi depends:$((EMT+3)),$((RNA+8)) +experiment
 #5
-task add project:'Environment of WBR'.'Metabolites' Alter metabolites by injecting proteins depends:$((ETU+3)),$((INJ+7)) +experiment
+task add project:'Environment of WBR'.'Metabolites' Alter metabolites by injecting proteins depends:$((EMT+3)),$((INJ+7)) +experiment
 #6
-task add project:'Environment of WBR'.'Metabolites' Identify the necessary metabolites during WBR depends:$((ETU+4)),$((ETU+5)) +analysis
+task add project:'Environment of WBR'.'Metabolites' Identify the necessary metabolites during WBR depends:$((EMT+4)),$((EMT+5)) +analysis
 COUNTER=$((COUNTER+6))
 
 
