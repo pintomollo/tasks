@@ -11,12 +11,15 @@ COUNTER=0
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Labels used in the tasks:
+#  +analysis
 #  +code
 #  +contact
 #  +create
 #  +equipment
+#  +experiment
 #  +imaging
 #  +inventory
+#  +measurement
 #  +molecular
 #  +protocol
 #  +purchase
@@ -551,7 +554,27 @@ task add project:'Techniques'.'Molecular biology'.'Cell sorting' Assess the sort
 #6
 task add project:'Techniques'.'Molecular biology'.'Cell sorting' Master cell sorting depends:$((CST+5)) +skill
 #7
-task add project:'Techniques'.'Molecular biology'.'Cell sorting' Write our own optimized protocol for haemocytes sorting depends:$((CST+6)) +create +protocol
+task add project:'Techniques'.'Molecular biology'.'Cell sorting' Write our own optimized protocol depends:$((CST+6)) +create +protocol
+COUNTER=$((COUNTER+7))
+
+#----------------------------------------
+#- 0.4.7 Proteomics
+#----------------------------------------
+PRT=$COUNTER
+#1
+task add project:'Techniques'.'Molecular biology'.'Proteomics' Find protocols on proteomics in colonial ascidians +protocol
+#2
+task add project:'Techniques'.'Molecular biology'.'Proteomics' Get support from the local platform depends:$((PRT+1)) +contact
+#3
+task add project:'Techniques'.'Molecular biology'.'Proteomics' List the required reagents depends:$((PRT+2)) +inventory
+#4
+task add project:'Techniques'.'Molecular biology'.'Proteomics' Get the required reagents depends:$((PRT+3)) +purchase
+#5
+task add project:'Techniques'.'Molecular biology'.'Proteomics' Test proteomics analysis in haemolymph depends:$((PRT+4)),$((TRF+6)) +training
+#6
+task add project:'Techniques'.'Molecular biology'.'Proteomics' Master proteomics analysis in colonial ascidians depends:$((PRT+5)) +skill
+#7
+task add project:'Techniques'.'Molecular biology'.'Proteomics' Write our own optimized protocol depends:$((PRT+6)) +create +protocol
 COUNTER=$((COUNTER+7))
 
 
@@ -951,8 +974,18 @@ COUNTER=$((COUNTER+7))
 #----------------------------------------
 EMT=$COUNTER
 #1
-task add project:'Environment of WBR'.'Metabolites'  +protocol
-COUNTER=$((COUNTER+8))
+task add project:'Environment of WBR'.'Metabolites' Gather publications about metabolites in colonial ascidians +inventory
+#2
+task add project:'Environment of WBR'.'Metabolites' Identify circulating metabolites to be used as controls depends:$((EMT+1)) +analysis
+#3
+task add project:'Environment of WBR'.'Metabolites' Monitor the evolution of metabolites during WBR depends:$((EMT+2)),$((PRT+6)) +measurement
+#4
+task add project:'Environment of WBR'.'Metabolites' Alter metabolites by RNAi depends:$((ETU+3)),$((RNA+8)) +experiment
+#5
+task add project:'Environment of WBR'.'Metabolites' Alter metabolites by injecting proteins depends:$((ETU+3)),$((INJ+7)) +experiment
+#6
+task add project:'Environment of WBR'.'Metabolites' Identify the necessary metabolites during WBR depends:$((ETU+4)),$((ETU+5)) +analysis
+COUNTER=$((COUNTER+6))
 
 
 #========================================
