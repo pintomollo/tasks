@@ -38,6 +38,28 @@ COUNTER=0
 #========================================
 
 #----------------------------------------
+#- 0.1.0 Transfering B. leachii
+#----------------------------------------
+TRS=$COUNTER
+#1
+task add project:'Techniques'.'Handling'.'Transfering' Find protocols for transfering colonial ascidians +protocol
+#2
+task add project:'Techniques'.'Handling'.'Transfering' List the required equipment depends:$((TRS+1)) +inventory
+#3
+task add project:'Techniques'.'Handling'.'Transfering' List the required reagents depends:$((TRS+1)) +inventory
+#4
+task add project:'Techniques'.'Handling'.'Transfering' Get the required equipment depends:$((TRS+2)) +purchase
+#5
+task add project:'Techniques'.'Handling'.'Transfering' Get the required reagents depends:$((TRS+3)) +purchase
+#6
+task add project:'Techniques'.'Handling'.'Transfering' Train on subclones of the same colony to identify the best approach depends:$((TRS+4)),$((TRS+5)) +training
+#7
+task add project:'Techniques'.'Handling'.'Transfering' Master transfering of colonial ascidians depends:$((TRS+6)) +skill
+#8
+task add project:'Techniques'.'Handling'.'Transfering' Write our own optimized protocol for transfering depends:$((TRS+7)) +create +protocol
+COUNTER=$((COUNTER+8))
+
+#----------------------------------------
 #- 0.1.1 Injections in B. leachii
 #----------------------------------------
 INJ=$COUNTER
@@ -301,19 +323,21 @@ COUNTER=$((COUNTER+8))
 #----------------------------------------
 DCT=$COUNTER
 #1
-task add project:'Techniques'.'Histology'.'Determine cell types' Find protocols for determining cells types in colonial ascidians
+task add project:'Techniques'.'Histology'.'Determine cell types' Find protocols for determining cells types in colonial ascidians +protocols
 #2
-task add project:'Techniques'.'Histology'.'Determine cell types' Find protocols describing organogenesis in colonial ascidians
+task add project:'Techniques'.'Histology'.'Determine cell types' Find protocols describing organogenesis in colonial ascidians +protocols
 #3
-task add project:'Techniques'.'Histology'.'Determine cell types' Select the most informative stainings for WBR
+task add project:'Techniques'.'Histology'.'Determine cell types' Select the most informative stainings for WBR depends:$((DCT+1)),$((DCT+2)) +inventory
 #4
-task add project:'Techniques'.'Histology'.'Determine cell types' Stain histological sections of uninjured colonies
+task add project:'Techniques'.'Histology'.'Determine cell types' Get the selected stains depends:$((DCT+3)) +purchase
 #5
-task add project:'Techniques'.'Histology'.'Determine cell types' Use machine learning to discriminate between cell types
+task add project:'Techniques'.'Histology'.'Determine cell types' Stain histological sections of uninjured colonies depends:$((DCT+4)),$((LBL+7)) +experiment
 #6
-task add project:'Techniques'.'Histology'.'Determine cell types' Master cell type identification
+task add project:'Techniques'.'Histology'.'Determine cell types' Train on cell type identification using reported cell type depends:$((DCT+5)),$((MCR+10)),$((MCR+12)) +training
 #7
-task add project:'Techniques'.'Histology'.'Determine cell types' Write our own optimized protocols depends:$((LBL+7)) +create +protocol
+task add project:'Techniques'.'Histology'.'Determine cell types' Master cell type identification depends:$((DCT+6)) +skill
+#8
+task add project:'Techniques'.'Histology'.'Determine cell types' Write our own optimized protocols depends:$((DCT+7)) +create +protocol
 COUNTER=$((COUNTER+7))
 
 
@@ -698,7 +722,7 @@ task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Find sof
 #2
 task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Select candidate machine learning algorithms +inventory
 #3
-task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Image histological sections of uninjured colonies depends:$((CCT+1)),$((MCR+10)),$((MCR+12)) +imaging
+task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Image histological sections of uninjured colonies depends:$((CCT+1)),$((DCT+7)) +imaging
 #4
 task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Quantify the signal from the various stains depends:$((CCT+3)) +measurement
 #5
@@ -903,7 +927,9 @@ task add project:'Environment of WBR'.'Haemocytes' Alter haemocyte composition u
 task add project:'Environment of WBR'.'Haemocytes' Trace cell types using labeling of isolated haemocytes depends:$((EHA+5)),$((MCR+13))
 #10
 task add project:'Environment of WBR'.'Haemocytes' Identify which cell types are necessary for WBR depends:$((EHA+6)),$((EHA+7)),$((EHA+8)),$((EHA+9))
-COUNTER=$((COUNTER+10))
+#11
+task add project:'Environment of WBR'.'Haemocytes' Write a manuscript on haemocytes during WBR depends:$((EHA+10)) +create +manuscript
+COUNTER=$((COUNTER+11))
 
 #----------------------------------------
 #- 1.3.2 Haemolymph flow
@@ -912,7 +938,7 @@ EHF=$COUNTER
 #1
 task add project:'Environment of WBR'.'Haemolymph flow' Gather publications about haemolymph flow in colonial ascidians +inventory
 #2
-task add project:'Environment of WBR'.'Haemolymph flow' Monitor haemolymph flow in isolated vessels +imaging
+task add project:'Environment of WBR'.'Haemolymph flow' Monitor haemolymph flow in isolated vessels depends:$((FLW+5)) +imaging
 #3
 task add project:'Environment of WBR'.'Haemolymph flow' Study how flow is sustained during WBR depends:$((EHF+1)),$((EHF+2)) +imaging
 #4
@@ -927,7 +953,9 @@ task add project:'Environment of WBR'.'Haemolymph flow' Alter flow by electric s
 task add project:'Environment of WBR'.'Haemolymph flow' Alter flow by chemical stimulation depends:$((EHF+3)),$((INJ+7))
 #9
 task add project:'Environment of WBR'.'Haemolymph flow' Identify the necessary flow during WBR depends:$((EHF+4)),$((EHF+5)),$((EHF+6)),$((EHF+7)),$((EHF+8))
-COUNTER=$((COUNTER+9))
+#10
+task add project:'Environment of WBR'.'Haemolymph flow' Write a manuscript on haemolymph flow during WBR depends:$((EHF+9)) +create +manuscript
+COUNTER=$((COUNTER+10))
 
 #----------------------------------------
 #- 1.3.3 Vascular system
@@ -948,7 +976,9 @@ task add project:'Environment of WBR'.'Vascular system' Alter the vascular netwo
 task add project:'Environment of WBR'.'Vascular system' Alter the vascular network by micro-surgeries depends:$((EVS+3)),$((MSG+6))
 #7
 task add project:'Environment of WBR'.'Vascular system' Identify the impact of the vascular network during WBR depends:$((EVS+4)),$((EVS+5)),$((EVS+6))
-COUNTER=$((COUNTER+7))
+#8
+task add project:'Environment of WBR'.'Vascular system' Write a manuscript on the vascular system during WBR depends:$((EVS+7)) +create +manuscript
+COUNTER=$((COUNTER+8))
 
 #----------------------------------------
 #- 1.3.4 Tunic
@@ -968,7 +998,9 @@ task add project:'Environment of WBR'.'Tunic' Alter the tunic by RNAi depends:$(
 task add project:'Environment of WBR'.'Tunic' Alter the tunic by injecting chemicals depends:$((ETU+2)),$((ETU+3)),$((INJ+7))
 #7
 task add project:'Environment of WBR'.'Tunic' Identify the impact of the tunic on WBR depends:$((ETU+4)),$((ETU+5)),$((ETU+6))
-COUNTER=$((COUNTER+7))
+#8
+task add project:'Environment of WBR'.'Tunic' Write a manuscript on the tunic during WBR depends:$((ETU+7)) +create +manuscript
+COUNTER=$((COUNTER+8))
 
 #----------------------------------------
 #- 1.3.5 Metabolites
@@ -986,7 +1018,9 @@ task add project:'Environment of WBR'.'Metabolites' Alter metabolites by RNAi de
 task add project:'Environment of WBR'.'Metabolites' Alter metabolites by injecting proteins depends:$((EMT+3)),$((INJ+7)) +experiment
 #6
 task add project:'Environment of WBR'.'Metabolites' Identify the necessary metabolites during WBR depends:$((EMT+4)),$((EMT+5)) +analysis
-COUNTER=$((COUNTER+6))
+#7
+task add project:'Environment of WBR'.'Metabolites' Write a manuscript on metabolites during WBR depends:$((EMT+6)) +create +manuscript
+COUNTER=$((COUNTER+7))
 
 
 #========================================
@@ -994,52 +1028,206 @@ COUNTER=$((COUNTER+6))
 #========================================
 
 #----------------------------------------
-#- 1.4.1 Establishing a stock of colonies
+#- 1.4.1 Setting up the aquarium
 #----------------------------------------
-LET=$COUNTER
+AQU=$COUNTER
 #1
-task add project:'Culture of B. leachii'.''  +protocol
-COUNTER=$((COUNTER+8))
+task add project:'Culture of B. leachii'.'Aquarium' Design the aquarium +contact
+#2
+task add project:'Culture of B. leachii'.'Aquarium' List the required equipment depends:$((AQU+1)) +inventory
+#3
+task add project:'Culture of B. leachii'.'Aquarium' Get the all the parts of the aquarium depends:$((AQU+2)) +purchase
+#4
+task add project:'Culture of B. leachii'.'Aquarium' Assemble the aquarium depends:$((AQU+3)) +experiment
+#5
+task add project:'Culture of B. leachii'.'Aquarium' Test all the functionalities of the aquarium in freshwater depends:$((AQU+4)) +experiment
+#6
+task add project:'Culture of B. leachii'.'Aquarium' Clean the aquarium depends:$((AQU+5)) +experiment
+#7
+task add project:'Culture of B. leachii'.'Aquarium' Start the seawater aquarium depends:$((AQU+6)) +experiment
+#8 in addition depends:BCS+1
+task add project:'Culture of B. leachii'.'Aquarium' Introduce a Padovian refugium depends:$((AQU+7)) +experiment
+#9
+task add project:'Culture of B. leachii'.'Aquarium' Monitor the quality of the water depends:$((AQU+8)) +measurement
+#10
+task add project:'Culture of B. leachii'.'Aquarium' Write a User Manual depends:$((AQU+9)) +create +protocol
+COUNTER=$((COUNTER+10))
 
 #----------------------------------------
-#- 1.4.2 Feeding colonial ascidians
+#- 1.4.2 Growing food 
 #----------------------------------------
-LET=$COUNTER
+FOD=$COUNTER
 #1
-task add project:'Culture of B. leachii'.''  +protocol
-COUNTER=$((COUNTER+8))
+task add project:'Culture of B. leachii'.'Growing food' Find protocols on growing food for colonial ascidians +protocols
+#2
+task add project:'Culture of B. leachii'.'Growing food' List the required reagents depends:$((FOD+1)) +inventory
+#3
+task add project:'Culture of B. leachii'.'Growing food' List the required equipment depends:$((FOD+1)) +inventory
+#4
+task add project:'Culture of B. leachii'.'Growing food' Get the required material depends:$((FOD+2)),$((FOD+3)) +purchase
+#5 in addition depends:FED+3
+task add project:'Culture of B. leachii'.'Growing food' Get candidate live strains depends:$((FOD+4)) +purchase
+#6
+task add project:'Culture of B. leachii'.'Growing food' Establish stocks for each strain depends:$((FOD+5)) +experiment
+#7
+task add project:'Culture of B. leachii'.'Growing food' Test growing food in the reactors depends:$((FOD+6)) +training
+#8
+task add project:'Culture of B. leachii'.'Growing food' Assess the temperature inside each reactor in relation with illumination depends:$((FOD+7)) +measurement
+#9
+task add project:'Culture of B. leachii'.'Growing food' Assess the growth curve of each strain depends:$((FOD+7)) +measurement
+#10
+task add project:'Culture of B. leachii'.'Growing food' Assess the growth dynamics of mixed cultures depends:$((FOD+7)) +measurement
+#11
+task add project:'Culture of B. leachii'.'Growing food' Determine the required inoculation volume for growing food depends:$((FOD+8)),$((FOD+9)),$((FOD+10)) +analysis
+#12
+task add project:'Culture of B. leachii'.'Growing food' Master growing food depends:$((FOD+11)) +skill
+#13
+task add project:'Culture of B. leachii'.'Growing food' Write our own protocol depends:$((FOD+12)) +create +protocol
+COUNTER=$((COUNTER+13))
 
 #----------------------------------------
-#- 1.4.3 Induced assexual development
+#- 1.4.3 Establishing a stock of colonies
 #----------------------------------------
-LET=$COUNTER
+BCS=$COUNTER
 #1
-task add project:'Culture of B. leachii'.''  +protocol
-COUNTER=$((COUNTER+8))
+task add project:'Culture of B. leachii'.'Colony stock' Plan a visit to Padova +contact
+task $((AQU+8)) modify depends:$((BCS+1))
+#2
+task add project:'Culture of B. leachii'.'Colony stock' Bring colonies back from Padova depends:$((BCS+1)) +experiment
+#3
+task add project:'Culture of B. leachii'.'Colony stock' Assess the genus of the collected species by genotyping depends:$((BCS+2)),$((PCR+5)) +analysis
+#4
+task add project:'Culture of B. leachii'.'Colony stock' Transfer colonies onto a glass substrate depends:$((BCS+2)),$((TRS+7)) +experiment
+#5 in addition depends:STS+4
+task add project:'Culture of B. leachii'.'Colony stock' Quarantine the colonies to prevent contamination from other organisms depends:$((BCS+4)) +experiment
+#6 in addition depends:FED+10,LTS+6
+task add project:'Culture of B. leachii'.'Colony stock' Culture these colonies on the long-term depends:$((BCS+3)),$((BCS+5)),$((AQU+10)) +technique
+COUNTER=$((COUNTER+6))
 
 #----------------------------------------
-#- 1.4.4 Induced sexual reproduction
+#- 1.4.4 Environmental parameters
 #----------------------------------------
-LET=$COUNTER
+EVP=$COUNTER
 #1
-task add project:'Culture of B. leachii'.''  +protocol
-COUNTER=$((COUNTER+8))
+task add project:'Culture of B. leachii'.'Colony environment' Find protocols on culturing colonial ascidians +protocol
+#2
+task add project:'Culture of B. leachii'.'Colony environment' Gather publications on the environmental parameters of wild colonial ascidians +inventory
+#3 in addition depends:FED+3
+task add project:'Culture of B. leachii'.'Colony environment' 'Determine candidate parameters (pH, salinity, temp)' depends:$((EVP+1)),$((EVP+2)) +analysis
+#4
+task add project:'Culture of B. leachii'.'Colony environment' Subclone stock colonies into each tank depends:$((BCS+4)) +experiment
+#5
+task add project:'Culture of B. leachii'.'Colony environment' Monitor colony growth in each tank depends:$((EVP+3)),$((EVP+4)),$((GRW+5)) +imaging
+#6
+task add project:'Culture of B. leachii'.'Colony environment' Quantify the growth rate for each set of parameters depends:$((EVP+5)) +measurement
+#7
+task add project:'Culture of B. leachii'.'Colony environment' Determine new environmental parameters depends:$((EVP+6)) +analysis
+#8
+task add project:'Culture of B. leachii'.'Colony environment' Repeat previous step depends:$((EVP+7)) +experiment
+#9
+task add project:'Culture of B. leachii'.'Colony environment' Settle for the best parameters depends:$((EVP+8)) +analysis
+#10
+task add project:'Culture of B. leachii'.'Colony environment' Write our own optimized protocol depends:$((EVP+9)) +create +protocol
+COUNTER=$((COUNTER+10))
 
 #----------------------------------------
-#- 1.3.5 Long-term storage
+#- 1.4.5 Feeding colonial ascidians
 #----------------------------------------
-LET=$COUNTER
+FED=$COUNTER
 #1
-task add project:'Culture of B. leachii'.''  +protocol
-COUNTER=$((COUNTER+8))
+task add project:'Culture of B. leachii'.'Colony feeding' Find protocols on feeding colonial ascidians +protocol
+#2
+task add project:'Culture of B. leachii'.'Colony feeding' Gather publications on the diet of wild colonial ascidians +inventory
+#3
+task add project:'Culture of B. leachii'.'Colony feeding' Determine candidate feeding diets depends:$((FED+1)),$((FED+2)) +analysis
+task $((EVP+3)) modify depends:$((FED+3))
+task $((FOD+4)) modify depends:$((FED+3))
+#4
+task add project:'Culture of B. leachii'.'Colony feeding' Subclone stock colonies into each tank depends:$((BCS+4)),$((EVP+9)) +experiment
+#5
+task add project:'Culture of B. leachii'.'Colony feeding' Monitor colony growth in each tank depends:$((FED+3)),$((FED+4)),$((GRW+5)),$((FOD+12)) +imaging
+#6
+task add project:'Culture of B. leachii'.'Colony feeding' Monitor colony feeding quantities depends:$((FED+5)) +imaging
+#7
+task add project:'Culture of B. leachii'.'Colony feeding' Quantify the growth rate of each diet depends:$((FED+6)) +measurement
+#8
+task add project:'Culture of B. leachii'.'Colony feeding' Determine new feeding diets depends:$((FED+7)) +analysis
+#9
+task add project:'Culture of B. leachii'.'Colony feeding' Repeat previous step depends:$((FED+8)) +experiment
+#10
+task add project:'Culture of B. leachii'.'Colony feeding' Settle for the best diet depends:$((FED+9)) +analysis
+task $((BCS+6)) modify depends:$((FED+10))
+#11
+task add project:'Culture of B. leachii'.'Colony feeding' Write our own optimized protocol depends:$((FED+10)) +create +protocol
+COUNTER=$((COUNTER+11))
 
 #----------------------------------------
-#- 1.3.6 Short-term storage
+#- 1.4.6 Induced sexual reproduction
 #----------------------------------------
-LET=$COUNTER
+ISR=$COUNTER
 #1
-task add project:'Culture of B. leachii'.''  +protocol
-COUNTER=$((COUNTER+8))
+task add project:'Culture of B. leachii'.'Sexual reproduction' Find protocols on inducing sexual reproduction in colonial ascidians +protocol
+#2
+task add project:'Culture of B. leachii'.'Sexual reproduction' Gather publications on the environmental conditions during sexual reproduction in colonial ascidians +inventory
+#3
+task add project:'Culture of B. leachii'.'Sexual reproduction' Develop equipment for observing sexual reproduction and capturing potential larvae depends:$((ISR+1)) +create +equipment
+#4
+task add project:'Culture of B. leachii'.'Sexual reproduction' Modify the culturing and feeding parameters to induce sexual reproduction depends:$((ISR+1)),$((ISR+2)),$((FED+10)) +experiment
+#5
+task add project:'Culture of B. leachii'.'Sexual reproduction' Monitor gametogenesis by widefield microscopy depends:$((ISR+3)),$((ISR+4)),$((MCR+9)) +imaging
+#6
+task add project:'Culture of B. leachii'.'Sexual reproduction' Confirm gametogenesis by histological sectioning depends:$((ISR+5)),$((LBL+7)) +imaging
+#7
+task add project:'Culture of B. leachii'.'Sexual reproduction' Optimize the environmental parameters depends:$((ISR+6)) +experiment
+#8
+task add project:'Culture of B. leachii'.'Sexual reproduction' Master inducing sexual reproduction in colonial ascidians depends:$((ISR+7)) +skill
+#9
+task add project:'Culture of B. leachii'.'Sexual reproduction' Write our own optimized protocol depends:$((ISR+8)) +create +protocol
+COUNTER=$((COUNTER+9))
+
+#----------------------------------------
+#- 1.4.7 Long-term storage
+#----------------------------------------
+LTS=$COUNTER
+#1
+task add project:'Culture of B. leachii'.'Long-term storage' Find protocols for aestivation of colonial ascidians +protocol
+#2
+task add project:'Culture of B. leachii'.'Long-term storage' Gather publications on the aestivation of colonial ascidians +inventory
+#3
+task add project:'Culture of B. leachii'.'Long-term storage' Establish the required environmental parameters depends:$((LTS+1)),$((LTS+2)) +analysis
+#4
+task add project:'Culture of B. leachii'.'Long-term storage' Test inducing aestivation depends:$((LTS+3)),$((EVP+9)) +training
+#5
+task add project:'Culture of B. leachii'.'Long-term storage' Test reactivation of aestivating colonies depends:$((LTS+4)) +training
+#6
+task add project:'Culture of B. leachii'.'Long-term storage' Master long-term storage of colonial ascidians depends:$((LTS+5)) +skill
+task $((BCS+6)) modify depends:$((LTS+6))
+#7
+task add project:'Culture of B. leachii'.'Long-term storage' Write  our own optimized protocol depends:$((LTS+6)) +create +protocol
+COUNTER=$((COUNTER+7))
+
+#----------------------------------------
+#- 1.4.8 Short-term storage
+#----------------------------------------
+STS=$COUNTER
+#1
+task add project:'Culture of B. leachii'.'Short-term storage' Design a small setup similar to the aquarium but independent for quarantine or subcloning +create +equipment
+#2
+task add project:'Culture of B. leachii'.'Short-term storage' List the required equipment depends:$((STS+1)) +inventory
+#3
+task add project:'Culture of B. leachii'.'Short-term storage' Get the required equipment depends:$((STS+2)) +purchase
+#4
+task add project:'Culture of B. leachii'.'Short-term storage' Build the short-term setup depends:$((STS+3)) +equipment
+task $((BCS+5)) modify depends:$((STS+4))
+#5
+task add project:'Culture of B. leachii'.'Short-term storage' Monitor the growth rate depends:$((STS+4)),$((GRW+5)) +imaging
+#6
+task add project:'Culture of B. leachii'.'Short-term storage' Assess the difference with growth in the aquarium depends:$((STS+5)),$((EVP+6)) +analysis
+#7
+task add project:'Culture of B. leachii'.'Short-term storage' Write our own protocol depends:$((STS+6)) +create +protocol
+COUNTER=$((COUNTER+7))
+echo $COUNTER
+
 
 ########################################
 # 2. Lluis PhD thesis
@@ -1156,6 +1344,10 @@ COUNTER=$((COUNTER+8))
 # 4. Prospective experiments
 ########################################
 
+
+# In vitro fetrilization
+# Cryogenisation
+# CRISPR, transgenics
 
 #11
 task add project:'Environment of WBR'.'Haemocytes' Characterize functionally the essential cell types using RNAi and growth factor injections depends:$((EHA+10)),$((INJ+7)),$((RNA+8)),$((VCT+5))
