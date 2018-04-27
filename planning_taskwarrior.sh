@@ -338,7 +338,7 @@ task add project:'Techniques'.'Histology'.'Determine cell types' Train on cell t
 task add project:'Techniques'.'Histology'.'Determine cell types' Master cell type identification depends:$((DCT+6)) +skill
 #8
 task add project:'Techniques'.'Histology'.'Determine cell types' Write our own optimized protocols depends:$((DCT+7)) +create +protocol
-COUNTER=$((COUNTER+7))
+COUNTER=$((COUNTER+8))
 
 
 #========================================
@@ -1226,7 +1226,6 @@ task add project:'Culture of B. leachii'.'Short-term storage' Assess the differe
 #7
 task add project:'Culture of B. leachii'.'Short-term storage' Write our own protocol depends:$((STS+6)) +create +protocol
 COUNTER=$((COUNTER+7))
-echo $COUNTER
 
 
 ########################################
@@ -1237,18 +1236,18 @@ echo $COUNTER
 #- 2.1 Administrative part
 #----------------------------------------
 THS=$COUNTER
-#1
-task add project:'PhD'.'Thesis' Define more precisely a suitable topic
-#2
-task add project:'PhD'.'Thesis' Assemble a thesis committee
+#1 in addition depends:SCI+4
+task add project:'PhD'.'Thesis' Choose a title for the thesis +analysis
+#2 in addition depends:SCI+6
+task add project:'PhD'.'Thesis' Assemble a thesis committee +contact
 #3
-task add project:'PhD'.'Thesis' 'Get enough credits (at least 2 per year)'
+task add project:'PhD'.'Thesis' 'Get enough credits (at least 2 per year)' +training
 #4
-task add project:'PhD'.'Thesis' 'Get 2 credits for soft skills (throught the PhD)'
+task add project:'PhD'.'Thesis' 'Get 2 credits for soft skills (throught the PhD)' +training
 #5
-task add project:'PhD'.'Thesis' 'Attend at least 3 workshops or conferences (throught the PhD)'
+task add project:'PhD'.'Thesis' 'Attend at least 3 workshops or conferences (throught the PhD)' +training
 #6
-task add project:'PhD'.'Thesis' Talk to Laurent Falquet about StarOmics for insights in the program
+task add project:'PhD'.'Thesis' Talk to Laurent Falquet about StarOmics for insights in the program +contact
 COUNTER=$((COUNTER+6))
 
 #----------------------------------------
@@ -1256,10 +1255,14 @@ COUNTER=$((COUNTER+6))
 #----------------------------------------
 CRS=$COUNTER
 #1
-task add project:'PhD'.'Courses' Attend Data Management Planing by the SIB, Lausanne start:2018-03-15 end:2018-03-15
+task add project:'PhD'.'Courses' Attend Data Management Planing by the SIB, Lausanne start:2018-03-15 end:2018-03-15 +training
 #2
-task add project:'PhD'.'Courses' Attend Development of Marine Organisms by the CNRS, Villefranche start:2018-03-20 end:2018-03-31
-COUNTER=$((COUNTER+2))
+task add project:'PhD'.'Courses' Validate the DMP course by Adeline depends:$((CRS+1)) +contact
+#3
+task add project:'PhD'.'Courses' Attend Development of Marine Organisms by the CNRS, Villefranche start:2018-03-20 end:2018-03-31 +training
+#4
+task add project:'PhD'.'Courses' Validate the DOMO course by Adeline depends:$((CRS+3)) +contact
+COUNTER=$((COUNTER+4))
 
 #----------------------------------------
 #- 2.3 Techniques to learn
@@ -1268,11 +1271,11 @@ TCH=$COUNTER
 #1
 task add project:'PhD'.'Techniques' Learn cryoinjury using Zebrafish +training
 #2
-task add project:'PhD'.'Techniques' Learn tissue fixation using Zebrafish +training
+task add project:'PhD'.'Techniques' Learn tissue fixation using Zebrafish depends:$((TCH+1)) +training
 #3
-task add project:'PhD'.'Techniques' Learn tissue mounting using Zebrafish +training
+task add project:'PhD'.'Techniques' Learn tissue mounting using Zebrafish depends:$((TCH+2)) +training
 #4
-task add project:'PhD'.'Techniques' Learn tissue sectioning on the cryotome with Verena using Zebrafish +training
+task add project:'PhD'.'Techniques' Learn tissue sectioning on the cryotome with Verena using Zebrafish depends:$((TCH+3)) +training
 #5
 task add project:'PhD'.'Techniques' Learn vascular tissue ablation using Botryllus schlosseri +training
 #6
@@ -1282,22 +1285,32 @@ task add project:'PhD'.'Techniques' Get trained for confocal microscopy +trainin
 #8
 task add project:'PhD'.'Techniques' Get trained for epifluorescence microscopy +training +imaging 
 #9
-task add project:'PhD'.'Techniques' Get trained on marine organisms during the DOMO course depends:$((CRS+2)) +training
-COUNTER=$((COUNTER+9))
+task add project:'PhD'.'Techniques' Get trained on marine organisms during the DOMO course depends:$((CRS+3)) +training
+#10
+task add project:'PhD'.'Techniques' Get trained for autoclaving +training
+COUNTER=$((COUNTER+10))
 
 #----------------------------------------
 #- 2.4 Science part
 #----------------------------------------
-#task add project:'PhD'.'Science' Share all of our scientifc papers depends:$((SRV+1)) +software
+SCI=$COUNTER
 #1
-task add project:'PhD'.'Science' Environmental conditions for our animals
+task add project:'PhD'.'Science' Study the context of the vascular environment of WBR +inventory
 #2
-task add project:'PhD'.'Science' Cell origin
+task add project:'PhD'.'Science' Study the context of the cellular origin of WBR +inventory
 #3
-task add project:'PhD'.'Science' Atlas
+task add project:'PhD'.'Science' Study the context of the atlas of WBR +inventory
 #4
-task add project:'PhD'.'Goals' intermediate goals to be described here in due course
-COUNTER=$((COUNTER+4))
+task add project:'PhD'.'Science' Define more precisely the topic of the thesis depends:$((SCI+1)),$((SCI+2)),$((SCI+3)) +analysis
+task $((THS+1)) modify depends:$((SCI+4))
+#5
+task add project:'PhD'.'Science' Establish a tentative schedule for the thesis depends:$((SCI+4)) +analysis
+#6
+task add project:'PhD'.'Science' Contact Jurge regarding the proteomics part and the thesis depends:$((SCI+5)) +contact
+task $((THS+2)) modify depends:$((SCI+6))
+#7
+task add project:'PhD'.'Science' Determine intermediate goals to study WBR depends:$((SCI+5)) +create +inventory
+COUNTER=$((COUNTER+7))
 
 ########################################
 # 3. Laboratory equipment
@@ -1306,53 +1319,119 @@ COUNTER=$((COUNTER+4))
 #========================================
 #= 3.1 Coffee break
 #========================================
-
-INJ=$COUNTER
+COF=$COUNTER
 #1
-task add project:'Laboratory equipment'.''
-COUNTER=$((COUNTER+8))
+task add project:'Laboratory equipment'.'Coffee break' Get a mini-fridge for storing our food and cream +purchase
+#2
+task add project:'Laboratory equipment'.'Coffee break' Get a portable radio station +purchase
+COUNTER=$((COUNTER+2))
 
 #========================================
 #= 3.2 Bench space
 #========================================
-
-INJ=$COUNTER
+BEN=$COUNTER
 #1
-task add project:'Laboratory equipment'.''
-COUNTER=$((COUNTER+8))
+task add project:'Laboratory equipment'.'Bench space' Get a shaking platform +purchase
+#2
+task add project:'Laboratory equipment'.'Bench space' Get a portable tank for liquid nitrogen +purchase
+#3
+task add project:'Laboratory equipment'.'Bench space' Get a microwave +purchase
+#4
+task add project:'Laboratory equipment'.'Bench space' Get a table-top centrifuge +purchase
+#5
+task add project:'Laboratory equipment'.'Bench space' Get a table-top shaking platform +purchase
+#6
+task add project:'Laboratory equipment'.'Bench space' Get a labeling machine +purchase
+COUNTER=$((COUNTER+6))
 
 #========================================
 #= 3.3 Storage
 #========================================
-
-INJ=$COUNTER
+STO=$COUNTER
 #1
-task add project:'Laboratory equipment'.''
-COUNTER=$((COUNTER+8))
+task add project:'Laboratory equipment'.'Storage space' Organize the space at 4C +analysis
+#2
+task add project:'Laboratory equipment'.'Storage space' Organize the space at -20C +analysis
+#3
+task add project:'Laboratory equipment'.'Storage space' Organize the space at -80C from Didier +analysis +contact
+#4
+task add project:'Laboratory equipment'.'Storage space' Find hooks for the bench +inventory
+#5
+task add project:'Laboratory equipment'.'Storage space' Assemble the control panel for the aquarium +create +equipment
+#6
+task add project:'Laboratory equipment'.'Storage space' Organize the space in the lab depends:$((STO+4)),$((STO+5)) +analysis
+COUNTER=$((COUNTER+6))
 
 #========================================
 #= 3.4 Computers
 #========================================
-
-INJ=$COUNTER
+CPU=$COUNTER
 #1
-task add project:'Laboratory equipment'.''
-COUNTER=$((COUNTER+8))
+task add project:'Laboratory equipment'.'Computers' Get a server for running our sharing software +equipment
+#2
+task add project:'Laboratory equipment'.'Computers' Get a server for sharing scientific articles +equipment
+#3
+task add project:'Laboratory equipment'.'Computers' Get a server for storing our data +equipment
+#4
+task add project:'Laboratory equipment'.'Computers' Get a number cruncher for analyzing of the data +equipment
+#5
+task add project:'Laboratory equipment'.'Computers' Define the structure of the data on all computers +equipment
+#6
+task add project:'Laboratory equipment'.'Computers' Setup proper backup solutions depends:$((CPU+1))-$((CPU+3)) +equipment
+#7
+task add project:'Laboratory equipment'.'Computers' Get a Raspberry PI for scientific presentations +equipment
+#8
+task add project:'Laboratory equipment'.'Computers' Adapt the Raspberry PI for imaging in the stereoscope depends:$((CPU+7)) +equipment
+#9
+task add project:'Laboratory equipment'.'Computers' Get the Apex on the network +contact
+COUNTER=$((COUNTER+9))
 
 
 ########################################
 # 4. Prospective experiments
 ########################################
 
+NEXT=$COUNTER
+#----------------------------------------
+#- 4.1 In vitro fertilization
+#----------------------------------------
+#1
+task add project:'Prospective experiments'.'In vitro fertilization' Collect sperm and embryos in gravid colonies depends:$((ISR+8)) +experiment
+#2
+task add project:'Prospective experiments'.'In vitro fertilization' Test in vitro fertilization in colonial ascidians depends:$((NEXT+1)) +training +experiment
 
-# In vitro fetrilization
-# Cryogenisation
-# CRISPR, transgenics
+#----------------------------------------
+#- 4.2 Cryogenisation
+#----------------------------------------
+#3
+task add project:'Prospective experiments'.'Cryogenisation' Test cryogenising colonial ascidians gametes depends:$((NEXT+1)) +experiment +training
 
-#11
-task add project:'Environment of WBR'.'Haemocytes' Characterize functionally the essential cell types using RNAi and growth factor injections depends:$((EHA+10)),$((INJ+7)),$((RNA+8)),$((VCT+5))
-#10
-task add project:'Environment of WBR'.'Haemolymph flow' Characterize the row of haemolymph flow during WBR depends:$((EHF+9)),$((VRW+6))
-#MIN: environment minimal, including size of regenerate
-#Description of blastogenic cycle in B. leachii
+#----------------------------------------
+#- 4.3 Transgenics
+#----------------------------------------
+#4
+task add project:'Prospective experiments'.'Transgenics' Test transgenics in colonial ascidians embryos depends:$((NEXT+1)) +experiment +training
 
+#----------------------------------------
+#- 4.4 Functional characterization of WBR
+#----------------------------------------
+#5
+task add project:'Prospective experiments'.'Functional characterization' Characterize functionally the regeneration niche using RNAi and growth factor injections depends:$((INJ+7)),$((RNA+8)),$((VCT+5)) +experiment
+#6
+task add project:'Prospective experiments'.'Functional characterization' Characterize functionally the haemocytes using RNAi and growth factor injections depends:$((EHA+10)),$((INJ+7)),$((RNA+8)),$((VCT+5)) +experiment
+#7
+task add project:'Prospective experiments'.'Functional characterization' Characterize the functional role of the vascular system during WBR depends:$((EHF+9)),$((EVS+7)),$((ETU+7)),$((EMT+6)),$((VCT+5)) +experiment
+
+#----------------------------------------
+#- 4.5 Atlas of blastogenesis
+#----------------------------------------
+#8
+task add project:'Prospective experiments'.'Atlas of blastogenesis' Create an atlas of blastogenesis depends:$((VCT+5)) +experiment
+
+#----------------------------------------
+#- 4.6 Atlas of embryogenesis
+#----------------------------------------
+#9
+task add project:'Prospective experiments'.'Atlas of embryogenesis' Create an atlas of embryogenesis depends:$((NEXT+1)),$((VCT+5)) +experiment
+COUNTER=$((COUNTER+9))
+echo $COUNTER
