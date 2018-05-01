@@ -21,11 +21,9 @@ COUNTER=0
 #  +inventory
 #  +manuscript
 #  +measurement
-#  +molecular
 #  +protocol
 #  +purchase
 #  +skill
-#  +technique
 #  +training
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -78,7 +76,7 @@ task add project:'Techniques'.'Handling'.'Injection' Train using mock injections
 #7
 task add project:'Techniques'.'Handling'.'Injection' Master injections depends:$((INJ+6)) +skill
 #8
-task add project:'Techniques'.'Handling'.'Injection' Write our own optimized protocol depends:$((INJ+7)) +create +protocol
+task add project:'Techniques'.'Handling'.'Injection' Write our own optimized protocol for injections depends:$((INJ+7)) +create +protocol
 COUNTER=$((COUNTER+8))
 
 #----------------------------------------
@@ -98,7 +96,7 @@ task add project:'Techniques'.'Handling'.'Soaking' Test the prototype chamber de
 #6
 task add project:'Techniques'.'Handling'.'Soaking' Get several incubation chambers depends:$((SOK+4)),$((SOK+5)) +equipment
 #7
-task add project:'Techniques'.'Handling'.'Soaking' Write our own optimized protocol depends:$((SOK+6)) +create +protocol
+task add project:'Techniques'.'Handling'.'Soaking' Write our own optimized protocol for soaking depends:$((SOK+6)) +create +protocol
 COUNTER=$((COUNTER+7))
 
 #----------------------------------------
@@ -116,7 +114,7 @@ task add project:'Techniques'.'Handling'.'Anesthesia' Test anesthesia concentrat
 #5
 task add project:'Techniques'.'Handling'.'Anesthesia' Master anesthesia depends:$((ANH+4)) +skill
 #6
-task add project:'Techniques'.'Handling'.'Anesthesia' Write our own optimized protocol depends:$((ANH+5)) +create +protocol
+task add project:'Techniques'.'Handling'.'Anesthesia' Write our own optimized protocol for anesthesia depends:$((ANH+5)) +create +protocol
 COUNTER=$((COUNTER+6))
 
 #----------------------------------------
@@ -134,7 +132,7 @@ task add project:'Techniques'.'Handling'.'Inducing WBR' Test induction of WBR in
 #5
 task add project:'Techniques'.'Handling'.'Inducing WBR' Master reproducible inductions depends:$((IND+4)) +skill
 #6
-task add project:'Techniques'.'Handling'.'Inducing WBR' Write our own optimized protocol depends:$((IND+5)) +create +protocol
+task add project:'Techniques'.'Handling'.'Inducing WBR' Write our own optimized protocol for inducing WBR depends:$((IND+5)) +create +protocol
 COUNTER=$((COUNTER+6))
 
 #----------------------------------------
@@ -142,17 +140,17 @@ COUNTER=$((COUNTER+6))
 #----------------------------------------
 ABL=$COUNTER
 #1
-task add project:'Techniques'.'Handling'.'Laser ablation' Find protocols for laser ablation colonial ascidians +protocol
+task add project:'Techniques'.'Handling'.'Laser ablation' Find protocols for laser ablation in colonial ascidians +protocol
 #2
 task add project:'Techniques'.'Handling'.'Laser ablation' List the required equipment depends:$((ABL+1)) +inventory
 #3
 task add project:'Techniques'.'Handling'.'Laser ablation' Get the required equipment depends:$((ABL+2)) +purchase
-#4
+#4 in addition depends:CCH+7 
 task add project:'Techniques'.'Handling'.'Laser ablation' Test laser ablation in colonial ascidians depends:$((ABL+3)) +training
 #5
 task add project:'Techniques'.'Handling'.'Laser ablation' Master laser ablation depends:$((ABL+4)) +skill
 #6
-task add project:'Techniques'.'Handling'.'Laser ablation' Write our own optimized protocol depends:$((ABL+5)) +create +protocol
+task add project:'Techniques'.'Handling'.'Laser ablation' Write our own optimized protocol for laser ablation depends:$((ABL+5)) +create +protocol
 COUNTER=$((COUNTER+6))
 
 #----------------------------------------
@@ -168,7 +166,7 @@ task add project:'Techniques'.'Handling'.'Remove pigments' List the required rea
 #4
 task add project:'Techniques'.'Handling'.'Remove pigments' Get the required reagents depends:$((PIG+3)) +purchase
 #5
-task add project:'Techniques'.'Handling'.'Remove pigments' Test pigment removal in colonial ascidians depends:$((PIG+4)) +training
+task add project:'Techniques'.'Handling'.'Remove pigments' Test pigment removal in colonial ascidians depends:$((PIG+4)),$((SOK+6)),$((INJ+7)) +training
 #6
 task add project:'Techniques'.'Handling'.'Remove pigments' Master pigment removal depends:$((PIG+5)) +skill
 #7
@@ -232,7 +230,7 @@ task add project:'Techniques'.'Handling'.'Micro-surgery' Test micro-surgery on c
 #6
 task add project:'Techniques'.'Handling'.'Micro-surgery' Master micro-surgery on colonial ascidians depends:$((MSG+5)) +skill
 #7
-task add project:'Techniques'.'Handling'.'Micro-surgery' Write our own protocol depends:$((MSG+6)) +create +protocol
+task add project:'Techniques'.'Handling'.'Micro-surgery' Write our own optimized protocol for micro-surgery depends:$((MSG+6)) +create +protocol
 COUNTER=$((COUNTER+7))
 
 #----------------------------------------
@@ -252,7 +250,7 @@ task add project:'Techniques'.'Handling'.'Tissue dissociation' Test tissue disso
 #6
 task add project:'Techniques'.'Handling'.'Tissue dissociation' Master tissue dissociation on colonial ascidians depends:$((TDS+5)) +skill
 #7
-task add project:'Techniques'.'Handling'.'Tissue dissociation' Write our own protocol depends:$((TDS+6)) +create +protocol
+task add project:'Techniques'.'Handling'.'Tissue dissociation' Write our own optimized protocol for tissue dissociation depends:$((TDS+6)) +create +protocol
 COUNTER=$((COUNTER+7))
 
 
@@ -275,11 +273,11 @@ task add project:'Techniques'.'Histology'.'Fixing colonies' Test fixation anesth
 #5
 task add project:'Techniques'.'Histology'.'Fixing colonies' Master fixation depends:$((FIX+4)) +skill
 #6
-task add project:'Techniques'.'Histology'.'Fixing colonies' Write our own optimized protocol depends:$((FIX+5)) +create +protocol
+task add project:'Techniques'.'Histology'.'Fixing colonies' Write our own optimized protocol for fixing depends:$((FIX+5)) +create +protocol
 COUNTER=$((COUNTER+6))
 
 #----------------------------------------
-#- 0.2.2 Cryosection fixed colonies
+#- 0.2.2 Cryosectioning fixed colonies
 #----------------------------------------
 SEC=$COUNTER
 #1
@@ -293,7 +291,7 @@ task add project:'Techniques'.'Histology'.'Sectioning' Test sectioning mounting,
 #5
 task add project:'Techniques'.'Histology'.'Sectioning' Master sectioning depends:$((SEC+4)) +skill
 #6
-task add project:'Techniques'.'Histology'.'Sectioning' Write our own optimized protocol depends:$((SEC+5)) +create +protocol
+task add project:'Techniques'.'Histology'.'Sectioning' Write our own optimized protocol for sectioning depends:$((SEC+5)) +create +protocol
 COUNTER=$((COUNTER+6))
 
 #----------------------------------------
@@ -315,7 +313,7 @@ task add project:'Techniques'.'Histology'.'Labeling sections' Test labelling of 
 #7
 task add project:'Techniques'.'Histology'.'Labeling sections' Master labelling depends:$((LBL+6)) +skill
 #8
-task add project:'Techniques'.'Histology'.'Labeling sections' Write our own optimized protocols depends:$((LBL+7)) +create +protocol
+task add project:'Techniques'.'Histology'.'Labeling sections' Write our own optimized protocols for labeling sections depends:$((LBL+7)) +create +protocol
 COUNTER=$((COUNTER+8))
 
 #----------------------------------------
@@ -337,7 +335,7 @@ task add project:'Techniques'.'Histology'.'Determine cell types' Train on cell t
 #7
 task add project:'Techniques'.'Histology'.'Determine cell types' Master cell type identification depends:$((DCT+6)) +skill
 #8
-task add project:'Techniques'.'Histology'.'Determine cell types' Write our own optimized protocols depends:$((DCT+7)) +create +protocol
+task add project:'Techniques'.'Histology'.'Determine cell types' Write our own optimized protocol for cell identification depends:$((DCT+7)) +create +protocol
 COUNTER=$((COUNTER+8))
 
 
@@ -392,7 +390,7 @@ task add project:'Techniques'.'Imaging'.'Monitoring growth' Test monitoring on v
 #5
 task add project:'Techniques'.'Imaging'.'Monitoring growth' Master monitoring depends:$((GRW+4)) +skill
 #6
-task add project:'Techniques'.'Imaging'.'Monitoring growth' Write our own optimized protocol depends:$((GRW+5)) +create +protocol
+task add project:'Techniques'.'Imaging'.'Monitoring growth' Write our own optimized protocol for monitoring growth depends:$((GRW+5)) +create +protocol
 COUNTER=$((COUNTER+6))
 
 #----------------------------------------
@@ -410,7 +408,7 @@ task add project:'Techniques'.'Imaging'.'Monitoring flow' Test monitoring on var
 #5
 task add project:'Techniques'.'Imaging'.'Monitoring flow' Master monitoring flow depends:$((FLW+4)) +skill
 #6
-task add project:'Techniques'.'Imaging'.'Monitoring flow' Write our own optimized protocol depends:$((FLW+5)) +create +protocol
+task add project:'Techniques'.'Imaging'.'Monitoring flow' Write our own optimized protocol for monitoring flow depends:$((FLW+5)) +create +protocol
 COUNTER=$((COUNTER+6))
 
 #----------------------------------------
@@ -431,12 +429,13 @@ task add project:'Techniques'.'Imaging'.'Culture chamber' Get the required reage
 task add project:'Techniques'.'Imaging'.'Culture chamber' Get the required equipment depends:$((CCH+3)),$((CCH+4)) +purchase
 #7
 task add project:'Techniques'.'Imaging'.'Culture chamber' Test the chamber on the microscopes depends:$((CCH+5)),$((CCH+6)),$((MCR+9)),$((MCR+11)),$((MCR+13)) +training
-#8
+task $((ABL+4)) modify depends:$((CCH+7)) 
+#8 in addition depends:BCS+6
 task add project:'Techniques'.'Imaging'.'Culture chamber' Compare the growth and flow rates with those in the aquarium depends:$((CCH+7)),$((GRW+6)),$((FLW+6)) +imaging
 #9
 task add project:'Techniques'.'Imaging'.'Culture chamber' Master culture chambers depends:$((CCH+8)) +skill
 #10
-task add project:'Techniques'.'Imaging'.'Culture chamber' Write our own optimized protocol depends:$((CCH+9)) +create +protocol
+task add project:'Techniques'.'Imaging'.'Culture chamber' Write our own optimized protocol for culture chambers depends:$((CCH+9)) +create +protocol
 COUNTER=$((COUNTER+10))
 
 #----------------------------------------
@@ -452,11 +451,12 @@ task add project:'Techniques'.'Imaging'.'Tunicin labeling' List the required rea
 #4
 task add project:'Techniques'.'Imaging'.'Tunicin labeling' Get the required reagents depends:$((TUL+3)) +purchase
 #5
-task add project:'Techniques'.'Imaging'.'Tunicin labeling' Test tunicin labeling in colonial ascidians depends:$((TUL+4)),$((MCR+8)),$((MCR+10)),$((MCR+12)) +training
+task add project:'Techniques'.'Imaging'.'Tunicin labeling' Test tunicin labeling in colonial ascidians depends:$((TUL+4)),$((MCR+8)),$((MCR+10)),$((MCR+12)),$((SOK+6)) +training
 #6
 task add project:'Techniques'.'Imaging'.'Tunicin labeling' Master tunicin labeling depends:$((TUL+5)) +skill
+task $((SEC+4)) modify depends:$((TUL+6)) 
 #7
-task add project:'Techniques'.'Imaging'.'Tunicin labeling' Write our own optimized protocol depends:$((TUL+6)) +create +protocol
+task add project:'Techniques'.'Imaging'.'Tunicin labeling' Write our own optimized protocol for tunicin labeling depends:$((TUL+6)) +create +protocol
 COUNTER=$((COUNTER+7))
 
 
@@ -479,7 +479,7 @@ task add project:'Techniques'.'Molecular biology'.'DNA extraction' Test DNA extr
 #5
 task add project:'Techniques'.'Molecular biology'.'DNA extraction' Master DNA extraction depends:$((DNA+4)) +skill
 #6
-task add project:'Techniques'.'Molecular biology'.'DNA extraction' Write our own optimized protocol depends:$((DNA+5)) +create +protocol
+task add project:'Techniques'.'Molecular biology'.'DNA extraction' Write our own optimized protocol for DNA extraction depends:$((DNA+5)) +create +protocol
 COUNTER=$((COUNTER+6))
 
 #----------------------------------------
@@ -497,7 +497,7 @@ task add project:'Techniques'.'Molecular biology'.'Genotype by sequencing' Send 
 #5
 task add project:'Techniques'.'Molecular biology'.'Genotype by sequencing' Blast the sequences to genotype the animals depends:$((SEQ+4)) +skill
 #6
-task add project:'Techniques'.'Molecular biology'.'Genotype by sequencing' Write our own optimized protocol depends:$((SEQ+5)) +create +protocol
+task add project:'Techniques'.'Molecular biology'.'Genotype by sequencing' Write our own optimized protocol for genotyping depends:$((SEQ+5)) +create +protocol
 COUNTER=$((COUNTER+6))
 
 #----------------------------------------
@@ -515,7 +515,7 @@ task add project:'Techniques'.'Molecular biology'.'Genotype by PCR' PCR DNA of v
 #5
 task add project:'Techniques'.'Molecular biology'.'Genotype by PCR' Compare the results with genotyping by sequencing depends:$((PCR+4)),$((SEQ+5)) +skill
 #6
-task add project:'Techniques'.'Molecular biology'.'Genotype by PCR' Write our own optimized protocol depends:$((PCR+5)) +create +protocol
+task add project:'Techniques'.'Molecular biology'.'Genotype by PCR' Write our own optimized protocol for PCR genotyping depends:$((PCR+5)) +create +protocol
 COUNTER=$((COUNTER+6))
 
 #----------------------------------------
@@ -529,7 +529,7 @@ task add project:'Techniques'.'Molecular biology'.'RNA interference' List the re
 #3
 task add project:'Techniques'.'Molecular biology'.'RNA interference' List the required equipment depends:$((RNA+1)) +inventory
 #4
-task add project:'Techniques'.'Molecular biology'.'RNA interference' Design a probe for positive control tests depends:$((RNA+1)) +inventory +molecular
+task add project:'Techniques'.'Molecular biology'.'RNA interference' Design a probe for positive control tests depends:$((RNA+1)) +inventory
 #5
 task add project:'Techniques'.'Molecular biology'.'RNA interference' Get the required reagents depends:$((RNA+2)),$((RNA+4)) +purchase
 #6
@@ -539,7 +539,7 @@ task add project:'Techniques'.'Molecular biology'.'RNA interference' Test RNAi i
 #8
 task add project:'Techniques'.'Molecular biology'.'RNA interference' Master RNAi depends:$((RNA+7)) +skill
 #9
-task add project:'Techniques'.'Molecular biology'.'RNA interference' Write our own optimized protocol depends:$((RNA+8)) +create +protocol
+task add project:'Techniques'.'Molecular biology'.'RNA interference' Write our own optimized protocol for RNAi depends:$((RNA+8)) +create +protocol
 COUNTER=$((COUNTER+9))
 
 #----------------------------------------
@@ -559,7 +559,7 @@ task add project:'Techniques'.'Molecular biology'.'scRNA sequencing' Send for li
 #6
 task add project:'Techniques'.'Molecular biology'.'scRNA sequencing' Analyze the sequencing results depends:$((SCR+5)) +code
 #7
-task add project:'Techniques'.'Molecular biology'.'scRNA sequencing' Write our own optimized protocol for colonial ascidians depends:$((SCR+6)) +create +protocol
+task add project:'Techniques'.'Molecular biology'.'scRNA sequencing' Write our own optimized protocol for scRNA depends:$((SCR+6)) +create +protocol
 COUNTER=$((COUNTER+7))
 
 #----------------------------------------
@@ -579,7 +579,7 @@ task add project:'Techniques'.'Molecular biology'.'Cell sorting' Assess the sort
 #6
 task add project:'Techniques'.'Molecular biology'.'Cell sorting' Master cell sorting depends:$((CST+5)) +skill
 #7
-task add project:'Techniques'.'Molecular biology'.'Cell sorting' Write our own optimized protocol depends:$((CST+6)) +create +protocol
+task add project:'Techniques'.'Molecular biology'.'Cell sorting' Write our own optimized protocol for cell sorting depends:$((CST+6)) +create +protocol
 COUNTER=$((COUNTER+7))
 
 #----------------------------------------
@@ -599,12 +599,12 @@ task add project:'Techniques'.'Molecular biology'.'Proteomics' Test proteomics a
 #6
 task add project:'Techniques'.'Molecular biology'.'Proteomics' Master proteomics analysis in colonial ascidians depends:$((PRT+5)) +skill
 #7
-task add project:'Techniques'.'Molecular biology'.'Proteomics' Write our own optimized protocol depends:$((PRT+6)) +create +protocol
+task add project:'Techniques'.'Molecular biology'.'Proteomics' Write our own optimized protocol for proteomics depends:$((PRT+6)) +create +protocol
 COUNTER=$((COUNTER+7))
 
 
 #========================================
-#= 0.5 Image Analysis
+#= 0.5 Image analysis
 #========================================
 
 #----------------------------------------
@@ -616,16 +616,16 @@ task add project:'Techniques'.'Image Analysis'.'Haemolymph measurement' Install 
 #2
 task add project:'Techniques'.'Image Analysis'.'Haemolymph measurement' Adapt the code to Octave depends:$((FLS+1)) +code
 #3
-task add project:'Techniques'.'Image Analysis'.'Haemolymph measurement' Reanalyze the recodings from the Wilson lab depends:$((FLS+2))
+task add project:'Techniques'.'Image Analysis'.'Haemolymph measurement' Reanalyze the recodings from the Wilson lab depends:$((FLS+2)) +experiment
 #4
-task add project:'Techniques'.'Image Analysis'.'Haemolymph measurement' Simulate synthetic data corresponding to our recording setup depends:$((FLS+3)),$((MCR+9))
+task add project:'Techniques'.'Image Analysis'.'Haemolymph measurement' Simulate synthetic data corresponding to our recording setup depends:$((FLS+3)),$((MCR+9)) +experiment
 #5
 task add project:'Techniques'.'Image Analysis'.'Haemolymph measurement' Adapt the code our new recordings depends:$((FLS+4)) +code
 #6
-task add project:'Techniques'.'Image Analysis'.'Haemolymph measurement' Publish the annotated code depends:$((FLS+5))
+task add project:'Techniques'.'Image Analysis'.'Haemolymph measurement' Publish the annotated code depends:$((FLS+5)) +manuscript
 task $((FLW+4)) modify depends:$((FLS+6))
 #7
-task add project:'Techniques'.'Image Analysis'.'Haemolymph measurement' Write a User Manual depends:$((FLS+6)) +create +protocol
+task add project:'Techniques'.'Image Analysis'.'Haemolymph measurement' Write a User Manual for haemolymph measurement depends:$((FLS+6)) +create +protocol
 COUNTER=$((COUNTER+7))
 
 #----------------------------------------
@@ -637,16 +637,16 @@ task add project:'Techniques'.'Image Analysis'.'Colony size' Install the code fr
 #2
 task add project:'Techniques'.'Image Analysis'.'Colony size' Adapt the code to Octave depends:$((CSZ+1)) +code
 #3
-task add project:'Techniques'.'Image Analysis'.'Colony size' Reanalyze images from the Wilson lab depends:$((CSZ+2))
+task add project:'Techniques'.'Image Analysis'.'Colony size' Reanalyze images from the Wilson lab depends:$((CSZ+2)) +analysis
 #4
-task add project:'Techniques'.'Image Analysis'.'Colony size' Adapt the code to our new recording setup depends:$((CSZ+3)),$((MCR+8))
+task add project:'Techniques'.'Image Analysis'.'Colony size' Adapt the code to our new recording setup depends:$((CSZ+3)),$((MCR+8)) +code
 #5
 task add project:'Techniques'.'Image Analysis'.'Colony size' Fully automatize the code depends:$((CSZ+4)) +code
 #6
-task add project:'Techniques'.'Image Analysis'.'Colony size' Publish the annotated code depends:$((CSZ+5))
+task add project:'Techniques'.'Image Analysis'.'Colony size' Publish the annotated code depends:$((CSZ+5)) +manuscript
 task $((GRW+4)) modify depends:$((CSZ+6)) 
 #7
-task add project:'Techniques'.'Image Analysis'.'Colony size' Write a User Manual depends:$((CSZ+6)) +create +protocol
+task add project:'Techniques'.'Image Analysis'.'Colony size' Write a User Manual for colony size measurement depends:$((CSZ+6)) +create +protocol
 COUNTER=$((COUNTER+7))
 
 #----------------------------------------
@@ -658,15 +658,15 @@ task add project:'Techniques'.'Image Analysis'.'Cell lineaging' Install the BioE
 #2
 task add project:'Techniques'.'Image Analysis'.'Cell lineaging' Obtain sample data from the authors +contact
 #3
-task add project:'Techniques'.'Image Analysis'.'Cell lineaging' Test the software on the sample data depends:$((CLI+1)),$((CLI+2))
+task add project:'Techniques'.'Image Analysis'.'Cell lineaging' Test the software on the sample data depends:$((CLI+1)),$((CLI+2)) +training
 #4 in addition depends:LET+7
 task add project:'Techniques'.'Image Analysis'.'Cell lineaging' Simulate synthetic data corresponding to our setup +code
 #5
-task add project:'Techniques'.'Image Analysis'.'Cell lineaging' Test the software on the synthetic data depends:$((CLI+3)),$((CLI+4))
+task add project:'Techniques'.'Image Analysis'.'Cell lineaging' Test the software on the synthetic data depends:$((CLI+3)),$((CLI+4)) +experiment
 #6
 task add project:'Techniques'.'Image Analysis'.'Cell lineaging' Adapt the code to our data depends:$((CLI+5)) +code
 #7
-task add project:'Techniques'.'Image Analysis'.'Cell lineaging' Write our User Manual depends:$((CLI+6))
+task add project:'Techniques'.'Image Analysis'.'Cell lineaging' Write our User Manual for cell lineaging depends:$((CLI+6)) +create +protocol
 COUNTER=$((COUNTER+7))
 
 #----------------------------------------
@@ -678,15 +678,15 @@ task add project:'Techniques'.'Image Analysis'.'3D morphology' Install the code 
 #2
 task add project:'Techniques'.'Image Analysis'.'3D morphology' Adapt the code to Octave depends:$((M3D+1)) +code 
 #3
-task add project:'Techniques'.'Image Analysis'.'3D morphology' Acquire new data specific to WBR niches depends:$((MCR+10))
+task add project:'Techniques'.'Image Analysis'.'3D morphology' Acquire new data specific to WBR niches depends:$((MCR+10)) +imaging
 #4
 task add project:'Techniques'.'Image Analysis'.'3D morphology' Simulate synthetic data corresponding to these data depends:$((M3D+3)) +code
 #5
 task add project:'Techniques'.'Image Analysis'.'3D morphology' Adapt the code to our new data depends:$((M3D+2)),$((M3D+4)) +code
 #6
-task add project:'Techniques'.'Image Analysis'.'3D morphology' Publish the annotated code depends:$((M3D+5)) 
+task add project:'Techniques'.'Image Analysis'.'3D morphology' Publish the annotated code depends:$((M3D+5)) +manuscript
 #7
-task add project:'Techniques'.'Image Analysis'.'3D morphology' Write a User Manual depends:$((M3D+6)) +create +protocol
+task add project:'Techniques'.'Image Analysis'.'3D morphology' Write a User Manual for 3D morphology depends:$((M3D+6)) +create +protocol
 COUNTER=$((COUNTER+7))
 
 #----------------------------------------
@@ -698,19 +698,19 @@ task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Find protocols f
 #2
 task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Obtain the code and sample data from ANISEED +contact
 #3
-task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Test the code on sample data depends:$((MVE+1)),$((MVE+2))
+task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Test the code on sample data depends:$((MVE+1)),$((MVE+2)) +training
 #4
-task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Define reference axes for the regeneration niche throughout WBR +create
+task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Define reference axes for the regeneration niche throughout WBR +analysis
 #5
-task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Define a mapping function for our 3D morphology data depends:$((MVE+4)) +create
+task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Define a mapping function for our 3D morphology data depends:$((MVE+4)) +analysis
 #6
-task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Warp our morphology data onto the virtual embryo depends:$((MVE+3)),$((MVE+5))
+task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Warp our morphology data onto the virtual embryo depends:$((MVE+3)),$((MVE+5)) +code
 #7
 task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Incorporate the lineaging data onto the virtual embryo depends:$((MVE+6)),$((CLI+3)) +code
 #8
-task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Publish the annotated code depends:$((MVE+7))
+task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Publish the annotated code depends:$((MVE+7)) +manuscript
 #9
-task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Write a User Manual depends:$((MVE+8))
+task add project:'Techniques'.'Image Analysis'.'Virtual embryo' Write a User Manual depends:$((MVE+8)) +create +protocol
 COUNTER=$((COUNTER+9))
 
 #----------------------------------------
@@ -730,13 +730,13 @@ task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Quantify
 #6
 task add project:'Techniques'.'Image Analysis'.'Classifying cell types' 'Manually determine a training set of known cell types' depends:$((CCT+3)) +analysis
 #7
-task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Train a classifier to discriminate between cell types depends:$((CCT+2)),$((CCT+4)),$((CCT+5)),$((CCT+6)) +experiment +code
+task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Train a classifier to discriminate between cell types depends:$((CCT+2)),$((CCT+4)),$((CCT+5)),$((CCT+6)) +code
 #8
 task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Quantify the accuracy of the classifier depends:$((CCT+7)) +analysis
 #9
 task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Publish the annotated classifier depends:$((CCT+8)) +manuscript +code
 #10
-task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Write a User Manual depends:$((CCT+9)) +create +protocol
+task add project:'Techniques'.'Image Analysis'.'Classifying cell types' Write a User Manual for the classifier depends:$((CCT+9)) +create +protocol
 COUNTER=$((COUNTER+10))
 
 
@@ -753,7 +753,7 @@ COUNTER=$((COUNTER+10))
 #----------------------------------------
 LET=$COUNTER
 #1
-task add project:'Cellular origins of WBR'.'Label the entire tissue' List the available fluorescent dyes for live labeling +protocol
+task add project:'Cellular origins of WBR'.'Label the entire tissue' List the available fluorescent dyes for live labeling +inventory
 #2
 task add project:'Cellular origins of WBR'.'Label the entire tissue' Assess the autofluorescence of the tissue depends:$((CCH+9)),$((PIG+6)) +imaging
 #3
@@ -761,14 +761,14 @@ task add project:'Cellular origins of WBR'.'Label the entire tissue' Get the bes
 #4
 task add project:'Cellular origins of WBR'.'Label the entire tissue' Test dye delivery conditions depends:$((ANH+5)),$((INJ+7)),$((SOK+6)),$((LET+3)),$((CCH+9)) +training
 #5
-task add project:'Cellular origins of WBR'.'Label the entire tissue' Asses the tissue affinity and fluorescence of the selected dyes depends:$((LET+4)),$((CCH+9)) +imaging
+task add project:'Cellular origins of WBR'.'Label the entire tissue' Assess the tissue affinity and fluorescence of the selected dyes depends:$((LET+4)),$((CCH+9)) +imaging
 #6
-task add project:'Cellular origins of WBR'.'Label the entire tissue' Compare the growth and flow rates with unstained colonies depends:$((LET+5)),$((GRW+6)),$((FLW+6)) +imaging
+task add project:'Cellular origins of WBR'.'Label the entire tissue' Compare the growth and flow rates with unstained colonies depends:$((LET+5)),$((GRW+6)),$((FLW+6)) +measurement
 #7
 task add project:'Cellular origins of WBR'.'Label the entire tissue' Master whole-tissue labeling depends:$((LET+6)) +skill
 task $((CLI+4)) modify depends:$((LET+7))
 #8
-task add project:'Cellular origins of WBR'.'Label the entire tissue' Write our own optimized protocol depends:$((LET+7)) +create +protocol
+task add project:'Cellular origins of WBR'.'Label the entire tissue' Write our own optimized protocol for live labeling depends:$((LET+7)) +create +protocol
 COUNTER=$((COUNTER+8))
 
 #----------------------------------------
@@ -779,8 +779,8 @@ LIV=$COUNTER
 task add project:'Cellular origins of WBR'.'Long-term imaging' Assess the recordable span of the selected dyes depends:$((LET+7)),$((CCH+9)) +imaging
 #2
 task add project:'Cellular origins of WBR'.'Long-term imaging' Determine the necessary resolution for the analysis depends:$((FLW+6)),$((LBL+7)) +imaging
-#3 in addition depends: min WBR, final volume
-task add project:'Cellular origins of WBR'.'Long-term imaging' Determine the volume to be recorded for the aquisition depends:$((LIV+2)),$((MIN+7)) +imaging
+#3 in addition depends:EVS+3
+task add project:'Cellular origins of WBR'.'Long-term imaging' Determine the volume to be recorded for the aquisition, including the regenerated zooid depends:$((LIV+2)),$((IND+5)) +imaging
 #4
 task add project:'Cellular origins of WBR'.'Long-term imaging' Optimize the acquisition parameters for good signal-to-noise ratio depends:$((LIV+1)),$((LIV+3)),$((MCR+10)),$((MCR+13)) +training
 #5
@@ -788,7 +788,7 @@ task add project:'Cellular origins of WBR'.'Long-term imaging' Compare with unil
 #6
 task add project:'Cellular origins of WBR'.'Long-term imaging' Master long-term imaging depends:$((LIV+5)) +skill
 #7
-task add project:'Cellular origins of WBR'.'Long-term imaging' Write our own optimized protocol depends:$((LIV+6)) +create +protocol
+task add project:'Cellular origins of WBR'.'Long-term imaging' Write our own optimized protocol for long-term imaging depends:$((LIV+6)) +create +protocol
 COUNTER=$((COUNTER+7))
 
 #----------------------------------------
@@ -796,7 +796,7 @@ COUNTER=$((COUNTER+7))
 #----------------------------------------
 SPN=$COUNTER
 #1 in addition depends:EVS+3
-task add project:'Cellular origins of WBR'.'Chronology of niche establishment' Devise a reproducible induction of WBR +training
+task add project:'Cellular origins of WBR'.'Chronology of niche establishment' Induce reproducibly WBR in minimal vascular systems depends:$((IND+5)) +experiment
 #2
 task add project:'Cellular origins of WBR'.'Chronology of niche establishment' Fix regenerating colonies at regular time interval for the first 2 days depends:$((SPN+1)),$((FIX+5)) +experiment
 #3
@@ -812,9 +812,9 @@ task add project:'Cellular origins of WBR'.'Backtrack all cells of a niche' Imag
 #2
 task add project:'Cellular origins of WBR'.'Backtrack all cells of a niche' Determine the existing software for manual tracking +inventory
 #3
-task add project:'Cellular origins of WBR'.'Backtrack all cells of a niche' Determine the existing software for automated tracking +inventory
+task add project:'Cellular origins of WBR'.'Backtrack all cells of a niche' Determine the existing software for automated tracking depends:$((CLI+3)) +inventory
 #4
-task add project:'Cellular origins of WBR'.'Backtrack all cells of a niche' Backtrack all cells of the niche depends:$((COW+1)),$((COW+2)),$((COW+3)) +experiment
+task add project:'Cellular origins of WBR'.'Backtrack all cells of a niche' Backtrack all cells of the niche depends:$((COW+1)),$((COW+2)),$((COW+3)),$((CLI+6)) +experiment
 #5
 task add project:'Cellular origins of WBR'.'Backtrack all cells of a niche' Find the cellular origins of WBR depends:$((COW+4)) +analysis
 COUNTER=$((COUNTER+5))
@@ -828,9 +828,9 @@ task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Ide
 #2
 task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Characterize these cells depends:$((CHR+1)),$((LBL+7)) +experiment
 #3
-task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Isolate these cells depends:$((CHR+1)),$((INJ+7)) +experiment
+task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Isolate these cells depends:$((CHR+1)),$((TRF+6)) +experiment
 #4
-task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Label these cells depends:$((CHR+1)),$((INJ+7)) +experiment
+task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Label these cells depends:$((CHR+1)),$((TRF+6)) +experiment
 #5
 task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Ablate these cells depends:$((CHR+1)),$((ABL+5)) +experiment
 #6
@@ -849,15 +849,15 @@ COUNTER=$((COUNTER+7))
 #----------------------------------------
 AIM=$COUNTER
 #1
-task add project:'Atlas of WBR'.'Imaging all of WBR' Determine the length and overlap of the recording sessions depends:$((MCR+13)),$((LIV+6)),$((COW+1))
+task add project:'Atlas of WBR'.'Imaging all of WBR' Determine the length and overlap of the recording sessions depends:$((MCR+13)),$((LIV+6)),$((COW+1)) +experiment
 #2
-task add project:'Atlas of WBR'.'Imaging all of WBR' Image piece-wise the entire span of WBR depends:$((AIM+1))
+task add project:'Atlas of WBR'.'Imaging all of WBR' Image piece-wise the entire span of WBR depends:$((AIM+1)),$((MCR+13)) +imaging
 #3
-task add project:'Atlas of WBR'.'Imaging all of WBR' Fix the colonies at the end of each recording session depends:$((AIM+2))
+task add project:'Atlas of WBR'.'Imaging all of WBR' Fix the colonies at the end of each recording session depends:$((AIM+2)),$((FIX+5)) +experiment
 #4
-task add project:'Atlas of WBR'.'Imaging all of WBR' Label sections of the fixed colonies depends:$((AIM+3)),$((LBL+7))
+task add project:'Atlas of WBR'.'Imaging all of WBR' Label sections of the fixed colonies depends:$((AIM+3)),$((LBL+7)) +expriment
 #5
-task add project:'Atlas of WBR'.'Imaging all of WBR' Image the fixed colonies depends:$((AIM+4)),$((MCR+10)),$((MCR+12))
+task add project:'Atlas of WBR'.'Imaging all of WBR' Image the fixed colonies depends:$((AIM+4)),$((MCR+10)),$((MCR+12)) +imaging
 COUNTER=$((COUNTER+5))
 
 #----------------------------------------
@@ -865,17 +865,17 @@ COUNTER=$((COUNTER+5))
 #----------------------------------------
 VRW=$COUNTER
 #1
-task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Segment and track cells throughout WBR depends:$((AIM+2)),$((LIV+6)),$((COW+4))
+task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Segment and track cells throughout WBR depends:$((AIM+2)),$((LIV+6)),$((COW+4)) +analysis
 #2
-task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Reconstruct the morphology of the regeneration niche depends:$((VRW+1)),$((M3D+6))
+task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Reconstruct the morphology of the regeneration niche depends:$((VRW+1)),$((M3D+6)) +code
 #3
-task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Map the morphology onto the virtual embryo depends:$((VRW+2)),$((MVE+8))
+task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Map the morphology onto the virtual embryo depends:$((VRW+2)),$((MVE+8)) +code
 #4
-task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Synchronize the various recordings depends:$((VRW+3))
+task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Synchronize the various recordings depends:$((VRW+3)) +code
 #5
-task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Merge the recordings depends:$((VRW+4))
+task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Merge the recordings depends:$((VRW+4)) +code
 #6
-task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Publish our reference altas of WBR morphology depends:$((VRW+5))
+task add project:'Atlas of WBR'.'Virtual reconstruction of WBR' Publish our reference altas of WBR morphology depends:$((VRW+5)) +create +protocol
 COUNTER=$((COUNTER+6))
 
 #----------------------------------------
@@ -883,17 +883,17 @@ COUNTER=$((COUNTER+6))
 #----------------------------------------
 VCT=$COUNTER
 #1
-task add project:'Atlas of WBR'.'Cell types during WBR' Select the most informative stainings throughout WBR depends:$((LBL+7))
+task add project:'Atlas of WBR'.'Cell types during WBR' Select the most informative stainings throughout WBR depends:$((LBL+7)) +inventory
 #2
-task add project:'Atlas of WBR'.'Cell types during WBR' Label sections of fixed regeneration niches depends:$((VCT+1)),$((AIM+3))
+task add project:'Atlas of WBR'.'Cell types during WBR' Label sections of fixed regeneration niches depends:$((VCT+1)),$((AIM+3)) +experiment
 #3
-task add project:'Atlas of WBR'.'Cell types during WBR' Classify the cells into cell types depends:$((VCT+2)),$((CCT+9))
+task add project:'Atlas of WBR'.'Cell types during WBR' Classify the cells into cell types depends:$((VCT+2)),$((CCT+9)) +analysis
 #4
-task add project:'Atlas of WBR'.'Cell types during WBR' Map and merge cell type onto the cell lineage depends:$((VCT+3)),$((VRW+3))
+task add project:'Atlas of WBR'.'Cell types during WBR' Map and merge cell type onto the cell lineage depends:$((VCT+3)),$((VRW+3)) +code
 #5
-task add project:'Atlas of WBR'.'Cell types during WBR' Publish our complete reference altas of WBR depends:$((VCT+4))
+task add project:'Atlas of WBR'.'Cell types during WBR' Publish our complete reference altas of WBR depends:$((VCT+4)) +create +protocol
 #6
-task add project:'Atlas of WBR'.'Cell types during WBR' Write a manuscript about this atlas depends:$((VCT+5))
+task add project:'Atlas of WBR'.'Cell types during WBR' Write a manuscript about this atlas depends:$((VCT+5)) +create +manuscript
 COUNTER=$((COUNTER+6))
 echo $((COUNTER))
 
@@ -908,25 +908,25 @@ EHA=$COUNTER
 #1
 task add project:'Environment of WBR'.'Haemocytes' Find protocols for the identification of haemocytes in colonial ascidians  +protocol
 #2
-task add project:'Environment of WBR'.'Haemocytes' Determine the most informative stainings for haemocytes depends:$((EHA+1))
+task add project:'Environment of WBR'.'Haemocytes' Determine the most informative stainings for haemocytes depends:$((EHA+1)) +analysis
 #3
-task add project:'Environment of WBR'.'Haemocytes' Stain blood smears and whole colonies depends:$((EHA+2)),$((TRF+6))
+task add project:'Environment of WBR'.'Haemocytes' Stain blood smears and whole colonies depends:$((EHA+2)),$((TRF+6)) +experiments
 #4
-task add project:'Environment of WBR'.'Haemocytes' Devise an identification scheme for all the vascular cells depends:$((EHA+3))
+task add project:'Environment of WBR'.'Haemocytes' Devise an identification scheme for all the vascular cells depends:$((EHA+3)) +analysis
 task $((CST+6)) modify depends:$((EHA+4))
 task $((TDS+5)) modify depends:$((EHA+4))
 #5
-task add project:'Environment of WBR'.'Haemocytes' Quantify haemocyte composition throughout WBR by counting depends:$((EHA+4)),$((IND+5))
+task add project:'Environment of WBR'.'Haemocytes' Quantify haemocyte composition throughout WBR by counting depends:$((EHA+4)),$((IND+5)) +experiment
 #6
-task add project:'Environment of WBR'.'Haemocytes' Characterize haemocytes throughout WBR using scRNA-seq depends:$((EHA+1)),$((SCR+6)),$((IND+5)),$((TDS+5))
+task add project:'Environment of WBR'.'Haemocytes' Characterize haemocytes throughout WBR using scRNA-seq depends:$((EHA+1)),$((SCR+6)),$((IND+5)),$((TDS+5)) +experiment
 #7
-task add project:'Environment of WBR'.'Haemocytes' Alter haemocyte composition using transfusion depends:$((EHA+5))
+task add project:'Environment of WBR'.'Haemocytes' Alter haemocyte composition using transfusion depends:$((EHA+5)) +experiment
 #8
-task add project:'Environment of WBR'.'Haemocytes' Alter haemocyte composition using cell sorting depends:$((EHA+5)),$((CST+6))
+task add project:'Environment of WBR'.'Haemocytes' Alter haemocyte composition using cell sorting depends:$((EHA+5)),$((CST+6)) +experiment
 #9
-task add project:'Environment of WBR'.'Haemocytes' Trace cell types using labeling of isolated haemocytes depends:$((EHA+5)),$((MCR+13))
+task add project:'Environment of WBR'.'Haemocytes' Trace cell types using labeling of isolated haemocytes depends:$((EHA+5)),$((MCR+13)) +experiment
 #10
-task add project:'Environment of WBR'.'Haemocytes' Identify which cell types are necessary for WBR depends:$((EHA+6)),$((EHA+7)),$((EHA+8)),$((EHA+9))
+task add project:'Environment of WBR'.'Haemocytes' Identify which cell types are necessary for WBR depends:$((EHA+6)),$((EHA+7)),$((EHA+8)),$((EHA+9)) +analysis
 #11
 task add project:'Environment of WBR'.'Haemocytes' Write a manuscript on haemocytes during WBR depends:$((EHA+10)) +create +manuscript
 COUNTER=$((COUNTER+11))
@@ -942,17 +942,17 @@ task add project:'Environment of WBR'.'Haemolymph flow' Monitor haemolymph flow 
 #3
 task add project:'Environment of WBR'.'Haemolymph flow' Study how flow is sustained during WBR depends:$((EHF+1)),$((EHF+2)) +imaging
 #4
-task add project:'Environment of WBR'.'Haemolymph flow' Alter flow by ablating ampullae depends:$((EHF+3)),$((MSG+6))
+task add project:'Environment of WBR'.'Haemolymph flow' Alter flow by ablating ampullae depends:$((EHF+3)),$((MSG+6)) +experiment
 #5
-task add project:'Environment of WBR'.'Haemolymph flow' Alter flow using anaesthesia depends:$((EHF+3)),$((ANH+5))
+task add project:'Environment of WBR'.'Haemolymph flow' Alter flow using anaesthesia depends:$((EHF+3)),$((ANH+5)) +experiment
 #6
-task add project:'Environment of WBR'.'Haemolymph flow' Alter flow by injections depends:$((EHF+3)),$((INJ+7))
+task add project:'Environment of WBR'.'Haemolymph flow' Alter flow by injections depends:$((EHF+3)),$((INJ+7)) +experiment
 #7
-task add project:'Environment of WBR'.'Haemolymph flow' Alter flow by electric stimulations depends:$((EHF+3)),$((ELC+6))
+task add project:'Environment of WBR'.'Haemolymph flow' Alter flow by electric stimulations depends:$((EHF+3)),$((ELC+6)) +experiment
 #8
-task add project:'Environment of WBR'.'Haemolymph flow' Alter flow by chemical stimulation depends:$((EHF+3)),$((INJ+7))
+task add project:'Environment of WBR'.'Haemolymph flow' Alter flow by chemical stimulation depends:$((EHF+3)),$((INJ+7)) +experiment
 #9
-task add project:'Environment of WBR'.'Haemolymph flow' Identify the necessary flow during WBR depends:$((EHF+4)),$((EHF+5)),$((EHF+6)),$((EHF+7)),$((EHF+8))
+task add project:'Environment of WBR'.'Haemolymph flow' Identify the necessary flow during WBR depends:$((EHF+4)),$((EHF+5)),$((EHF+6)),$((EHF+7)),$((EHF+8)) +analysis
 #10
 task add project:'Environment of WBR'.'Haemolymph flow' Write a manuscript on haemolymph flow during WBR depends:$((EHF+9)) +create +manuscript
 COUNTER=$((COUNTER+10))
@@ -967,15 +967,16 @@ task add project:'Environment of WBR'.'Vascular system' Gather publications abou
 task add project:'Environment of WBR'.'Vascular system' Map the evolution of the vascular system in isolated vessels depends:$((IND+5)) +imaging
 #3
 task add project:'Environment of WBR'.'Vascular system' Identify the minimal vascular system required for WBR depends:$((EVS+1)),$((EVS+2)) +imaging
+task $((LIV+3)) modify depends:$((EVS+3))
 task $((SPN+1)) modify depends:$((EVS+3))
 #4
-task add project:'Environment of WBR'.'Vascular system' Alter the vascular network by targeted isolation depends:$((EVS+3))
+task add project:'Environment of WBR'.'Vascular system' Alter the vascular network by targeted isolation depends:$((EVS+3)) +experiment
 #5
-task add project:'Environment of WBR'.'Vascular system' Alter the vascular network by modulating angiogenesis depends:$((EVS+3)),$((INJ+5)),$((RNA+8))
+task add project:'Environment of WBR'.'Vascular system' Alter the vascular network by modulating angiogenesis depends:$((EVS+3)),$((INJ+5)),$((RNA+8)) +experiment
 #6
-task add project:'Environment of WBR'.'Vascular system' Alter the vascular network by micro-surgeries depends:$((EVS+3)),$((MSG+6))
+task add project:'Environment of WBR'.'Vascular system' Alter the vascular network by micro-surgeries depends:$((EVS+3)),$((MSG+6)) +experiment
 #7
-task add project:'Environment of WBR'.'Vascular system' Identify the impact of the vascular network during WBR depends:$((EVS+4)),$((EVS+5)),$((EVS+6))
+task add project:'Environment of WBR'.'Vascular system' Identify the impact of the vascular network during WBR depends:$((EVS+4)),$((EVS+5)),$((EVS+6)) +analysis
 #8
 task add project:'Environment of WBR'.'Vascular system' Write a manuscript on the vascular system during WBR depends:$((EVS+7)) +create +manuscript
 COUNTER=$((COUNTER+8))
@@ -987,17 +988,17 @@ ETU=$COUNTER
 #1
 task add project:'Environment of WBR'.'Tunic' Gather publications about tunicin production in tunicates +inventory
 #2
-task add project:'Environment of WBR'.'Tunic' Identify the pathways involved in tunicin production depends:$((ETU+1))
+task add project:'Environment of WBR'.'Tunic' Identify the pathways involved in tunicin production depends:$((ETU+1)) +analysis
 #3
-task add project:'Environment of WBR'.'Tunic' Monitor the evolution of the tunic during WBR depends:$((ETU+1)),$((TUL+6))
+task add project:'Environment of WBR'.'Tunic' Monitor the evolution of the tunic during WBR depends:$((ETU+1)),$((TUL+6)) +imaging
 #4
-task add project:'Environment of WBR'.'Tunic' Alter the tunic by micro-surgeries depends:$((ETU+3)),$((MSG+6))
+task add project:'Environment of WBR'.'Tunic' Alter the tunic by micro-surgeries depends:$((ETU+3)),$((MSG+6)) +experiment
 #5
-task add project:'Environment of WBR'.'Tunic' Alter the tunic by RNAi depends:$((ETU+2)),$((ETU+3)),$((RNA+8))
+task add project:'Environment of WBR'.'Tunic' Alter the tunic by RNAi depends:$((ETU+2)),$((ETU+3)),$((RNA+8)) +experiment
 #6
-task add project:'Environment of WBR'.'Tunic' Alter the tunic by injecting chemicals depends:$((ETU+2)),$((ETU+3)),$((INJ+7))
+task add project:'Environment of WBR'.'Tunic' Alter the tunic by injecting chemicals depends:$((ETU+2)),$((ETU+3)),$((INJ+7)) +experiment
 #7
-task add project:'Environment of WBR'.'Tunic' Identify the impact of the tunic on WBR depends:$((ETU+4)),$((ETU+5)),$((ETU+6))
+task add project:'Environment of WBR'.'Tunic' Identify the impact of the tunic on WBR depends:$((ETU+4)),$((ETU+5)),$((ETU+6)) +analysis
 #8
 task add project:'Environment of WBR'.'Tunic' Write a manuscript on the tunic during WBR depends:$((ETU+7)) +create +manuscript
 COUNTER=$((COUNTER+8))
@@ -1050,7 +1051,7 @@ task add project:'Culture of B. leachii'.'Aquarium' Introduce a Padovian refugiu
 #9
 task add project:'Culture of B. leachii'.'Aquarium' Monitor the quality of the water depends:$((AQU+8)) +measurement
 #10
-task add project:'Culture of B. leachii'.'Aquarium' Write a User Manual depends:$((AQU+9)) +create +protocol
+task add project:'Culture of B. leachii'.'Aquarium' Write a User Manual for the aquarium depends:$((AQU+9)) +create +protocol
 COUNTER=$((COUNTER+10))
 
 #----------------------------------------
@@ -1066,7 +1067,7 @@ task add project:'Culture of B. leachii'.'Growing food' List the required equipm
 #4
 task add project:'Culture of B. leachii'.'Growing food' Get the required material depends:$((FOD+2)),$((FOD+3)) +purchase
 #5 in addition depends:FED+3
-task add project:'Culture of B. leachii'.'Growing food' Get candidate live strains depends:$((FOD+4)) +purchase
+task add project:'Culture of B. leachii'.'Growing food' Get candidate live strains of food depends:$((FOD+4)) +purchase
 #6
 task add project:'Culture of B. leachii'.'Growing food' Establish stocks for each strain depends:$((FOD+5)) +experiment
 #7
@@ -1082,7 +1083,7 @@ task add project:'Culture of B. leachii'.'Growing food' Determine the required i
 #12
 task add project:'Culture of B. leachii'.'Growing food' Master growing food depends:$((FOD+11)) +skill
 #13
-task add project:'Culture of B. leachii'.'Growing food' Write our own protocol depends:$((FOD+12)) +create +protocol
+task add project:'Culture of B. leachii'.'Growing food' Write our own protocol for food culture depends:$((FOD+12)) +create +protocol
 COUNTER=$((COUNTER+13))
 
 #----------------------------------------
@@ -1101,7 +1102,8 @@ task add project:'Culture of B. leachii'.'Colony stock' Transfer colonies onto a
 #5 in addition depends:STS+4
 task add project:'Culture of B. leachii'.'Colony stock' Quarantine the colonies to prevent contamination from other organisms depends:$((BCS+4)) +experiment
 #6 in addition depends:FED+10,LTS+6
-task add project:'Culture of B. leachii'.'Colony stock' Culture these colonies on the long-term depends:$((BCS+3)),$((BCS+5)),$((AQU+10)) +technique
+task add project:'Culture of B. leachii'.'Colony stock' Culture these colonies on the long-term depends:$((BCS+3)),$((BCS+5)),$((AQU+10)) +skill
+task $((CCH+8)) modify depends:$((BCS+6))
 COUNTER=$((COUNTER+6))
 
 #----------------------------------------
@@ -1127,7 +1129,7 @@ task add project:'Culture of B. leachii'.'Colony environment' Repeat previous st
 #9
 task add project:'Culture of B. leachii'.'Colony environment' Settle for the best parameters depends:$((EVP+8)) +analysis
 #10
-task add project:'Culture of B. leachii'.'Colony environment' Write our own optimized protocol depends:$((EVP+9)) +create +protocol
+task add project:'Culture of B. leachii'.'Colony environment' Write our own optimized protocol for culturing colonies depends:$((EVP+9)) +create +protocol
 COUNTER=$((COUNTER+10))
 
 #----------------------------------------
@@ -1158,7 +1160,7 @@ task add project:'Culture of B. leachii'.'Colony feeding' Repeat previous step d
 task add project:'Culture of B. leachii'.'Colony feeding' Settle for the best diet depends:$((FED+9)) +analysis
 task $((BCS+6)) modify depends:$((FED+10))
 #11
-task add project:'Culture of B. leachii'.'Colony feeding' Write our own optimized protocol depends:$((FED+10)) +create +protocol
+task add project:'Culture of B. leachii'.'Colony feeding' Write our own optimized protocol for feeding colonies depends:$((FED+10)) +create +protocol
 COUNTER=$((COUNTER+11))
 
 #----------------------------------------
@@ -1182,7 +1184,7 @@ task add project:'Culture of B. leachii'.'Sexual reproduction' Optimize the envi
 #8
 task add project:'Culture of B. leachii'.'Sexual reproduction' Master inducing sexual reproduction in colonial ascidians depends:$((ISR+7)) +skill
 #9
-task add project:'Culture of B. leachii'.'Sexual reproduction' Write our own optimized protocol depends:$((ISR+8)) +create +protocol
+task add project:'Culture of B. leachii'.'Sexual reproduction' Write our own optimized protocol for inducing sexual reproduction depends:$((ISR+8)) +create +protocol
 COUNTER=$((COUNTER+9))
 
 #----------------------------------------
@@ -1203,7 +1205,7 @@ task add project:'Culture of B. leachii'.'Long-term storage' Test reactivation o
 task add project:'Culture of B. leachii'.'Long-term storage' Master long-term storage of colonial ascidians depends:$((LTS+5)) +skill
 task $((BCS+6)) modify depends:$((LTS+6))
 #7
-task add project:'Culture of B. leachii'.'Long-term storage' Write  our own optimized protocol depends:$((LTS+6)) +create +protocol
+task add project:'Culture of B. leachii'.'Long-term storage' Write our own optimized protocol for aestivation depends:$((LTS+6)) +create +protocol
 COUNTER=$((COUNTER+7))
 
 #----------------------------------------
@@ -1224,7 +1226,7 @@ task add project:'Culture of B. leachii'.'Short-term storage' Monitor the growth
 #6
 task add project:'Culture of B. leachii'.'Short-term storage' Assess the difference with growth in the aquarium depends:$((STS+5)),$((EVP+6)) +analysis
 #7
-task add project:'Culture of B. leachii'.'Short-term storage' Write our own protocol depends:$((STS+6)) +create +protocol
+task add project:'Culture of B. leachii'.'Short-term storage' Write our own protocol for short-term culture depends:$((STS+6)) +create +protocol
 COUNTER=$((COUNTER+7))
 
 
@@ -1373,7 +1375,7 @@ task add project:'Laboratory equipment'.'Computers' Get a server for sharing sci
 #3
 task add project:'Laboratory equipment'.'Computers' Get a server for storing our data +equipment
 #4
-task add project:'Laboratory equipment'.'Computers' Get a number cruncher for analyzing of the data +equipment
+task add project:'Laboratory equipment'.'Computers' Get a number cruncher for analyzing the data +equipment
 #5
 task add project:'Laboratory equipment'.'Computers' Define the structure of the data on all computers +equipment
 #6
