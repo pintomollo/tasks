@@ -188,10 +188,12 @@ task add project:'Techniques'.'Handling'.'Haemolymph transfusion' Get the requir
 #5
 task add project:'Techniques'.'Handling'.'Haemolymph transfusion' Test haemocytes collection, labeling and injection depends:$((TRF+4)),$((INJ+7)) +training
 #6
-task add project:'Techniques'.'Handling'.'Haemolymph transfusion' Master haemolymph transfusion depends:$((TRF+5)) +skill
+task add project:'Techniques'.'Handling'.'Haemolymph transfusion' Test removing cell-cell adhesion for fluidifying haemolymph depends:$((TRF+5)) +training
 #7
-task add project:'Techniques'.'Handling'.'Haemolymph transfusion' Write our own optimized protocol for haemolymph transfusion depends:$((TRF+6)) +create +protocol
-COUNTER=$((COUNTER+7))
+task add project:'Techniques'.'Handling'.'Haemolymph transfusion' Master haemolymph transfusion depends:$((TRF+6)) +skill
+#8
+task add project:'Techniques'.'Handling'.'Haemolymph transfusion' Write our own optimized protocol for haemolymph transfusion depends:$((TRF+7)) +create +protocol
+COUNTER=$((COUNTER+8))
 
 #----------------------------------------
 #- 0.1.8 Electric stimulation
@@ -553,7 +555,7 @@ task add project:'Techniques'.'Molecular biology'.'scRNA sequencing' Identify th
 #3
 task add project:'Techniques'.'Molecular biology'.'scRNA sequencing' Find protocols for scRNA in colonial ascidians depends:$((SCR+2)) +protocol
 #4
-task add project:'Techniques'.'Molecular biology'.'scRNA sequencing' Prepare haemocytes according to the specifics of the analysis platfrom depends:$((SCR+3)),$((TRF+6))
+task add project:'Techniques'.'Molecular biology'.'scRNA sequencing' Prepare haemocytes according to the specifics of the analysis platfrom depends:$((SCR+3)),$((TRF+7))
 #5
 task add project:'Techniques'.'Molecular biology'.'scRNA sequencing' Send for library preparation and sequencing depends:$((SCR+4)) +contact
 #6
@@ -573,7 +575,7 @@ task add project:'Techniques'.'Molecular biology'.'Cell sorting' List the requir
 #3
 task add project:'Techniques'.'Molecular biology'.'Cell sorting' Get the required reagents depends:$((CST+2)) +purchase
 #4
-task add project:'Techniques'.'Molecular biology'.'Cell sorting' Test cell sorting on haemolymph depends:$((CST+3)),$((TRF+6)) +training
+task add project:'Techniques'.'Molecular biology'.'Cell sorting' Test cell sorting on haemolymph depends:$((CST+3)),$((TRF+7)) +training
 #5 in addition depends:EHA+4
 task add project:'Techniques'.'Molecular biology'.'Cell sorting' Assess the sorting specificity by counting depends:$((CST+4)) +training
 #6
@@ -595,7 +597,7 @@ task add project:'Techniques'.'Molecular biology'.'Proteomics' List the required
 #4
 task add project:'Techniques'.'Molecular biology'.'Proteomics' Get the required reagents depends:$((PRT+3)) +purchase
 #5
-task add project:'Techniques'.'Molecular biology'.'Proteomics' Test proteomics analysis in haemolymph depends:$((PRT+4)),$((TRF+6)) +training
+task add project:'Techniques'.'Molecular biology'.'Proteomics' Test proteomics analysis in haemolymph depends:$((PRT+4)),$((TRF+7)) +training
 #6
 task add project:'Techniques'.'Molecular biology'.'Proteomics' Master proteomics analysis in colonial ascidians depends:$((PRT+5)) +skill
 #7
@@ -779,7 +781,7 @@ LIV=$COUNTER
 task add project:'Cellular origins of WBR'.'Long-term imaging' Assess the recordable span of the selected dyes depends:$((LET+7)),$((CCH+9)) +imaging
 #2
 task add project:'Cellular origins of WBR'.'Long-term imaging' Determine the necessary resolution for the analysis depends:$((FLW+6)),$((LBL+7)) +imaging
-#3 in addition depends:EVS+3
+#3 in addition depends:EVS+4
 task add project:'Cellular origins of WBR'.'Long-term imaging' Determine the volume to be recorded for the aquisition, including the regenerated zooid depends:$((LIV+2)),$((IND+5)) +imaging
 #4
 task add project:'Cellular origins of WBR'.'Long-term imaging' Optimize the acquisition parameters for good signal-to-noise ratio depends:$((LIV+1)),$((LIV+3)),$((MCR+10)),$((MCR+13)) +training
@@ -795,7 +797,7 @@ COUNTER=$((COUNTER+7))
 #- 1.1.3 Temporal span of WBR initiation
 #----------------------------------------
 SPN=$COUNTER
-#1 in addition depends:EVS+3
+#1 in addition depends:EVS+4
 task add project:'Cellular origins of WBR'.'Chronology of niche establishment' Induce reproducibly WBR in minimal vascular systems depends:$((IND+5)) +experiment
 #2
 task add project:'Cellular origins of WBR'.'Chronology of niche establishment' Fix regenerating colonies at regular time interval for the first 2 days depends:$((SPN+1)),$((FIX+5)) +experiment
@@ -828,9 +830,9 @@ task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Ide
 #2
 task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Characterize these cells depends:$((CHR+1)),$((LBL+7)) +experiment
 #3
-task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Isolate these cells depends:$((CHR+1)),$((TRF+6)) +experiment
+task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Isolate these cells depends:$((CHR+1)),$((TRF+7)) +experiment
 #4
-task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Label these cells depends:$((CHR+1)),$((TRF+6)) +experiment
+task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Label these cells depends:$((CHR+1)),$((TRF+7)) +experiment
 #5
 task add project:'Cellular origins of WBR'.'Characterize the origins of WBR' Ablate these cells depends:$((CHR+1)),$((ABL+5)) +experiment
 #6
@@ -910,7 +912,7 @@ task add project:'Environment of WBR'.'Haemocytes' Find protocols for the identi
 #2
 task add project:'Environment of WBR'.'Haemocytes' Determine the most informative stainings for haemocytes depends:$((EHA+1)) +analysis
 #3
-task add project:'Environment of WBR'.'Haemocytes' Stain blood smears and whole colonies depends:$((EHA+2)),$((TRF+6)) +experiments
+task add project:'Environment of WBR'.'Haemocytes' Stain blood smears and whole colonies depends:$((EHA+2)),$((TRF+7)) +experiments
 #4
 task add project:'Environment of WBR'.'Haemocytes' Devise an identification scheme for all the vascular cells depends:$((EHA+3)) +analysis
 task $((CST+6)) modify depends:$((EHA+4))
@@ -964,22 +966,24 @@ EVS=$COUNTER
 #1
 task add project:'Environment of WBR'.'Vascular system' Gather publications about the vascular system in colonial ascidians +inventory
 #2
-task add project:'Environment of WBR'.'Vascular system' Map the evolution of the vascular system in isolated vessels depends:$((IND+5)) +imaging
+task add project:'Environment of WBR'.'Vascular system' Find and test markers that label the vascular system depends:$((EVS+1)) +training
 #3
-task add project:'Environment of WBR'.'Vascular system' Identify the minimal vascular system required for WBR depends:$((EVS+1)),$((EVS+2)) +imaging
-task $((LIV+3)) modify depends:$((EVS+3))
-task $((SPN+1)) modify depends:$((EVS+3))
+task add project:'Environment of WBR'.'Vascular system' Map the evolution of the vascular system in isolated vessels depends:$((IND+5)) +imaging
 #4
-task add project:'Environment of WBR'.'Vascular system' Alter the vascular network by targeted isolation depends:$((EVS+3)) +experiment
+task add project:'Environment of WBR'.'Vascular system' Identify the minimal vascular system required for WBR depends:$((EVS+2)),$((EVS+3)) +imaging
+task $((LIV+3)) modify depends:$((EVS+4))
+task $((SPN+1)) modify depends:$((EVS+4))
 #5
-task add project:'Environment of WBR'.'Vascular system' Alter the vascular network by modulating angiogenesis depends:$((EVS+3)),$((INJ+5)),$((RNA+8)) +experiment
+task add project:'Environment of WBR'.'Vascular system' Alter the vascular network by targeted isolation depends:$((EVS+4)) +experiment
 #6
-task add project:'Environment of WBR'.'Vascular system' Alter the vascular network by micro-surgeries depends:$((EVS+3)),$((MSG+6)) +experiment
+task add project:'Environment of WBR'.'Vascular system' Alter the vascular network by modulating angiogenesis depends:$((EVS+4)),$((INJ+5)),$((RNA+8)) +experiment
 #7
-task add project:'Environment of WBR'.'Vascular system' Identify the impact of the vascular network during WBR depends:$((EVS+4)),$((EVS+5)),$((EVS+6)) +analysis
+task add project:'Environment of WBR'.'Vascular system' Alter the vascular network by micro-surgeries depends:$((EVS+4)),$((MSG+6)) +experiment
 #8
-task add project:'Environment of WBR'.'Vascular system' Write a manuscript on the vascular system during WBR depends:$((EVS+7)) +create +manuscript
-COUNTER=$((COUNTER+8))
+task add project:'Environment of WBR'.'Vascular system' Identify the impact of the vascular network during WBR depends:$((EVS+5)),$((EVS+6)),$((EVS+7)) +analysis
+#9
+task add project:'Environment of WBR'.'Vascular system' Write a manuscript on the vascular system during WBR depends:$((EVS+8)) +create +manuscript
+COUNTER=$((COUNTER+9))
 
 #----------------------------------------
 #- 1.3.4 Tunic
@@ -1012,16 +1016,18 @@ task add project:'Environment of WBR'.'Metabolites' Gather publications about me
 #2
 task add project:'Environment of WBR'.'Metabolites' Identify circulating metabolites to be used as controls depends:$((EMT+1)) +analysis
 #3
-task add project:'Environment of WBR'.'Metabolites' Monitor the evolution of metabolites during WBR depends:$((EMT+2)),$((PRT+6)) +measurement
+task add project:'Environment of WBR'.'Metabolites' Monitor the variations of metabolites during WBR using Western blots depends:$((EMT+2)) +experiment
 #4
-task add project:'Environment of WBR'.'Metabolites' Alter metabolites by RNAi depends:$((EMT+3)),$((RNA+8)) +experiment
+task add project:'Environment of WBR'.'Metabolites' Quantify the evolution of metabolites during WBR using proteomics depends:$((EMT+3)),$((PRT+6)) +measurement
 #5
-task add project:'Environment of WBR'.'Metabolites' Alter metabolites by injecting proteins depends:$((EMT+3)),$((INJ+7)) +experiment
+task add project:'Environment of WBR'.'Metabolites' Alter metabolites by RNAi depends:$((EMT+4)),$((RNA+8)) +experiment
 #6
-task add project:'Environment of WBR'.'Metabolites' Identify the necessary metabolites during WBR depends:$((EMT+4)),$((EMT+5)) +analysis
+task add project:'Environment of WBR'.'Metabolites' Alter metabolites by injecting proteins depends:$((EMT+4)),$((INJ+7)) +experiment
 #7
-task add project:'Environment of WBR'.'Metabolites' Write a manuscript on metabolites during WBR depends:$((EMT+6)) +create +manuscript
-COUNTER=$((COUNTER+7))
+task add project:'Environment of WBR'.'Metabolites' Identify the necessary metabolites during WBR depends:$((EMT+5)),$((EMT+6)) +analysis
+#8
+task add project:'Environment of WBR'.'Metabolites' Write a manuscript on metabolites during WBR depends:$((EMT+7)) +create +manuscript
+COUNTER=$((COUNTER+8))
 
 
 #========================================
@@ -1041,18 +1047,20 @@ task add project:'Culture of B. leachii'.'Aquarium' Get the all the parts of the
 #4
 task add project:'Culture of B. leachii'.'Aquarium' Assemble the aquarium depends:$((AQU+3)) +experiment
 #5
-task add project:'Culture of B. leachii'.'Aquarium' Test all the functionalities of the aquarium in freshwater depends:$((AQU+4)) +experiment
+task add project:'Culture of B. leachii'.'Aquarium' Create a water-tight area around the aquarium depends:$((AQU+3)) +experiment
 #6
-task add project:'Culture of B. leachii'.'Aquarium' Clean the aquarium depends:$((AQU+5)) +experiment
+task add project:'Culture of B. leachii'.'Aquarium' Test all the functionalities of the aquarium in freshwater depends:$((AQU+4)) +experiment
 #7
-task add project:'Culture of B. leachii'.'Aquarium' Start the seawater aquarium depends:$((AQU+6)) +experiment
-#8 in addition depends:BCS+1
-task add project:'Culture of B. leachii'.'Aquarium' Introduce a Padovian refugium depends:$((AQU+7)) +experiment
-#9
-task add project:'Culture of B. leachii'.'Aquarium' Monitor the quality of the water depends:$((AQU+8)) +measurement
+task add project:'Culture of B. leachii'.'Aquarium' Clean the aquarium depends:$((AQU+6)) +experiment
+#8
+task add project:'Culture of B. leachii'.'Aquarium' Start the seawater aquarium depends:$((AQU+7)) +experiment
+#9 in addition depends:BCS+1
+task add project:'Culture of B. leachii'.'Aquarium' Introduce a Padovian refugium depends:$((AQU+8)) +experiment
 #10
-task add project:'Culture of B. leachii'.'Aquarium' Write a User Manual for the aquarium depends:$((AQU+9)) +create +protocol
-COUNTER=$((COUNTER+10))
+task add project:'Culture of B. leachii'.'Aquarium' Monitor the quality of the water depends:$((AQU+9)) +measurement
+#11
+task add project:'Culture of B. leachii'.'Aquarium' Write a User Manual for the aquarium depends:$((AQU+10)) +create +protocol
+COUNTER=$((COUNTER+11))
 
 #----------------------------------------
 #- 1.4.2 Growing food 
@@ -1092,7 +1100,7 @@ COUNTER=$((COUNTER+13))
 BCS=$COUNTER
 #1
 task add project:'Culture of B. leachii'.'Colony stock' Plan a visit to Padova +contact
-task $((AQU+8)) modify depends:$((BCS+1))
+task $((AQU+9)) modify depends:$((BCS+1))
 #2
 task add project:'Culture of B. leachii'.'Colony stock' Bring colonies back from Padova depends:$((BCS+1)) +experiment
 #3
@@ -1102,7 +1110,7 @@ task add project:'Culture of B. leachii'.'Colony stock' Transfer colonies onto a
 #5 in addition depends:STS+4
 task add project:'Culture of B. leachii'.'Colony stock' Quarantine the colonies to prevent contamination from other organisms depends:$((BCS+4)) +experiment
 #6 in addition depends:FED+10,LTS+6
-task add project:'Culture of B. leachii'.'Colony stock' Culture these colonies on the long-term depends:$((BCS+3)),$((BCS+5)),$((AQU+10)) +skill
+task add project:'Culture of B. leachii'.'Colony stock' Culture these colonies on the long-term depends:$((BCS+3)),$((BCS+5)),$((AQU+11)) +skill
 task $((CCH+8)) modify depends:$((BCS+6))
 COUNTER=$((COUNTER+6))
 
@@ -1182,10 +1190,14 @@ task add project:'Culture of B. leachii'.'Sexual reproduction' Confirm gametogen
 #7
 task add project:'Culture of B. leachii'.'Sexual reproduction' Optimize the environmental parameters depends:$((ISR+6)) +experiment
 #8
-task add project:'Culture of B. leachii'.'Sexual reproduction' Master inducing sexual reproduction in colonial ascidians depends:$((ISR+7)) +skill
+task add project:'Culture of B. leachii'.'Sexual reproduction' Capture and settle larvae depends:$((ISR+7)) +experiment
 #9
-task add project:'Culture of B. leachii'.'Sexual reproduction' Write our own optimized protocol for inducing sexual reproduction depends:$((ISR+8)) +create +protocol
-COUNTER=$((COUNTER+9))
+task add project:'Culture of B. leachii'.'Sexual reproduction' Find substrates or compounds that repel larvae settling depends:$((ISR+8)) +training
+#10
+task add project:'Culture of B. leachii'.'Sexual reproduction' Master inducing sexual reproduction in colonial ascidians depends:$((ISR+9)) +skill
+#11
+task add project:'Culture of B. leachii'.'Sexual reproduction' Write our own optimized protocol for inducing sexual reproduction depends:$((ISR+10)) +create +protocol
+COUNTER=$((COUNTER+11))
 
 #----------------------------------------
 #- 1.4.7 Long-term storage
@@ -1344,7 +1356,9 @@ task add project:'Laboratory equipment'.'Bench space' Get a table-top centrifuge
 task add project:'Laboratory equipment'.'Bench space' Get a table-top shaking platform +purchase
 #6
 task add project:'Laboratory equipment'.'Bench space' Get a labeling machine +purchase
-COUNTER=$((COUNTER+6))
+#7
+task add project:'Laboratory equipment'.'Bench space' Get sodium percarbonate for cleaning +purchase
+COUNTER=$((COUNTER+7))
 
 #========================================
 #= 3.3 Storage
@@ -1398,7 +1412,7 @@ NEXT=$COUNTER
 #- 4.1 In vitro fertilization
 #----------------------------------------
 #1
-task add project:'Prospective experiments'.'In vitro fertilization' Collect sperm and embryos in gravid colonies depends:$((ISR+8)) +experiment
+task add project:'Prospective experiments'.'In vitro fertilization' Collect sperm and embryos in gravid colonies depends:$((ISR+9)),$((MSG+6)) +experiment
 #2
 task add project:'Prospective experiments'.'In vitro fertilization' Test in vitro fertilization in colonial ascidians depends:$((NEXT+1)) +training +experiment
 
@@ -1422,7 +1436,7 @@ task add project:'Prospective experiments'.'Functional characterization' Charact
 #6
 task add project:'Prospective experiments'.'Functional characterization' Characterize functionally the haemocytes using RNAi and growth factor injections depends:$((EHA+10)),$((INJ+7)),$((RNA+8)),$((VCT+5)) +experiment
 #7
-task add project:'Prospective experiments'.'Functional characterization' Characterize the functional role of the vascular system during WBR depends:$((EHF+9)),$((EVS+7)),$((ETU+7)),$((EMT+6)),$((VCT+5)) +experiment
+task add project:'Prospective experiments'.'Functional characterization' Characterize the functional role of the vascular system during WBR depends:$((EHF+9)),$((EVS+8)),$((ETU+7)),$((EMT+7)),$((VCT+5)) +experiment
 
 #----------------------------------------
 #- 4.5 Atlas of blastogenesis
@@ -1435,5 +1449,11 @@ task add project:'Prospective experiments'.'Atlas of blastogenesis' Create an at
 #----------------------------------------
 #9
 task add project:'Prospective experiments'.'Atlas of embryogenesis' Create an atlas of embryogenesis depends:$((NEXT+1)),$((VCT+5)) +experiment
-COUNTER=$((COUNTER+9))
+
+#----------------------------------------
+#- 4.7 Germ line regeneration
+#----------------------------------------
+#10
+task add project:'Prospective experiments'.'Germ line regeneration' Monitor regenerated zooids to identify how and when the germ line is restored depends:$((IND+5)) +experiment
+COUNTER=$((COUNTER+10))
 echo $COUNTER
