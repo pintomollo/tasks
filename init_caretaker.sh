@@ -9,6 +9,8 @@
 task config uda.caretaker.type string
 task config uda.caretaker.label Caretaker
 task config uda.caretaker.default $USER
+task config report.next.columns id,start.age,entry.age,depends,priority,project,caretaker,tags,recur,scheduled.countdown,due.relative,until.remaining,description,urgency
+task config report.next.labels ID,Active,Age,Deps,P,Project,Caretaker,Tag,Recur,S,Due,Until,Description,Urg
 
 hdir=`task diagnostics | grep Location | awk '{ print $2 }'`
 # Setting up the hook folder
