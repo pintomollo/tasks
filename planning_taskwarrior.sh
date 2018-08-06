@@ -4,7 +4,7 @@
 # for setting up the Blanchoud lab
 
 # Clean the current list of tasks
-rm -rf ~/.task
+rm ~/.task/*.data
 
 # For counting how many tasks have been submitted
 COUNTER=0
