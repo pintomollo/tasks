@@ -387,7 +387,7 @@ task add project:'Techniques'.'Imaging'.'Monitoring growth' Find protocols for m
 task add project:'Techniques'.'Imaging'.'Monitoring growth' List the required equipment depends:$((GRW+1)) +inventory
 #3
 task add project:'Techniques'.'Imaging'.'Monitoring growth' Get the required equipment depends:$((GRW+2)) +purchase
-#4 in addition depends:CSZ+6
+#4 in addition depends:CSZ+4
 task add project:'Techniques'.'Imaging'.'Monitoring growth' Test monitoring on various imaging conditions depends:$((GRW+3)) +training
 #5
 task add project:'Techniques'.'Imaging'.'Monitoring growth' Master monitoring depends:$((GRW+4)) +skill
@@ -405,7 +405,7 @@ task add project:'Techniques'.'Imaging'.'Monitoring flow' Find protocols for mon
 task add project:'Techniques'.'Imaging'.'Monitoring flow' List the required equipment depends:$((FLW+1)) +inventory
 #3
 task add project:'Techniques'.'Imaging'.'Monitoring flow' Get the required equipment depends:$((FLW+2)) +purchase
-#4 in addition depends:FLS+6
+#4 in addition depends:FLS+5
 task add project:'Techniques'.'Imaging'.'Monitoring flow' Test monitoring on various microscopes depends:$((FLW+3)) +training
 #5
 task add project:'Techniques'.'Imaging'.'Monitoring flow' Master monitoring flow depends:$((FLW+4)) +skill
@@ -975,7 +975,7 @@ task $((SPN+1)) modify depends:$((EVS+4))
 #5
 task add project:'Environment of WBR'.'Vascular system' Alter the vascular network by targeted isolation depends:$((EVS+4)) +experiment
 #6
-task add project:'Environment of WBR'.'Vascular system' Alter the vascular network by modulating angiogenesis depends:$((EVS+4)),$((INJ+5)),$((RNA+8)) +experiment
+task add project:'Environment of WBR'.'Vascular system' Alter the vascular network by modulating angiogenesis depends:$((EVS+4)),$((INJ+7)),$((RNA+8)) +experiment
 #7
 task add project:'Environment of WBR'.'Vascular system' Alter the vascular network by micro-surgeries depends:$((EVS+4)),$((MSG+6)) +experiment
 #8
